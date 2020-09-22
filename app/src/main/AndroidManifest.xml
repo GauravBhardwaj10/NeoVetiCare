@@ -9,18 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".imageUploadsenior"></activity>
-        <activity android:name=".cartakerRegistrationActivity" />
-        <activity android:name=".cartakerLoginActivity" />
-        <activity android:name=".naniesUpload" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".layout4"></activity>
+        <activity android:name=".layout3" />
+        <activity android:name=".layout2" />
+        <activity android:name=".layout1" />
+        <activity android:name=".Welcome" />
+        <activity android:name=".splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".imageUploadsenior" />
+        <activity android:name=".cartakerRegistrationActivity" />
+        <activity android:name=".cartakerLoginActivity" />
+        <activity android:name=".naniesUpload" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".ImageFirebaseUploadDemo" />
     </application>
