@@ -14,7 +14,8 @@
         <activity android:name=".layout2" />
         <activity android:name=".layout1" />
         <activity android:name=".Welcome" />
-        <activity android:name=".splash">
+        <activity android:name=".splash"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

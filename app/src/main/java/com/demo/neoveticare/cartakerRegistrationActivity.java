@@ -35,13 +35,13 @@ public class cartakerRegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cartaker_registration);
 
-        fNameEd=(EditText) findViewById(R.id.firsteditText);
-        lNameEd=(EditText) findViewById(R.id.lasteditText);
-        emailAddEd=(EditText) findViewById(R.id.EmaileditText);
-        passEd=(EditText) findViewById(R.id.passwordeditText);
-        joinBtn=(Button) findViewById(R.id.joinbtn);
+        fNameEd=(EditText) findViewById(R.id.fname);
+        lNameEd=(EditText) findViewById(R.id.lname);
+        emailAddEd=(EditText) findViewById(R.id.eml);
+        passEd=(EditText) findViewById(R.id.password);
+        joinBtn=(Button) findViewById(R.id.register);
 
-        confirmpassword=(EditText)findViewById(R.id.confirmpasswordeditText);
+        //confirmpassword=(EditText)findViewById(R.id.confirmpasswordeditText);
 
 
 

@@ -34,10 +34,10 @@ public class cartakerLoginActivity extends AppCompatActivity {
 
 
 
-        emailAddEd=(EditText) findViewById(R.id.LogEmaileditText);
-        passEd=(EditText) findViewById(R.id.LogpasswordeditText);
-        joinBtn=(Button) findViewById(R.id.Logjoinbtn);
-        registrationTextVIEW=(TextView)findViewById(R.id.registrationTextView);
+        emailAddEd=(EditText) findViewById(R.id.email);
+        passEd=(EditText) findViewById(R.id.pass);
+        joinBtn=(Button) findViewById(R.id.login);
+        //registrationTextVIEW=(TextView)findViewById(R.id.registrationTextView);
         //cartaker=(TextView)findViewById(R.id.cartaker);
 /*
         cartaker.setOnClickListener(new View.OnClickListener() {
