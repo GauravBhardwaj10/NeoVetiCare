@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText emailAddEd,passEd;
     private Button joinBtn;
-    TextView registrationTextVIEW,cartaker;
+    TextView registrationTextVIEW;
     private FirebaseAuth firebaseAuth;
 
 
@@ -34,19 +34,19 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-        emailAddEd=(EditText) findViewById(R.id.email);
-        passEd=(EditText) findViewById(R.id.pass);
-        joinBtn=(Button) findViewById(R.id.login);
-        //registrationTextVIEW=(TextView)findViewById(R.id.registrationTextView);
+        emailAddEd=(EditText) findViewById(R.id.txtemail);
+        passEd=(EditText) findViewById(R.id.txtpass);
+        joinBtn=(Button) findViewById(R.id.btnlogin);
+        registrationTextVIEW=(TextView)findViewById(R.id.txtsignup);
         //cartaker=(TextView)findViewById(R.id.cartaker);
 
-        cartaker.setOnClickListener(new View.OnClickListener() {
+       /* //cartaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(LoginActivity.this,cartakerLoginActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
 
 

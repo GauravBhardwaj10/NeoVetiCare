@@ -41,7 +41,7 @@ public class cartakerRegistrationActivity extends AppCompatActivity {
         passEd=(EditText) findViewById(R.id.password);
         joinBtn=(Button) findViewById(R.id.register);
 
-        //confirmpassword=(EditText)findViewById(R.id.confirmpasswordeditText);
+        confirmpassword=(EditText)findViewById(R.id.cnfpassword);
 
 
 

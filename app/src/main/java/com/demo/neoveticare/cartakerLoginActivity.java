@@ -22,7 +22,7 @@ public class cartakerLoginActivity extends AppCompatActivity {
 
     private EditText emailAddEd,passEd;
     private Button joinBtn;
-    TextView registrationTextVIEW,cartaker;
+    TextView registrationTextVIEW;
     private FirebaseAuth firebaseAuth;
 
 
@@ -37,7 +37,7 @@ public class cartakerLoginActivity extends AppCompatActivity {
         emailAddEd=(EditText) findViewById(R.id.email);
         passEd=(EditText) findViewById(R.id.pass);
         joinBtn=(Button) findViewById(R.id.login);
-        //registrationTextVIEW=(TextView)findViewById(R.id.registrationTextView);
+        registrationTextVIEW=(TextView)findViewById(R.id.textsignup);
         //cartaker=(TextView)findViewById(R.id.cartaker);
 /*
         cartaker.setOnClickListener(new View.OnClickListener() {
@@ -120,6 +120,7 @@ public class cartakerLoginActivity extends AppCompatActivity {
             }
         });
     }
+
 
 
 }

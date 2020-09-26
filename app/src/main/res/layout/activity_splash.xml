@@ -13,7 +13,7 @@
         android:layout_width="289dp"
         android:layout_height="516dp"
         android:layout_centerInParent="true"
-        android:src="@drawable/l1" />
+        android:src="@drawable/l3" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -22,8 +22,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:text="Nanny service"
-        android:textColor="@color/Pink"
-        android:textSize="12dp" />
+        android:textColor="@color/green"
+        android:textSize="20dp" />
 
 </RelativeLayout>
 

@@ -35,18 +35,20 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        fNameEd=(EditText) findViewById(R.id.fname);
-        lNameEd=(EditText) findViewById(R.id.lname);
-        emailAddEd=(EditText) findViewById(R.id.email);
-        passEd=(EditText) findViewById(R.id.pass);
-        joinBtn=(Button) findViewById(R.id.register);
+        fNameEd=(EditText) findViewById(R.id.firstname);
+        lNameEd=(EditText) findViewById(R.id.lastname);
+        emailAddEd=(EditText) findViewById(R.id.txteml);
+        passEd=(EditText) findViewById(R.id.txtpass);
+        joinBtn=(Button) findViewById(R.id.btnregister);
 
-        //confirmpassword=(EditText)findViewById(R.id.confirmpasswordeditText);
+        confirmpassword=(EditText)findViewById(R.id.cnfpass);
 
 
 
         firebaseAuth= FirebaseAuth.getInstance();
         firebaseFirestore= FirebaseFirestore.getInstance();
+
+
 
         joinBtn.setOnClickListener(new View.OnClickListener() {
             @Override

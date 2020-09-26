@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    android:background="@drawable/gradient_backgroung"
+
     tools:context=".MainActivity">
 
     <ImageView
@@ -15,7 +15,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/l1" />
+        android:src="@drawable/l3" />
 
     <ImageView
         android:layout_width="match_parent"
@@ -38,9 +38,10 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="200dp"
+        android:onClick="btnbabysitter"
         android:background="@drawable/custom_button"
         android:text="Babysitter"
-        android:textColor="#ffff" />
+        />
 
     <Button
         android:id="@+id/button2"
@@ -49,33 +50,39 @@
         android:layout_below="@id/button"
         android:layout_centerInParent="true"
         android:layout_marginTop="20dp"
+        android:onClick="btncaretaker"
         android:background="@drawable/custom_button"
         android:text="Care Taker"
-        android:textColor="#ffff" />
+
+         />
+
+    <TextView
+        android:id="@+id/or"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/button2"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        android:text="OR" />
 
 
     <Button
         android:id="@+id/button3"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/button2"
+        android:layout_below="@id/or"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
+        android:onClick="btnboth"
         android:background="@drawable/custom_button"
-        android:text="Looking for Babysitter"
+        android:text="Looking for Babysitter/Caretaker"
 
-        android:textColor="#ffff" />
+         />
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/button3"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="154dp"
-        android:background="@drawable/custom_button"
-        android:text="Looking for care Taker"
-        android:textColor="#ffff" />
+
+
 
 </RelativeLayout>
