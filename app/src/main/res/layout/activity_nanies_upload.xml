@@ -8,14 +8,17 @@
     android:orientation="vertical">
 
 
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="200dp"
+
         android:id="@+id/childern"
         android:text="for children"
+        android:background="@drawable/editwithboder"
         />
 
 
@@ -27,10 +30,12 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/seniorCitizen"
-        android:text="for citizen"
+        android:text="For Senior citizen"
+        android:background="@drawable/editwithboder"
         />
+
 
 
 
