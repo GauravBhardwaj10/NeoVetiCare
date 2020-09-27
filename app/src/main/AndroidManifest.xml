@@ -9,12 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".layout4"></activity>
+        <activity android:name=".choosetimebyparentafedone"></activity>
+        <activity android:name=".layout4" />
         <activity android:name=".layout3" />
         <activity android:name=".layout2" />
         <activity android:name=".layout1" />
         <activity android:name=".Welcome" />
-        <activity android:name=".splash"
+        <activity
+            android:name=".splash"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
