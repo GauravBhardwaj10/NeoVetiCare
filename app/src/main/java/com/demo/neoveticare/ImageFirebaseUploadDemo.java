@@ -8,6 +8,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -97,6 +100,7 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
         buttonUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                donee();
                 if (filePath != null) {
                     //displaying progress dialog while image is uploading
                     final ProgressDialog progressDialog = new ProgressDialog(ImageFirebaseUploadDemo.this);
@@ -212,5 +216,46 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+    public void donee()
+    {
+        Intent i = new Intent(ImageFirebaseUploadDemo.this, firstActivity.class);
+        startActivity(i);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu,menu);
+        return  true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.Help3:
+                Toast.makeText(this,"Help",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.LogOut:
+                Toast.makeText(this,"Log Out",Toast.LENGTH_SHORT).show();
+                all();
+                break;
+            case R.id.back:
+                Toast.makeText(this,"Back to Previous page:",Toast.LENGTH_SHORT).show();
+                next();
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    public void next()
+    {
+        Intent i = new Intent(ImageFirebaseUploadDemo.this, cartakerLoginActivity.class);
+        startActivity(i);
+
+    }
+    public void all()
+    {
+        
     }
 }
