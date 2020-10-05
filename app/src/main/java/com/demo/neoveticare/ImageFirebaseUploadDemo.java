@@ -2,22 +2,33 @@ package com.demo.neoveticare;
 
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -32,6 +43,9 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
+import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ImageFirebaseUploadDemo extends AppCompatActivity {
 
@@ -41,9 +55,17 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
     //view objects
     private Button buttonChoose;
     private Button buttonUpload;
-    private EditText editTextName,editTextphone,editTextaddress;
+    private EditText editTextName,editTextphone,editTextaddress,editTextprovience,editTextaboutyourself,editTextexperience,editTextcity;
     private TextView textViewShow;
     private ImageView imageView,getImageView;
+    Spinner spinnerjobtype,spinnergender,spinnerttimings;
+    CheckBox sunday;
+    CheckBox monday;
+    CheckBox tuesday;
+    CheckBox wednesday;
+    CheckBox thursday;
+    CheckBox friday;
+    CheckBox saturday;
 
     //uri to store file
     private Uri filePath;
@@ -51,14 +73,21 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
     String downloadUri;
 
     //firebase objects
-    private StorageReference storageReference;
-//    private FirebaseStorage firebaseStorage;
-    private FirebaseFirestore mDatabase;
+    private StorageReference storageReference,parttimestoragereference;
+    //    private FirebaseStorage firebaseStorage;
+    private FirebaseFirestore mDatabase,parttimeDatabase;
+
+    private RecyclerView RecyclerView;
+    int count=0;
+    ArrayList<String> arrlst=new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_firebase_upload_demo);
+
+
 
         buttonChoose = (Button) findViewById(R.id.buttonChoose);
         buttonUpload = (Button) findViewById(R.id.buttonUpload);
@@ -67,10 +96,20 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
         editTextphone = (EditText) findViewById(R.id.phone);
         editTextaddress = (EditText) findViewById(R.id.address);
         textViewShow = (TextView) findViewById(R.id.textViewShow);
+        spinnerjobtype = findViewById(R.id.JobType);
+        spinnergender = findViewById(R.id.gender);
+        editTextaboutyourself = (EditText) findViewById(R.id.writeaboutyourself);
+        editTextexperience = (EditText) findViewById(R.id.experience);
+        editTextprovience = (EditText) findViewById(R.id.Provience);
+        editTextcity = (EditText) findViewById(R.id.City);
+
 
         mDatabase = FirebaseFirestore.getInstance();
 //        firebaseStorage = FirebaseStorage.getInstance();
-        storageReference = FirebaseStorage.getInstance().getReference("upload");
+        storageReference = FirebaseStorage.getInstance().getReference("uploadChildern");
+
+        parttimeDatabase=FirebaseFirestore.getInstance();
+        parttimestoragereference=FirebaseStorage.getInstance().getReference("uploadChildrenparttime");
 
 //        final CollectionReference dbupload = mDatabase.collection("upload");
 
@@ -87,6 +126,141 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
             }
         });
 
+
+        spinnerjobtype = findViewById(R.id.JobType);
+
+        List<String> job = new ArrayList<>();
+        job.add(0, "Job Type");
+        job.add("Full Time");
+        job.add("Part Time");
+
+
+        ArrayAdapter<String> dataAdapter;
+        dataAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, job);
+
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerjobtype.setAdapter(dataAdapter);
+
+        spinnerjobtype.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (parent.getItemAtPosition(position).equals("Job Type")) {
+
+                } else {
+
+                    String jobtype = parent.getItemAtPosition(position).toString();
+                    Toast.makeText(parent.getContext(), "Selected: " + jobtype, Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+
+
+        spinnergender = findViewById(R.id.gender);
+
+        List<String> gender = new ArrayList<>();
+        gender.add(0, "Gender");
+        gender.add("Male");
+        gender.add("Female");
+        gender.add("other");
+
+
+        ArrayAdapter<String> dataAdaptergender;
+        dataAdaptergender = new ArrayAdapter(this, android.R.layout.simple_spinner_item, gender);
+
+        dataAdaptergender.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnergender.setAdapter(dataAdaptergender);
+
+        spinnergender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (parent.getItemAtPosition(position).equals("Gender")) {
+
+                } else {
+
+                    String gender = parent.getItemAtPosition(position).toString();
+                    Toast.makeText(parent.getContext(), "Selected: " + gender, Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        spinnerttimings = findViewById(R.id.Timings);
+
+        final List<String> Timings = new ArrayList<>();
+        Timings.add(0, "Timings");
+        Timings.add("Morning");
+        Timings.add("evening");
+        Timings.add("night");
+
+
+        ArrayAdapter<String> dataAdaptertimings;
+        dataAdaptertimings = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Timings);
+
+        dataAdaptertimings.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerttimings.setAdapter(dataAdaptertimings);
+
+        spinnerttimings.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (parent.getItemAtPosition(position).equals("Timings")) {
+
+                } else {
+
+                    String timings = parent.getItemAtPosition(position).toString();
+                    Toast.makeText(parent.getContext(), "Selected: " + timings, Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+
+
+
+        RecyclerView = (RecyclerView) findViewById(R.id.recyclerlistview);
+
+        //RecyclerView layout manager
+        LinearLayoutManager recyclerLayoutManager = new LinearLayoutManager(this);
+        RecyclerView.setLayoutManager(recyclerLayoutManager);
+
+        //RecyclerView item decorator
+        DividerItemDecoration dividerItemDecoration =
+                new DividerItemDecoration(RecyclerView.getContext(),
+                        recyclerLayoutManager.getOrientation());
+        RecyclerView.addItemDecoration(dividerItemDecoration);
+
+        //RecyclerView adapater
+        ProductFilterRecyclerViewAdapter recyclerViewAdapter = new
+                ProductFilterRecyclerViewAdapter(getSchedules(),this);
+        RecyclerView.setAdapter(recyclerViewAdapter);
+
+
+
+
+
+
         buttonChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,16 +268,20 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
             }
         });
 
+
         buttonUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (filePath != null) {
-                    //displaying progress dialog while image is uploading
-                    final ProgressDialog progressDialog = new ProgressDialog(ImageFirebaseUploadDemo.this);
-                    progressDialog.setTitle("Uploading");
-                    progressDialog.show();
 
-                    final StorageReference sRef = storageReference.child(editTextName.getText().toString().trim() + "." + getFileExtension(filePath));
+                if (spinnerjobtype.getSelectedItem().toString().equals("Full Time")) {
+
+                    if (filePath != null) {
+                        //displaying progress dialog while image is uploading
+                        final ProgressDialog progressDialog = new ProgressDialog(ImageFirebaseUploadDemo.this);
+                        progressDialog.setTitle("Uploading");
+                        progressDialog.show();
+
+                        final StorageReference sRef = storageReference.child(editTextName.getText().toString().trim() + "." + getFileExtension(filePath));
 
 //                    sRef.putFile(filePath)
 //                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -141,49 +319,175 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
 //                        }
 //                    });
 
-                    sRef.putFile(filePath).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                        @Override
-                        public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                            if (!task.isSuccessful()) {
-                                throw task.getException();
+                        sRef.putFile(filePath).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                            @Override
+                            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                                if (!task.isSuccessful()) {
+                                    throw task.getException();
+                                }
+                                return sRef.getDownloadUrl();
                             }
-                            return sRef.getDownloadUrl();
-                        }
-                    }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Uri> task) {
-                            if (task.isSuccessful())
-                            {
-                                Handler handler = new Handler();
-                                handler.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        progressDialog.setProgress(0);
-                                    }
-                                }, 500);
-                            }
-                            downloadUri = task.getResult().toString();
-                            Upload upload = new Upload(editTextName.getText().toString().trim(),
-                                    downloadUri,editTextphone.getText().toString().trim(),editTextaddress.getText().toString().trim()
-                                    );
-                            CollectionReference dbupload = mDatabase.collection("images");
-                                    dbupload.add(upload).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Uri> task) {
+                                if (task.isSuccessful()) {
+                                    Handler handler = new Handler();
+                                    handler.postDelayed(new Runnable() {
                                         @Override
-                                        public void onSuccess(DocumentReference documentReference) {
-                                            Toast.makeText(ImageFirebaseUploadDemo.this, "Success", Toast.LENGTH_SHORT).show();
+                                        public void run() {
+                                            progressDialog.setProgress(0);
                                         }
-                                    });
+                                    }, 500);
+                                }
+                                downloadUri = task.getResult().toString();
+                                Upload upload = new Upload(editTextName.getText().toString().trim(),
+                                        editTextphone.getText().toString().trim(),
+                                        editTextaddress.getText().toString().trim(),
+                                        editTextaboutyourself.getText().toString(),
+                                        editTextexperience.getText().toString()
+                                                .trim(),
+                                        spinnerttimings.getSelectedItem().toString(),
+                                        spinnerjobtype.getSelectedItem().toString(),
+                                        downloadUri,
+                                        spinnergender.getSelectedItem().toString(),
+                                        arrlst,editTextprovience.getText().toString(),editTextcity.getText().toString());
+
+                                CollectionReference dbupload = mDatabase.collection("uploadchildernfulltime");
+                                dbupload.add(upload).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    @Override
+                                    public void onSuccess(DocumentReference documentReference) {
+                                        Toast.makeText(ImageFirebaseUploadDemo.this, "Success", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
 
 
-                        }
-                    });
+                            }
+                        });
+                    }
+
+                }
+                else if (spinnerjobtype.getSelectedItem().toString().equals("Part Time")) {
+
+
+                    if (filePath != null) {
+                        //displaying progress dialog while image is uploading
+                        final ProgressDialog progressDialog = new ProgressDialog(ImageFirebaseUploadDemo.this);
+                        progressDialog.setTitle("Uploading");
+                        progressDialog.show();
+
+                        final StorageReference sRef = parttimestoragereference.child(editTextName.getText().toString().trim() + "." + getFileExtension(filePath));
+
+//                    sRef.putFile(filePath)
+//                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                                @Override
+//                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                                    progressDialog.dismiss();
+//
+//                                    //displaying success toast
+//                                    Toast.makeText(getApplicationContext(), "File Uploaded ", Toast.LENGTH_LONG).show();
+//
+//                                    //creating the upload object to store uploaded image details
+////                                    Upload upload = new Upload(editTextName.getText().toString().trim(), taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
+//////
+////                                    CollectionReference dbupload = mDatabase.collection("images");
+////                                    dbupload.add(upload).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+////                                        @Override
+////                                        public void onSuccess(DocumentReference documentReference) {
+////                                            Toast.makeText(ImageFirebaseUploadDemo.this, "Success", Toast.LENGTH_SHORT).show();
+////                                        }
+////                                    });
+//
+//                                }
+//                            }).addOnFailureListener(new OnFailureListener() {
+//                        @Override
+//                        public void onFailure(@NonNull Exception e) {
+//                            Toast.makeText(ImageFirebaseUploadDemo.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+//                        }
+//                    }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+//                        @Override
+//                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+//
+//                            double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+//                            progressDialog.setProgress((int)progress);
+//
+//                        }
+//                    });
+
+                        sRef.putFile(filePath).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                            @Override
+                            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                                if (!task.isSuccessful()) {
+                                    throw task.getException();
+                                }
+                                return sRef.getDownloadUrl();
+                            }
+                        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Uri> task) {
+                                if (task.isSuccessful()) {
+                                    Handler handler = new Handler();
+                                    handler.postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            progressDialog.setProgress(0);
+                                        }
+                                    }, 500);
+                                }
+                                downloadUri = task.getResult().toString();
+                                UploadChildrenPartTimepojo uploadChildrenPartTimepojo = new UploadChildrenPartTimepojo(editTextName.getText().toString().trim(),
+                                        editTextphone.getText().toString().trim(),
+                                        editTextaddress.getText().toString().trim(),
+                                        editTextaboutyourself.getText().toString(),
+                                        editTextexperience.getText().toString()
+                                                .trim(),
+                                        spinnerttimings.getSelectedItem().toString(),
+                                        spinnerjobtype.getSelectedItem().toString(),
+                                        downloadUri,
+                                        spinnergender.getSelectedItem().toString(),
+
+                                        arrlst,editTextprovience.getText().toString(),editTextcity.getText().toString());
+
+                                CollectionReference dbupload = mDatabase.collection("childernparttime");
+                                dbupload.add(uploadChildrenPartTimepojo).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    @Override
+                                    public void onSuccess(DocumentReference documentReference) {
+                                        Toast.makeText(ImageFirebaseUploadDemo.this, "Success", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+
+
+                            }
+                        });
+                    }
+
                 }
 
             }
+
+
         });
 
 
+
     }
+
+
+
+
+    private List<FilterModel> getSchedules(){
+        List<FilterModel> modelList = new ArrayList<FilterModel>();
+        modelList.add(new FilterModel("Monday",  false));
+        modelList.add(new FilterModel("Tuesday", false));
+        modelList.add(new FilterModel("Wednesday",  false));
+        modelList.add(new FilterModel("Thursday",  false));
+        modelList.add(new FilterModel("Friday",  false));
+        modelList.add(new FilterModel("Saturday",  false));
+        modelList.add(new FilterModel("Sunday",  false));
+
+
+        return modelList;
+    }
+
 
     public String getFileExtension(Uri uri) {
         ContentResolver cR = getContentResolver();
@@ -213,4 +517,157 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
             }
         }
     }
+
+
+
+
+    public class ProductFilterRecyclerViewAdapter extends
+            RecyclerView.Adapter<ProductFilterRecyclerViewAdapter.ViewHolder> {
+
+        private List<FilterModel> filterList;
+        private Context context;
+
+        public ProductFilterRecyclerViewAdapter(List<FilterModel> filterModelList
+                , Context ctx) {
+            filterList = filterModelList;
+            context = ctx;
+        }
+
+        @Override
+        public ProductFilterRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+                                                                              int viewType) {
+
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.filter_brand_item, parent, false);
+
+            ViewHolder viewHolder = new ViewHolder(view);
+            return viewHolder;
+        }
+
+        @Override
+        public void onBindViewHolder(ViewHolder holder, int position) {
+            FilterModel filterM = filterList.get(position);
+            holder.days.setText(filterM.getSchedule());
+            //holder.productCount.setText("" + filterM.getPrice());
+            if (filterM.getval()) {
+                holder.selectionState.setChecked(true);
+
+            } else {
+                holder.selectionState.setChecked(false);
+            }
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return filterList.size();
+        }
+
+        public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+            public TextView days;
+            public TextView productCount;
+            public CheckBox selectionState;
+
+            public ViewHolder(View view) {
+                super(view);
+                days = (TextView) view.findViewById(R.id.brand_name);
+                productCount = (TextView) view.findViewById(R.id.product_count);
+                selectionState = (CheckBox) view.findViewById(R.id.brand_select);
+
+                //item click event listener
+                view.setOnClickListener(this);
+
+                //checkbox click event handling
+                selectionState.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView,
+                                                 boolean isChecked) {
+
+                        if (spinnerjobtype.getSelectedItem().toString().equals("Full Time")) {
+
+                            if (count <= 4) {
+                                if (!isChecked) {
+                                    count--;
+                                    Toast.makeText(ProductFilterRecyclerViewAdapter.this.context,
+                                            "unselect ",
+                                            Toast.LENGTH_SHORT).show();
+                                    String val = days.getText().toString();
+                                    arrlst.remove(val);
+                                } else {
+                                    String val = days.getText().toString();
+                                    arrlst.add(val);
+
+                                    count++;
+
+                                    Toast.makeText(ProductFilterRecyclerViewAdapter.this.context,
+                                            "selected day is " + days.getText(),
+                                            Toast.LENGTH_SHORT).show();
+
+                                    //aarrylist.add(brandName.getText())
+                                }
+                            } else {
+                                Toast.makeText(ProductFilterRecyclerViewAdapter.this.context,
+                                        "you can select only 5 days ",
+                                        Toast.LENGTH_SHORT).show();
+//                        if (!isChecked) {
+//                            count--;
+//                            Toast.makeText(ProductFilterRecyclerViewAdapter.this.context,
+//                                    "unselect ",
+//                                    Toast.LENGTH_SHORT).show();
+//                        }
+                            }
+                        }
+                        else  if (spinnerjobtype.getSelectedItem().toString().equals("Part Time")) {
+
+
+                            if (count <= 2) {
+                                if (!isChecked) {
+                                    count--;
+                                    Toast.makeText(ProductFilterRecyclerViewAdapter.this.context,
+                                            "unselect ",
+                                            Toast.LENGTH_SHORT).show();
+                                    String val = days.getText().toString();
+                                    arrlst.remove(val);
+                                } else {
+                                    String val = days.getText().toString();
+                                    arrlst.add(val);
+
+                                    count++;
+
+                                    Toast.makeText(ProductFilterRecyclerViewAdapter.this.context,
+                                            "selected day is " + days.getText(),
+                                            Toast.LENGTH_SHORT).show();
+
+                                    //aarrylist.add(brandName.getText())
+                                }
+                            } else {
+                                Toast.makeText(ProductFilterRecyclerViewAdapter.this.context,
+                                        "you can select only 3 days ",
+                                        Toast.LENGTH_SHORT).show();
+//                        if (!isChecked) {
+//                            count--;
+//                            Toast.makeText(ProductFilterRecyclerViewAdapter.this.context,
+//                                    "unselect ",
+//                                    Toast.LENGTH_SHORT).show();
+//                        }
+                            }
+
+
+                        }
+                        }
+
+                });
+
+            }
+
+            @Override
+            public void onClick(View v) {
+                TextView brndName = (TextView) v.findViewById(R.id.brand_name);
+                //show more information about brand
+            }
+        }
+    }
+
+
 }

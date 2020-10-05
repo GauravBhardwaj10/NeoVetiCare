@@ -8,99 +8,229 @@
     tools:context=".ImageFirebaseUploadDemo"
     android:orientation="vertical">
 
-
-
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_marginLeft="85dp"
-        android:layout_marginTop="10dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/linearLayout" />
-
-
-
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/buttonChoose"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/editwithboder"
-            android:layout_weight="1"
-            android:text="Choose" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/name"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/editwithboder"
-            android:hint="   Enter name for Image" />
-        <EditText
-            android:id="@+id/phone"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/editwithboder"
-            android:hint="   Enter phone" />
-        <EditText
-            android:id="@+id/address"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/editwithboder"
-            android:hint="   Enter name for address" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_marginLeft="85dp"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/linearLayout" />
 
 
 
 
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical">
+                <Button
+                    android:id="@+id/buttonChoose"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/editwithboder"
+                    android:layout_weight="1"
+                    android:text="Choose" />
 
-        <Button
-            android:id="@+id/buttonUpload"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/custom_button"
-            android:text="Upload" />
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/editwithboder"
+                    android:hint="   Enter name for Image" />
+                <EditText
+                    android:id="@+id/phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/editwithboder"
+                    android:hint="   Enter phone" />
+                <EditText
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/editwithboder"
+                    android:hint="   Enter your Price" />
 
-        <TextView
-            android:id="@+id/textViewShow"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:visibility="invisible"
-            android:text="View Uploads"
-            android:textAlignment="center"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold" />
-    </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical">
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Select Job Type"
+                        android:textSize="15dp"/>
+
+                    <Spinner
+                        android:id="@+id/JobType"
+                        android:layout_width="300dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="15dp"
+                        android:paddingRight="0dp"
+                        android:layout_marginBottom="20dp"
+                        android:paddingLeft="10dp"
+                        android:drawablePadding="10dp"
+                        android:hint="Job Type"/>
+
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content">
+
+                       <androidx.recyclerview.widget.RecyclerView
+                           android:layout_width="match_parent"
+                           android:layout_height="270dp"
+                           android:id="@+id/recyclerlistview"/>
+
+
+
+
+
+                   </LinearLayout>
+                    <EditText
+                        android:id="@+id/Provience"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/editwithboder"
+                        android:hint="   Provience" />
+
+
+                    <EditText
+                        android:id="@+id/City"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/editwithboder"
+                        android:hint="City" />
+
+
+
+
+                    <Spinner
+                        android:id="@+id/gender"
+                        android:layout_width="300dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="15dp"
+                        android:paddingRight="0dp"
+                        android:layout_marginBottom="20dp"
+                        android:paddingLeft="10dp"
+                        android:drawablePadding="10dp"
+                        android:hint="Gender"/>
+
+                    <Spinner
+                        android:id="@+id/Timings"
+                        android:layout_width="300dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="15dp"
+                        android:paddingRight="0dp"
+                        android:layout_marginBottom="20dp"
+                        android:paddingLeft="10dp"
+                        android:drawablePadding="10dp"
+                        android:hint="timings"/>
+
+
+
+                    <EditText
+                        android:id="@+id/writeaboutyourself"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="5dp"
+                        android:inputType="textMultiLine"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/editwithboder"
+                        android:hint="   write about yourself" />
+
+
+                    <EditText
+                        android:id="@+id/experience"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="5dp"
+                        android:inputType="textMultiLine"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/editwithboder"
+                        android:hint="   how many year of experience do you have ?" />
+
+
+
+                </LinearLayout>
+
+
+
+                <Button
+                    android:id="@+id/buttonUpload"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_button"
+                    android:text="Upload" />
+
+                <TextView
+                    android:id="@+id/textViewShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:visibility="invisible"
+                    android:text="View Uploads"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
