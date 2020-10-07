@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,9 +15,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -24,14 +30,40 @@ public class cartakerLoginActivity extends AppCompatActivity {
     private Button joinBtn;
     TextView registrationTextVIEW;
     private FirebaseAuth firebaseAuth;
+    private NavigationView navigationView;
+    private DrawerLayout drawerLayout;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cartaker_login);
-
+        setContentView(R.layout.nav_activity_main);
+        drawerLayout=findViewById(R.id.drawer_layout);
+        navigationView=findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if(item.getItemId()==R.id.nav_home)
+                {
+                    Toast.makeText(cartakerLoginActivity.this,"Home Page:",Toast.LENGTH_SHORT).show();
+                    okk();
+                }
+                if(item.getItemId()==R.id.Admin)
+                {
+                    Toast.makeText(cartakerLoginActivity.this,"Admin Page:",Toast.LENGTH_SHORT).show();
+                    ll();
+                }
+                if(item.getItemId()==R.id.security)
+                {
+                    Toast.makeText(cartakerLoginActivity.this,"Privacy & security Page:",Toast.LENGTH_SHORT).show();
+                    oo();
+                }
+                DrawerLayout drawerLayout=findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
 
 
         emailAddEd=(EditText) findViewById(R.id.email);
@@ -100,7 +132,7 @@ public class cartakerLoginActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     if (firebaseAuth.getCurrentUser().isEmailVerified()) {
-                                        startActivity(new Intent(getApplicationContext(), naniesUpload.class));
+                                        startActivity(new Intent(getApplicationContext(), ImageFirebaseUploadDemo.class));
                                     }
                                     else {
                                         Toast.makeText(cartakerLoginActivity.this,"please verified your email address", Toast.LENGTH_SHORT).show();
@@ -121,6 +153,44 @@ public class cartakerLoginActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu3,menu);
+        return true;
+    }
 
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.Help1:
+                Toast.makeText(this,"Help1",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.back1:
+                Toast.makeText(this,"Back to Previous Page",Toast.LENGTH_SHORT).show();
+                go();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    public void go()
+    {
+        Intent intent=new Intent(cartakerLoginActivity.this,MainActivity.class);
+        startActivity(intent);
+    }
+    public void okk()
+    {
+        Intent intent=new Intent(cartakerLoginActivity.this,MainActivity.class);
+        startActivity(intent);
+    }
+    public void oo()
+    {
+        Intent intent=new Intent(cartakerLoginActivity.this,privaceandsecurity.class);
+        startActivity(intent);
+    }
+    public void ll()
+    {
+        Intent intent=new Intent(cartakerLoginActivity.this,Adminactivity.class);
+        startActivity(intent);
+    }
 }
