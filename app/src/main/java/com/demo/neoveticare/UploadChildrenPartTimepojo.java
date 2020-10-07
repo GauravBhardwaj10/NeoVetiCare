@@ -3,7 +3,7 @@ package com.demo.neoveticare;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Upload {
+public class UploadChildrenPartTimepojo {
 
     public String name;
     public String phone;
@@ -22,10 +22,10 @@ public class Upload {
 
     // Default constructor required for calls to
     // DataSnapshot.getValue(User.class)
-    public Upload() {
+    public UploadChildrenPartTimepojo() {
     }
 
-    public Upload(String name, String phone, String address, String writaboutyourself, String experience, String timings, String jobtype, String url,String gender,List<String> schedulelist,String provience,String city) {
+    public UploadChildrenPartTimepojo(String name, String phone, String address, String writaboutyourself, String experience, String timings, String jobtype, String url,String gender,List<String> schedulelist,String provience,String city) {
         this.name = name;
         this.phone = phone;
         this.address = address;

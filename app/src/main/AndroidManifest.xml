@@ -25,20 +25,28 @@
         <activity
             android:name=".splash"
             android:theme="@style/AppTheme.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".imageUploadsenior" />
+        <activity android:name=".imageUploadsenior" >
+
+
+        </activity>
         <activity android:name=".cartakerRegistrationActivity" />
         <activity android:name=".cartakerLoginActivity" />
         <activity android:name=".naniesUpload" />
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegistrationActivity" />
-        <activity android:name=".ImageFirebaseUploadDemo" />
+        <activity android:name=".ImageFirebaseUploadDemo" >
+
+
+
+        </activity>
     </application>
 
 </manifest>

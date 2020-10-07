@@ -3,7 +3,7 @@ package com.demo.neoveticare;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Upload {
+public class UploadSeniorPartTimepojo {
 
     public String name;
     public String phone;
@@ -15,17 +15,17 @@ public class Upload {
     public  String gender;
     public  String jobtype;
     public String url;
+
     List<String> schedulelist=new ArrayList<String>();
     public String provience;
     public String city;
 
-
     // Default constructor required for calls to
     // DataSnapshot.getValue(User.class)
-    public Upload() {
+    public UploadSeniorPartTimepojo() {
     }
 
-    public Upload(String name, String phone, String address, String writaboutyourself, String experience, String timings, String jobtype, String url,String gender,List<String> schedulelist,String provience,String city) {
+    public UploadSeniorPartTimepojo(String name, String phone, String address, String writaboutyourself, String experience, String timings, String jobtype, String url,String gender,List<String> schedulelist,String provience,String city) {
         this.name = name;
         this.phone = phone;
         this.address = address;
@@ -80,6 +80,7 @@ public class Upload {
     public List<String> getSchedulelist() {
         return schedulelist;
     }
+
     public String getProvience() {
         return provience;
     }
