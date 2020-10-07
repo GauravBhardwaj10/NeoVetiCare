@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
@@ -516,4 +517,157 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
             }
         }
     }
+
+
+
+
+    public class ProductFilterRecyclerViewAdapter extends
+            RecyclerView.Adapter<ProductFilterRecyclerViewAdapter.ViewHolder> {
+
+        private List<FilterModel> filterList;
+        private Context context;
+
+        public ProductFilterRecyclerViewAdapter(List<FilterModel> filterModelList
+                , Context ctx) {
+            filterList = filterModelList;
+            context = ctx;
+        }
+
+        @Override
+        public ProductFilterRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+                                                                              int viewType) {
+
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.filter_brand_item, parent, false);
+
+            ViewHolder viewHolder = new ViewHolder(view);
+            return viewHolder;
+        }
+
+        @Override
+        public void onBindViewHolder(ViewHolder holder, int position) {
+            FilterModel filterM = filterList.get(position);
+            holder.days.setText(filterM.getSchedule());
+            //holder.productCount.setText("" + filterM.getPrice());
+            if (filterM.getval()) {
+                holder.selectionState.setChecked(true);
+
+            } else {
+                holder.selectionState.setChecked(false);
+            }
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return filterList.size();
+        }
+
+        public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+            public TextView days;
+            public TextView productCount;
+            public CheckBox selectionState;
+
+            public ViewHolder(View view) {
+                super(view);
+                days = (TextView) view.findViewById(R.id.brand_name);
+                productCount = (TextView) view.findViewById(R.id.product_count);
+                selectionState = (CheckBox) view.findViewById(R.id.brand_select);
+
+                //item click event listener
+                view.setOnClickListener(this);
+
+                //checkbox click event handling
+                selectionState.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView,
+                                                 boolean isChecked) {
+
+                        if (spinnerjobtype.getSelectedItem().toString().equals("Full Time")) {
+
+                            if (count <= 4) {
+                                if (!isChecked) {
+                                    count--;
+                                    Toast.makeText(ProductFilterRecyclerViewAdapter.this.context,
+                                            "unselect ",
+                                            Toast.LENGTH_SHORT).show();
+                                    String val = days.getText().toString();
+                                    arrlst.remove(val);
+                                } else {
+                                    String val = days.getText().toString();
+                                    arrlst.add(val);
+
+                                    count++;
+
+                                    Toast.makeText(ProductFilterRecyclerViewAdapter.this.context,
+                                            "selected day is " + days.getText(),
+                                            Toast.LENGTH_SHORT).show();
+
+                                    //aarrylist.add(brandName.getText())
+                                }
+                            } else {
+                                Toast.makeText(ProductFilterRecyclerViewAdapter.this.context,
+                                        "you can select only 5 days ",
+                                        Toast.LENGTH_SHORT).show();
+//                        if (!isChecked) {
+//                            count--;
+//                            Toast.makeText(ProductFilterRecyclerViewAdapter.this.context,
+//                                    "unselect ",
+//                                    Toast.LENGTH_SHORT).show();
+//                        }
+                            }
+                        }
+                        else  if (spinnerjobtype.getSelectedItem().toString().equals("Part Time")) {
+
+
+                            if (count <= 2) {
+                                if (!isChecked) {
+                                    count--;
+                                    Toast.makeText(ProductFilterRecyclerViewAdapter.this.context,
+                                            "unselect ",
+                                            Toast.LENGTH_SHORT).show();
+                                    String val = days.getText().toString();
+                                    arrlst.remove(val);
+                                } else {
+                                    String val = days.getText().toString();
+                                    arrlst.add(val);
+
+                                    count++;
+
+                                    Toast.makeText(ProductFilterRecyclerViewAdapter.this.context,
+                                            "selected day is " + days.getText(),
+                                            Toast.LENGTH_SHORT).show();
+
+                                    //aarrylist.add(brandName.getText())
+                                }
+                            } else {
+                                Toast.makeText(ProductFilterRecyclerViewAdapter.this.context,
+                                        "you can select only 3 days ",
+                                        Toast.LENGTH_SHORT).show();
+//                        if (!isChecked) {
+//                            count--;
+//                            Toast.makeText(ProductFilterRecyclerViewAdapter.this.context,
+//                                    "unselect ",
+//                                    Toast.LENGTH_SHORT).show();
+//                        }
+                            }
+
+
+                        }
+                    }
+
+                });
+
+            }
+
+            @Override
+            public void onClick(View v) {
+                TextView brndName = (TextView) v.findViewById(R.id.brand_name);
+                //show more information about brand
+            }
+        }
+    }
+
+
 }
