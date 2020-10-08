@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CareTakerDescription">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:id="@id/ctimage"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Care Taker Name"
+        android:id="@id/ctname"
+        android:layout_below="@id/ctimage">
+
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Care Taker Gender"
+        android:id="@+id/ctgender"
+        android:layout_below="@id/ctname">
+
+    </TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Care Taker City"
+        android:id="@+id/ctcity"
+        android:layout_below="@id/ctgender">
+    </TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Care Taker Province"
+        android:id="@+id/ctprovince"
+        android:layout_below="@id/ctgender"
+        android:layout_toRightOf="@id/ctcity">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Care Taker Description"
+        android:id="@id/ctDesc"
+        android:layout_below="@id/ctprovince">
+    </TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Currency"
+        android:id="@+id/currency"
+        android:layout_below="@id/ctDesc">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Care Taker Rate/ hour"
+        android:id="@id/ctrate"
+        android:layout_below="@id/ctDesc"
+        android:layout_toRightOf="@id/currency">
+    </TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Experience"
+        android:id="@id/experience"
+        android:layout_below="@id/currency" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Availability"
+        android:id="@+id/ctavailibility"
+        android:layout_below="@id/experience">
+    </TextView>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ctavailibility"
+        android:id="@+id/hirecaretaker"
+        android:text="Hire"/>
+
+</RelativeLayout>
