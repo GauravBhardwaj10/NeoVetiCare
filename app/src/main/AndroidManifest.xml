@@ -33,8 +33,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".imageUploadsenior" >
-
-
         </activity>
         <activity android:name=".CareTakerDescription"></activity>
         <activity android:name=".RetreivedataActivity">
