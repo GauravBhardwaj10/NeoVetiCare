@@ -36,6 +36,9 @@
 
 
         </activity>
+        <activity android:name=".CareTakerDescription"></activity>
+        <activity android:name=".RetreivedataActivity">
+        </activity>
         <activity android:name=".cartakerRegistrationActivity" />
         <activity android:name=".cartakerLoginActivity" />
         <activity android:name=".naniesUpload" />
@@ -43,8 +46,6 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".ImageFirebaseUploadDemo" >
-
-
 
         </activity>
     </application>
