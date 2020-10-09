@@ -57,12 +57,25 @@
                                     android:layout_marginTop="15dp"
                                     android:background="@drawable/editwithboder"
                                     android:hint="   Enter name for Image" />
+
+                                <EditText
+                                    android:id="@+id/emailaddress"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginRight="5dp"
+                                    android:inputType="textEmailAddress"
+                                    android:layout_marginTop="5dp"
+                                    android:background="@drawable/editwithboder"
+                                    android:hint="   Enter your email" />
+
                                 <EditText
                                     android:id="@+id/phone"
                                     android:layout_width="match_parent"
                                     android:layout_height="40dp"
                                     android:layout_marginLeft="5dp"
                                     android:layout_marginRight="5dp"
+                                    android:inputType="number"
                                     android:layout_marginTop="5dp"
                                     android:background="@drawable/editwithboder"
                                     android:hint="   Enter phone" />
@@ -74,7 +87,18 @@
                                     android:layout_marginRight="5dp"
                                     android:layout_marginTop="5dp"
                                     android:background="@drawable/editwithboder"
+                                    android:hint="   Enter your Address" />
+                                <EditText
+                                    android:id="@+id/price"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:inputType="number"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_marginTop="5dp"
+                                    android:background="@drawable/editwithboder"
                                     android:hint="   Enter your Price" />
+
 
 
 
@@ -126,6 +150,17 @@
 
 
                                         </LinearLayout>
+                                        <EditText
+                                            android:id="@+id/age"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="40dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number"
+                                            android:layout_marginTop="5dp"
+                                            android:background="@drawable/editwithboder"
+                                            android:hint="   enter your age" />
+
                                         <EditText
                                             android:id="@+id/Provience"
                                             android:layout_width="match_parent"

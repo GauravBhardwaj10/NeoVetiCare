@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,17 +56,10 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
     //view objects
     private Button buttonChoose;
     private Button buttonUpload;
-    private EditText editTextName,editTextphone,editTextaddress,editTextprovience,editTextaboutyourself,editTextexperience,editTextcity;
+    private EditText editTextName,editTextphone,editTextaddress,editTextprovience,editTextaboutyourself,editTextexperience,editTextcity,editTextemailaddress,editTextprice,editTextage;
     private TextView textViewShow;
     private ImageView imageView,getImageView;
     Spinner spinnerjobtype,spinnergender,spinnerttimings;
-    CheckBox sunday;
-    CheckBox monday;
-    CheckBox tuesday;
-    CheckBox wednesday;
-    CheckBox thursday;
-    CheckBox friday;
-    CheckBox saturday;
 
     //uri to store file
     private Uri filePath;
@@ -102,6 +96,9 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
         editTextexperience = (EditText) findViewById(R.id.experience);
         editTextprovience = (EditText) findViewById(R.id.Provience);
         editTextcity = (EditText) findViewById(R.id.City);
+        editTextemailaddress = (EditText) findViewById(R.id.emailaddress);
+        editTextprice = (EditText) findViewById(R.id.price);
+        editTextage = (EditText) findViewById(R.id.age);
 
 
         mDatabase = FirebaseFirestore.getInstance();
@@ -170,7 +167,7 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
         gender.add(0, "Gender");
         gender.add("Male");
         gender.add("Female");
-        gender.add("other");
+        gender.add("Other");
 
 
         ArrayAdapter<String> dataAdaptergender;
@@ -205,8 +202,8 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
         final List<String> Timings = new ArrayList<>();
         Timings.add(0, "Timings");
         Timings.add("Morning");
-        Timings.add("evening");
-        Timings.add("night");
+        Timings.add("Evening");
+        Timings.add("Night");
 
 
         ArrayAdapter<String> dataAdaptertimings;
@@ -269,113 +266,34 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
         });
 
 
-        buttonUpload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                if (spinnerjobtype.getSelectedItem().toString().equals("Full Time")) {
+            buttonUpload.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                    if (filePath != null) {
-                        //displaying progress dialog while image is uploading
-                        final ProgressDialog progressDialog = new ProgressDialog(ImageFirebaseUploadDemo.this);
-                        progressDialog.setTitle("Uploading");
-                        progressDialog.show();
+                    if ((!TextUtils.isEmpty(editTextName.getText().toString())) && (!TextUtils.isEmpty(editTextphone.getText().toString()))
+                            && (!TextUtils.isEmpty(editTextaddress.getText().toString())) &&
+                            (!TextUtils.isEmpty(editTextaboutyourself.getText().toString())) &&
+                            (!TextUtils.isEmpty(editTextexperience.getText().toString())) &&
+                            (!TextUtils.isEmpty(editTextprovience.getText().toString()))
+                            && (!TextUtils.isEmpty(editTextcity.getText().toString()))
+                            && (!TextUtils.isEmpty(editTextemailaddress.getText().toString()))
+                            && (!TextUtils.isEmpty(editTextprice.getText().toString()))
+                            && (!TextUtils.isEmpty(editTextage.getText().toString()))
+                            && ((spinnerjobtype.getSelectedItem().toString().equals("Full Time")) || (spinnerjobtype.getSelectedItem().toString().equals("Part Time")))
+                            && ((spinnerttimings.getSelectedItem().toString().equals("Morning")) || (spinnerttimings.getSelectedItem().toString().equals("Evening")) || (spinnerttimings.getSelectedItem().toString().equals("Night")))
+                            && ((spinnergender.getSelectedItem().toString().equals("Male")) || (spinnergender.getSelectedItem().toString().equals("Female")) || (spinnergender.getSelectedItem().toString().equals("other")))
+                    ) {
 
-                        final StorageReference sRef = storageReference.child(editTextName.getText().toString().trim() + "." + getFileExtension(filePath));
+                        if (spinnerjobtype.getSelectedItem().toString().equals("Full Time")) {
 
-//                    sRef.putFile(filePath)
-//                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                                @Override
-//                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                                    progressDialog.dismiss();
-//
-//                                    //displaying success toast
-//                                    Toast.makeText(getApplicationContext(), "File Uploaded ", Toast.LENGTH_LONG).show();
-//
-//                                    //creating the upload object to store uploaded image details
-////                                    Upload upload = new Upload(editTextName.getText().toString().trim(), taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
-//////
-////                                    CollectionReference dbupload = mDatabase.collection("images");
-////                                    dbupload.add(upload).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-////                                        @Override
-////                                        public void onSuccess(DocumentReference documentReference) {
-////                                            Toast.makeText(ImageFirebaseUploadDemo.this, "Success", Toast.LENGTH_SHORT).show();
-////                                        }
-////                                    });
-//
-//                                }
-//                            }).addOnFailureListener(new OnFailureListener() {
-//                        @Override
-//                        public void onFailure(@NonNull Exception e) {
-//                            Toast.makeText(ImageFirebaseUploadDemo.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-//                        }
-//                    }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-//                        @Override
-//                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-//
-//                            double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-//                            progressDialog.setProgress((int)progress);
-//
-//                        }
-//                    });
+                            if (filePath != null) {
+                                //displaying progress dialog while image is uploading
+                                final ProgressDialog progressDialog = new ProgressDialog(ImageFirebaseUploadDemo.this);
+                                progressDialog.setTitle("Uploading");
+                                progressDialog.show();
 
-                        sRef.putFile(filePath).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                            @Override
-                            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                                if (!task.isSuccessful()) {
-                                    throw task.getException();
-                                }
-                                return sRef.getDownloadUrl();
-                            }
-                        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Uri> task) {
-                                if (task.isSuccessful()) {
-                                    Handler handler = new Handler();
-                                    handler.postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            progressDialog.setProgress(0);
-                                        }
-                                    }, 500);
-                                }
-                                downloadUri = task.getResult().toString();
-                                Upload upload = new Upload(editTextName.getText().toString().trim(),
-                                        editTextphone.getText().toString().trim(),
-                                        editTextaddress.getText().toString().trim(),
-                                        editTextaboutyourself.getText().toString(),
-                                        editTextexperience.getText().toString()
-                                                .trim(),
-                                        spinnerttimings.getSelectedItem().toString(),
-                                        spinnerjobtype.getSelectedItem().toString(),
-                                        downloadUri,
-                                        spinnergender.getSelectedItem().toString(),
-                                        arrlst,editTextprovience.getText().toString(),editTextcity.getText().toString());
-
-                                CollectionReference dbupload = mDatabase.collection("uploadchildernfulltime");
-                                dbupload.add(upload).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                    @Override
-                                    public void onSuccess(DocumentReference documentReference) {
-                                        Toast.makeText(ImageFirebaseUploadDemo.this, "Success", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-
-
-                            }
-                        });
-                    }
-
-                }
-                else if (spinnerjobtype.getSelectedItem().toString().equals("Part Time")) {
-
-
-                    if (filePath != null) {
-                        //displaying progress dialog while image is uploading
-                        final ProgressDialog progressDialog = new ProgressDialog(ImageFirebaseUploadDemo.this);
-                        progressDialog.setTitle("Uploading");
-                        progressDialog.show();
-
-                        final StorageReference sRef = parttimestoragereference.child(editTextName.getText().toString().trim() + "." + getFileExtension(filePath));
+                                final StorageReference sRef = storageReference.child(editTextName.getText().toString().trim() + "." + getFileExtension(filePath));
 
 //                    sRef.putFile(filePath)
 //                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -413,59 +331,158 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
 //                        }
 //                    });
 
-                        sRef.putFile(filePath).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                            @Override
-                            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                                if (!task.isSuccessful()) {
-                                    throw task.getException();
-                                }
-                                return sRef.getDownloadUrl();
-                            }
-                        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Uri> task) {
-                                if (task.isSuccessful()) {
-                                    Handler handler = new Handler();
-                                    handler.postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            progressDialog.setProgress(0);
-                                        }
-                                    }, 500);
-                                }
-                                downloadUri = task.getResult().toString();
-                                UploadChildrenPartTimepojo uploadChildrenPartTimepojo = new UploadChildrenPartTimepojo(editTextName.getText().toString().trim(),
-                                        editTextphone.getText().toString().trim(),
-                                        editTextaddress.getText().toString().trim(),
-                                        editTextaboutyourself.getText().toString(),
-                                        editTextexperience.getText().toString()
-                                                .trim(),
-                                        spinnerttimings.getSelectedItem().toString(),
-                                        spinnerjobtype.getSelectedItem().toString(),
-                                        downloadUri,
-                                        spinnergender.getSelectedItem().toString(),
-
-                                        arrlst,editTextprovience.getText().toString(),editTextcity.getText().toString());
-
-                                CollectionReference dbupload = mDatabase.collection("childernparttime");
-                                dbupload.add(uploadChildrenPartTimepojo).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                sRef.putFile(filePath).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                                     @Override
-                                    public void onSuccess(DocumentReference documentReference) {
-                                        Toast.makeText(ImageFirebaseUploadDemo.this, "Success", Toast.LENGTH_SHORT).show();
+                                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                                        if (!task.isSuccessful()) {
+                                            throw task.getException();
+                                        }
+                                        return sRef.getDownloadUrl();
+                                    }
+                                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Uri> task) {
+                                        if (task.isSuccessful()) {
+                                            Handler handler = new Handler();
+                                            handler.postDelayed(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    progressDialog.setProgress(0);
+                                                }
+                                            }, 500);
+                                        }
+                                        downloadUri = task.getResult().toString();
+                                        Upload upload = new Upload(editTextName.getText().toString().trim(),
+                                                editTextphone.getText().toString().trim(),
+                                                editTextaddress.getText().toString().trim(),
+                                                editTextaboutyourself.getText().toString(),
+                                                editTextexperience.getText().toString()
+                                                        .trim(),
+                                                spinnerttimings.getSelectedItem().toString(),
+                                                spinnerjobtype.getSelectedItem().toString(),
+                                                downloadUri,
+                                                spinnergender.getSelectedItem().toString(),
+                                                arrlst, editTextprovience.getText().toString(), editTextcity.getText().toString(),
+                                                editTextemailaddress.getText().toString(), editTextprice.getText().toString(), editTextage.getText().toString());
+
+                                        CollectionReference dbupload = mDatabase.collection("uploadchildernfulltime");
+                                        dbupload.add(upload).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                            @Override
+                                            public void onSuccess(DocumentReference documentReference) {
+                                                Toast.makeText(ImageFirebaseUploadDemo.this, "Success", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+
+
                                     }
                                 });
-
-
                             }
-                        });
+
+                        } else if (spinnerjobtype.getSelectedItem().toString().equals("Part Time")) {
+
+
+                            if (filePath != null) {
+                                //displaying progress dialog while image is uploading
+                                final ProgressDialog progressDialog = new ProgressDialog(ImageFirebaseUploadDemo.this);
+                                progressDialog.setTitle("Uploading");
+                                progressDialog.show();
+
+                                final StorageReference sRef = parttimestoragereference.child(editTextName.getText().toString().trim() + "." + getFileExtension(filePath));
+
+//                    sRef.putFile(filePath)
+//                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                                @Override
+//                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                                    progressDialog.dismiss();
+//
+//                                    //displaying success toast
+//                                    Toast.makeText(getApplicationContext(), "File Uploaded ", Toast.LENGTH_LONG).show();
+//
+//                                    //creating the upload object to store uploaded image details
+////                                    Upload upload = new Upload(editTextName.getText().toString().trim(), taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
+//////
+////                                    CollectionReference dbupload = mDatabase.collection("images");
+////                                    dbupload.add(upload).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+////                                        @Override
+////                                        public void onSuccess(DocumentReference documentReference) {
+////                                            Toast.makeText(ImageFirebaseUploadDemo.this, "Success", Toast.LENGTH_SHORT).show();
+////                                        }
+////                                    });
+//
+//                                }
+//                            }).addOnFailureListener(new OnFailureListener() {
+//                        @Override
+//                        public void onFailure(@NonNull Exception e) {
+//                            Toast.makeText(ImageFirebaseUploadDemo.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+//                        }
+//                    }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+//                        @Override
+//                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+//
+//                            double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+//                            progressDialog.setProgress((int)progress);
+//
+//                        }
+//                    });
+
+                                sRef.putFile(filePath).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                                    @Override
+                                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                                        if (!task.isSuccessful()) {
+                                            throw task.getException();
+                                        }
+                                        return sRef.getDownloadUrl();
+                                    }
+                                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Uri> task) {
+                                        if (task.isSuccessful()) {
+                                            Handler handler = new Handler();
+                                            handler.postDelayed(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    progressDialog.setProgress(0);
+                                                }
+                                            }, 500);
+                                        }
+                                        downloadUri = task.getResult().toString();
+                                        UploadChildrenPartTimepojo uploadChildrenPartTimepojo = new UploadChildrenPartTimepojo(editTextName.getText().toString().trim(),
+                                                editTextphone.getText().toString().trim(),
+                                                editTextaddress.getText().toString().trim(),
+                                                editTextaboutyourself.getText().toString(),
+                                                editTextexperience.getText().toString()
+                                                        .trim(),
+                                                spinnerttimings.getSelectedItem().toString(),
+                                                spinnerjobtype.getSelectedItem().toString(),
+                                                downloadUri,
+                                                spinnergender.getSelectedItem().toString(),
+
+                                                arrlst, editTextprovience.getText().toString(), editTextcity.getText().toString(),
+                                                editTextemailaddress.getText().toString(), editTextprice.getText().toString(), editTextage.getText().toString());
+
+                                        CollectionReference dbupload = mDatabase.collection("childernparttime");
+                                        dbupload.add(uploadChildrenPartTimepojo).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                            @Override
+                                            public void onSuccess(DocumentReference documentReference) {
+                                                Toast.makeText(ImageFirebaseUploadDemo.this, "Success", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+
+
+                                    }
+                                });
+                            }
+
+                        }
+
+                    }
+                    else{
+                        Toast.makeText(ImageFirebaseUploadDemo.this,"Please enter all the Credentials",Toast.LENGTH_LONG).show();
                     }
 
                 }
+            });
 
-            }
-
-
-        });
 
 
 

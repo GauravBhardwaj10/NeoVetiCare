@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +56,7 @@ public class imageUploadsenior extends AppCompatActivity {
     //view objects
     private Button buttonChoose;
     private Button buttonUpload;
-    private EditText editTextName,editTextphone,editTextaddress,editTextprovience,editTextaboutyourself,editTextexperience,editTextcity;
+    private EditText editTextName,editTextphone,editTextaddress,editTextprovience,editTextaboutyourself,editTextexperience,editTextcity,editTextemailaddress,editTextprice,editTextage;
     private TextView textViewShow;
     private ImageView imageView,getImageView;
     Spinner spinnerjobtype,spinnergender,spinnerttimings;
@@ -95,6 +96,10 @@ public class imageUploadsenior extends AppCompatActivity {
         editTextexperience = (EditText) findViewById(R.id.experience);
         editTextprovience = (EditText) findViewById(R.id.Provience);
         editTextcity = (EditText) findViewById(R.id.City);
+        editTextemailaddress = (EditText) findViewById(R.id.emailaddress);
+        editTextprice = (EditText) findViewById(R.id.price);
+        editTextage = (EditText) findViewById(R.id.age);
+
 
 
         mDatabase = FirebaseFirestore.getInstance();
@@ -266,7 +271,23 @@ public class imageUploadsenior extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (spinnerjobtype.getSelectedItem().toString().equals("Full Time")) {
+
+                if ((!TextUtils.isEmpty(editTextName.getText().toString())) && (!TextUtils.isEmpty(editTextphone.getText().toString()))
+                        && (!TextUtils.isEmpty(editTextaddress.getText().toString())) &&
+                        (!TextUtils.isEmpty(editTextaboutyourself.getText().toString())) &&
+                        (!TextUtils.isEmpty(editTextexperience.getText().toString())) &&
+                        (!TextUtils.isEmpty(editTextprovience.getText().toString()))
+                        && (!TextUtils.isEmpty(editTextcity.getText().toString()))
+                        && (!TextUtils.isEmpty(editTextemailaddress.getText().toString()))
+                        && (!TextUtils.isEmpty(editTextprice.getText().toString()))
+                        && (!TextUtils.isEmpty(editTextage.getText().toString()))
+                        && ((spinnerjobtype.getSelectedItem().toString().equals("Full Time")) || (spinnerjobtype.getSelectedItem().toString().equals("Part Time")))
+                        && ((spinnerttimings.getSelectedItem().toString().equals("Morning")) || (spinnerttimings.getSelectedItem().toString().equals("Evening")) || (spinnerttimings.getSelectedItem().toString().equals("Night")))
+                        && ((spinnergender.getSelectedItem().toString().equals("Male")) || (spinnergender.getSelectedItem().toString().equals("Female")) || (spinnergender.getSelectedItem().toString().equals("other")))
+                ) {
+
+
+                    if (spinnerjobtype.getSelectedItem().toString().equals("Full Time")) {
 
                     if (filePath != null) {
                         //displaying progress dialog while image is uploading
@@ -333,7 +354,7 @@ public class imageUploadsenior extends AppCompatActivity {
                                     }, 500);
                                 }
                                 downloadUri = task.getResult().toString();
-                                Upload upload = new Upload(editTextName.getText().toString().trim(),
+                                    UploadSenior uploadSenior = new UploadSenior(editTextName.getText().toString().trim(),
                                         editTextphone.getText().toString().trim(),
                                         editTextaddress.getText().toString().trim(),
                                         editTextaboutyourself.getText().toString(),
@@ -343,10 +364,11 @@ public class imageUploadsenior extends AppCompatActivity {
                                         spinnerjobtype.getSelectedItem().toString(),
                                         downloadUri,
                                         spinnergender.getSelectedItem().toString(),
-                                        arrlst,editTextprovience.getText().toString(),editTextcity.getText().toString());
+                                        arrlst,editTextprovience.getText().toString(),editTextcity.getText().toString(),
+                                            editTextemailaddress.getText().toString(),editTextprice.getText().toString(),editTextage.getText().toString());
 
                                 CollectionReference dbupload = mDatabase.collection("seniorfulltime");
-                                dbupload.add(upload).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                dbupload.add(uploadSenior).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                     @Override
                                     public void onSuccess(DocumentReference documentReference) {
                                         Toast.makeText(imageUploadsenior.this, "Success", Toast.LENGTH_SHORT).show();
@@ -427,7 +449,7 @@ public class imageUploadsenior extends AppCompatActivity {
                                     }, 500);
                                 }
                                 downloadUri = task.getResult().toString();
-                                UploadChildrenPartTimepojo uploadChildrenPartTimepojo = new UploadChildrenPartTimepojo(editTextName.getText().toString().trim(),
+                                UploadSeniorPartTimepojo uploadSeniorPartTimepojo = new UploadSeniorPartTimepojo(editTextName.getText().toString().trim(),
                                         editTextphone.getText().toString().trim(),
                                         editTextaddress.getText().toString().trim(),
                                         editTextaboutyourself.getText().toString(),
@@ -438,10 +460,11 @@ public class imageUploadsenior extends AppCompatActivity {
                                         downloadUri,
                                         spinnergender.getSelectedItem().toString(),
 
-                                        arrlst,editTextprovience.getText().toString(),editTextcity.getText().toString());
+                                        arrlst,editTextprovience.getText().toString(),editTextcity.getText().toString(),
+                                        editTextemailaddress.getText().toString(),editTextprice.getText().toString(),editTextage.getText().toString());
 
                                 CollectionReference dbupload = mDatabase.collection("seniorparttime");
-                                dbupload.add(uploadChildrenPartTimepojo).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                dbupload.add(uploadSeniorPartTimepojo).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                     @Override
                                     public void onSuccess(DocumentReference documentReference) {
                                         Toast.makeText(imageUploadsenior.this, "Success", Toast.LENGTH_SHORT).show();
@@ -453,6 +476,10 @@ public class imageUploadsenior extends AppCompatActivity {
                         });
                     }
 
+                }
+                }
+                else{
+                    Toast.makeText(imageUploadsenior.this,"Please enter all the Credentials",Toast.LENGTH_LONG).show();
                 }
 
             }

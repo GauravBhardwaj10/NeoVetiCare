@@ -41,7 +41,7 @@ public class ForgotActivity extends AppCompatActivity {
                                 }
                             });
                 }else {
-                    etEmail.setError("Please enter email id");
+                    etEmail.setError("Please enter registered email id");
                 }
 
 

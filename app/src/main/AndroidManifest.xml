@@ -31,6 +31,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".imageUploadsenior"></activity>
         <activity android:name=".CareTakerDescription" />
@@ -41,7 +42,10 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegistrationActivity" />
-        <activity android:name=".ImageFirebaseUploadDemo"></activity>
+        <activity android:name=".ImageFirebaseUploadDemo">
+
+        </activity>
+        <activity android:name=".ForgotActivity"/>
     </application>
 
 </manifest>
