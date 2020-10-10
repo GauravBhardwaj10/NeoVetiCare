@@ -49,6 +49,13 @@ public class ListofnanniesAdapter extends RecyclerView.Adapter<ListofnanniesAdap
                 in.putExtra("image",values.get(position).getUrl());
                 in.putExtra("price",values.get(position).getAddress());
                 in.putExtra("name",values.get(position).getName());
+                in.putExtra("gender",values.get(position).getGender());
+                in.putExtra("city",values.get(position).getCity());
+                in.putExtra("province",values.get(position).getProvience());
+                in.putExtra("description",values.get(position).getWritaboutyourself());
+                in.putExtra("rate",values.get(position).getAddress());
+                in.putExtra("experience",values.get(position).getExperience());
+                //in.putExtra("availability",values.get(position).getSchedulelist());
                 in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(in);
             }
