@@ -11,5 +11,5 @@
         android:id="@+id/back1"
         android:title="Back"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_baseline_skip_previous_24"/>
+        android:icon="@drawable/ic_baseline_arrow_back_24"/>
 </menu>

@@ -80,12 +80,17 @@ navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigation
                 switch (rating){
                     case 1:
                         meassage="Sorry to hear That";
+                        break;
                     case 2:
                         meassage="You always accept suggestion!";
+                        break;
+
                     case 3:
                         meassage="Good enough:";
+                        break;
                     case 4:
                         meassage="Great! ThankYou:";
+                        break;
                     case 5:
                         meassage="Awesome! You are the Best:";
                 }
@@ -96,6 +101,7 @@ navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigation
             @Override
             public void onClick(View view) {
                 Toast.makeText(Ratetheapp.this,String.valueOf(myrating), Toast.LENGTH_SHORT).show();
+            e7();
             }
         });
     }
@@ -147,5 +153,10 @@ navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigation
         intent.putExtra(Intent.EXTRA_SUBJECT,sharesub);
         intent.putExtra(Intent.EXTRA_TEXT,sharebody);
         startActivity(Intent.createChooser(intent,"Share using"));
+    }
+    public void e7()
+    {
+        Intent intent=new Intent(Ratetheapp.this,MainActivity.class);
+        startActivity(intent);
     }
 }
