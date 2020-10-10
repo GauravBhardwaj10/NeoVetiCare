@@ -35,18 +35,18 @@ public class cartakerRegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cartaker_registration);
 
-        fNameEd=(EditText) findViewById(R.id.fname);
-        lNameEd=(EditText) findViewById(R.id.lname);
-        emailAddEd=(EditText) findViewById(R.id.eml);
-        passEd=(EditText) findViewById(R.id.password);
-        joinBtn=(Button) findViewById(R.id.register);
+        fNameEd = (EditText) findViewById(R.id.fname);
+        lNameEd = (EditText) findViewById(R.id.lname);
+        emailAddEd = (EditText) findViewById(R.id.eml);
+        passEd = (EditText) findViewById(R.id.password);
+        joinBtn = (Button) findViewById(R.id.register);
 
-        confirmpassword=(EditText)findViewById(R.id.cnfpassword);
+        confirmpassword = (EditText) findViewById(R.id.cnfpassword);
 
 
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
-        firebaseAuth= FirebaseAuth.getInstance();
-        firebaseFirestore= FirebaseFirestore.getInstance();
 
         joinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,9 +107,14 @@ public class cartakerRegistrationActivity extends AppCompatActivity {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
+                                                    String firstname = fNameEd.getText().toString().trim();
+                                                    String email = emailAddEd.getText().toString().trim();
 
 
-                                                    startActivity(new Intent(getApplicationContext(), cartakerLoginActivity.class));
+                                                    Intent intent = new Intent(cartakerRegistrationActivity.this, cartakerLoginActivity.class);
+                                                    intent.putExtra("email", email);
+                                                    intent.putExtra("firstname", firstname);
+                                                    startActivity(intent);
                                                     Toast.makeText(cartakerRegistrationActivity.this, "Registation Complete.please check your email for verification", Toast.LENGTH_SHORT).show();
                                                 }
                                                 else {
@@ -133,6 +138,7 @@ public class cartakerRegistrationActivity extends AppCompatActivity {
                 else {
                     Toast.makeText(cartakerRegistrationActivity.this,"pasword dose not match", Toast.LENGTH_SHORT).show();
                 }
+
 
 
             }

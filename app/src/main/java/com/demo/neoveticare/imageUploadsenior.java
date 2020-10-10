@@ -74,6 +74,8 @@ public class imageUploadsenior extends AppCompatActivity {
     private RecyclerView RecyclerView;
     int count=0;
     ArrayList<String> arrlst=new ArrayList<>();
+    TextView textViewemail,textViewfirstname;
+
 
 
     @Override
@@ -123,6 +125,16 @@ public class imageUploadsenior extends AppCompatActivity {
 
             }
         });
+
+
+        textViewemail=(TextView)findViewById(R.id.emailtextview);
+        textViewfirstname=(TextView)findViewById(R.id.firstnametextview);
+
+        String firstname=getIntent().getStringExtra("firstname");
+        String email=getIntent().getStringExtra("email");
+
+        editTextName.setText(firstname);
+        editTextemailaddress.setText(email);
 
 
         spinnerjobtype = findViewById(R.id.JobType);

@@ -124,6 +124,14 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
         });
 
 
+        String firstname=getIntent().getStringExtra("firstname");
+        String email=getIntent().getStringExtra("email");
+
+        editTextName.setText(firstname);
+        editTextemailaddress.setText(email);
+
+
+
         spinnerjobtype = findViewById(R.id.JobType);
 
         List<String> job = new ArrayList<>();

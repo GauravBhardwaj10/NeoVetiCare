@@ -1,6 +1,7 @@
 package com.demo.neoveticare;
 
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,11 +13,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.demo.neoveticare.LoginActivity;
+import com.demo.neoveticare.R;
+import com.demo.neoveticare.RetreivedataActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -26,7 +29,6 @@ public class RegistrationActivity extends AppCompatActivity {
     private Button joinBtn;
 
     private FirebaseAuth firebaseAuth;
-    FirebaseFirestore firebaseFirestore;
 
 
 
@@ -38,17 +40,14 @@ public class RegistrationActivity extends AppCompatActivity {
         fNameEd=(EditText) findViewById(R.id.firstname);
         lNameEd=(EditText) findViewById(R.id.lastname);
         emailAddEd=(EditText) findViewById(R.id.txteml);
-        passEd=(EditText) findViewById(R.id.txtpass);
+        passEd=(EditText) findViewById(R.id.txtpassword);
         joinBtn=(Button) findViewById(R.id.btnregister);
 
         confirmpassword=(EditText)findViewById(R.id.cnfpass);
 
 
 
-        firebaseAuth= FirebaseAuth.getInstance();
-        firebaseFirestore= FirebaseFirestore.getInstance();
-
-
+        firebaseAuth=FirebaseAuth.getInstance();
 
         joinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,35 +66,35 @@ public class RegistrationActivity extends AppCompatActivity {
 
                 if(TextUtils.isEmpty(firstname))
                 {
-                    Toast.makeText(RegistrationActivity.this,"Please enter first name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistrationActivity.this,"Please enter first name",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(TextUtils.isEmpty(lastname))
                 {
-                    Toast.makeText(RegistrationActivity.this,"Please enter last name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistrationActivity.this,"Please enter last name",Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if(TextUtils.isEmpty(email))
                 {
-                    Toast.makeText(RegistrationActivity.this,"Please enter email name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistrationActivity.this,"Please enter email name",Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if(TextUtils.isEmpty(password))
                 {
-                    Toast.makeText(RegistrationActivity.this,"Please enter password name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistrationActivity.this,"Please enter password name",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(TextUtils.isEmpty(confrmPasword))
                 {
-                    Toast.makeText(RegistrationActivity.this,"Please enter confirm password name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistrationActivity.this,"Please enter confirm password name",Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (password.length()<6)
                 {
-                    Toast.makeText(RegistrationActivity.this,"PASWORD IS TOO SHORT", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistrationActivity.this,"PASWORD IS TOO SHORT",Toast.LENGTH_SHORT).show();
                 }
 
                 if (password.equals(confrmPasword))
@@ -124,7 +123,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
                                     } else {
 
-                                        Toast.makeText(RegistrationActivity.this,"Authentication Failed", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(RegistrationActivity.this,"Authentication Failed",Toast.LENGTH_SHORT).show();
 
                                     }
 
@@ -133,7 +132,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             });
                 }
                 else {
-                    Toast.makeText(RegistrationActivity.this,"pasword dose not match", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistrationActivity.this,"pasword dose not match",Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -144,6 +143,4 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
     }
-
-
 }

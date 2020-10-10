@@ -26,6 +26,8 @@ public class cartakerLoginActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     TextView tvforgotPassword;
 
+    TextView textViewemail,textViewfirstname;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,17 @@ public class cartakerLoginActivity extends AppCompatActivity {
         passEd=(EditText) findViewById(R.id.pass);
         joinBtn=(Button) findViewById(R.id.login);
         registrationTextVIEW=(TextView)findViewById(R.id.textsignup);
+        textViewemail=(TextView)findViewById(R.id.emailtextview);
+        textViewfirstname=(TextView)findViewById(R.id.firstnametextview);
+
+
+        String firstname=getIntent().getStringExtra("firstname");
+        String email=getIntent().getStringExtra("email");
+
+        textViewfirstname.setText(firstname);
+        textViewemail.setText(email);
+
+
         //cartaker=(TextView)findViewById(R.id.cartaker);
 /*
         cartaker.setOnClickListener(new View.OnClickListener() {
@@ -80,9 +93,13 @@ public class cartakerLoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
                 String email = emailAddEd.getText().toString().trim();
 
                 String password = passEd.getText().toString().trim();
+
+                String firstnametextview=textViewfirstname.getText().toString().trim();
+                String emailtextview=textViewemail.getText().toString().trim();
 
                 if(TextUtils.isEmpty(email))
                 {
@@ -124,6 +141,10 @@ public class cartakerLoginActivity extends AppCompatActivity {
                             }
                         });
 
+                Intent intent = new Intent(cartakerLoginActivity.this, naniesUpload.class);
+                intent.putExtra("email", emailtextview);
+                intent.putExtra("firstname", firstnametextview);
+                startActivity(intent);
 
             }
         });

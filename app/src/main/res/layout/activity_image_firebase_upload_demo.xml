@@ -262,6 +262,43 @@
                                     android:textColor="@color/colorPrimary"
                                     android:textStyle="bold" />
                         </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/emailtextview"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/login"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="51dp"
+                                    android:layout_marginEnd="6dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:text=""
+                                    android:visibility="gone"
+                                    android:textColor="@android:color/holo_blue_dark"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/firstnametextview"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/login"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="108dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:visibility="gone"
+                                    android:text=""
+                                    android:textColor="@android:color/holo_blue_dark"
+                                    android:textSize="16sp" />
+
+                        </LinearLayout>
+
 
 
 
