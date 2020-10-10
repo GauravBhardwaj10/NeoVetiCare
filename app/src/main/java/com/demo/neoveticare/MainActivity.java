@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -18,12 +19,17 @@ import com.google.android.material.navigation.NavigationView;
 public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle mtoggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_activity_main2);
         drawerLayout=findViewById(R.id.drawer_layout);
+        mtoggle=new ActionBarDrawerToggle(this,drawerLayout, R.string.Open,R.string.Close);
+        drawerLayout.addDrawerListener(mtoggle);
+        mtoggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         navigationView=findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -79,7 +85,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.Help:
                 Toast.makeText(this,"Help",Toast.LENGTH_SHORT).show();
                 break;
-        }
+        }{if(mtoggle.onOptionsItemSelected(item)){
+            return true;
+        }}
         return super.onOptionsItemSelected(item);
     }
     public void jj()
