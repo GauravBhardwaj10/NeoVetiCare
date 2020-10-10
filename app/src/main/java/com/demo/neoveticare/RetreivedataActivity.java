@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Random;
 
 public class RetreivedataActivity extends AppCompatActivity {
-        ListofnanniesAdapter listnanies;
+    ListofnanniesAdapter listnanies;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -127,16 +127,21 @@ public class RetreivedataActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         ArrayList<Upload> CTList = new ArrayList<>();
                         for (DocumentSnapshot document : task.getResult()) {
-                            Upload Caretaker = document.toObject(Upload.class);
-                            CTList.add(Caretaker);
+                            try {
+                                Upload caretaker = document.toObject(Upload.class);
+                                CTList.add(caretaker);
+                            }catch (Exception ee){
+                                ee.toString();
+                                listnanies =new ListofnanniesAdapter(getApplicationContext(),CTList);
+
+                                recyclerview.setAdapter(listnanies);
+                            }
                         }
 
 
-                        listnanies =new ListofnanniesAdapter(getApplicationContext(),CTList);
-
-                        recyclerview.setAdapter(listnanies);
                         int CTListSize = CTList.size();
                         List<Upload> randomCTList = new ArrayList<>();
+
                         for (int i = 0; i < CTListSize; i++) {
                             Upload randomCaretaker = CTList.get(new Random().nextInt(CTListSize));
                             if (!randomCTList.contains(randomCaretaker)) {
