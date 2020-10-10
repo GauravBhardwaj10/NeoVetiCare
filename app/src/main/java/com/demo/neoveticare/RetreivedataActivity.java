@@ -40,8 +40,8 @@ public class RetreivedataActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         ArrayList<Upload> CTList = new ArrayList<>();
                         for (DocumentSnapshot document : task.getResult()) {
-                            Upload caretaker = document.toObject(Upload.class);
-                            CTList.add(caretaker);
+                            Upload Caretaker = document.toObject(Upload.class);
+                                CTList.add(Caretaker);
                         }
 
                         listnanies =new ListofnanniesAdapter(getApplicationContext(),CTList);

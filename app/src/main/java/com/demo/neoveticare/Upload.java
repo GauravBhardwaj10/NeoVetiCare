@@ -15,6 +15,7 @@ public class Upload {
     public  String gender;
     public  String jobtype;
     public String url;
+    //public  List<String> schedulelist=new ArrayList<String>();
     List<String> schedulelist=new ArrayList<String>();
     public String provience;
     public String city;
@@ -26,8 +27,6 @@ public class Upload {
 
     // Default constructor required for calls to
     // DataSnapshot.getValue(User.class)
-    public Upload() {
-    }
 
     public Upload(String name, String phone, String address, String writaboutyourself, String experience, String timings, String jobtype, String url,String gender,List<String> schedulelist,String provience,String city,String emailaddress,String price,String age) {
         this.name = name;
@@ -45,6 +44,10 @@ public class Upload {
         this.emailaddress=emailaddress;
         this.price=price;
         this.age=age;
+
+    }
+
+    public  Upload(){
 
     }
 
@@ -84,6 +87,7 @@ public class Upload {
     public String getUrl() {
         return url;
     }
+
 
     public List<String> getSchedulelist() {
         return schedulelist;
