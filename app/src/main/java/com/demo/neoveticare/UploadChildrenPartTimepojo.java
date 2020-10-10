@@ -18,6 +18,9 @@ public class UploadChildrenPartTimepojo {
     List<String> schedulelist=new ArrayList<String>();
     public String provience;
     public String city;
+    public String emailaddress;
+    public String price;
+    public String age;
 
 
     // Default constructor required for calls to
@@ -25,7 +28,7 @@ public class UploadChildrenPartTimepojo {
     public UploadChildrenPartTimepojo() {
     }
 
-    public UploadChildrenPartTimepojo(String name, String phone, String address, String writaboutyourself, String experience, String timings, String jobtype, String url,String gender,List<String> schedulelist,String provience,String city) {
+    public UploadChildrenPartTimepojo(String name, String phone, String address, String writaboutyourself, String experience, String timings, String jobtype, String url,String gender,List<String> schedulelist,String provience,String city,String emailaddress,String price,String age) {
         this.name = name;
         this.phone = phone;
         this.address = address;
@@ -38,6 +41,9 @@ public class UploadChildrenPartTimepojo {
         this.schedulelist=schedulelist;
         this.provience=provience;
         this.city=city;
+        this.emailaddress=emailaddress;
+        this.price=price;
+        this.age=age;
     }
 
     public String getName() {
@@ -86,5 +92,17 @@ public class UploadChildrenPartTimepojo {
 
     public String getCity() {
         return city;
+    }
+
+    public String getEmailaddress() {
+        return emailaddress;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public String getAge() {
+        return age;
     }
 }
