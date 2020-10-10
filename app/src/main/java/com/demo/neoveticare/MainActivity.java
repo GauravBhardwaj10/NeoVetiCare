@@ -48,6 +48,16 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this,"Privacy & security Page:",Toast.LENGTH_SHORT).show();
                     KK();
                 }
+                if(item.getItemId()==R.id.rating)
+                {
+                    Toast.makeText(MainActivity.this,"Rate this app:",Toast.LENGTH_SHORT).show();
+                    k3();
+                }
+                if(item.getItemId()==R.id.share)
+                {
+                    Toast.makeText(MainActivity.this,"Share the link of app by:",Toast.LENGTH_SHORT).show();
+                    k4();
+                }
                 DrawerLayout drawerLayout=findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
@@ -104,4 +114,19 @@ public void Ho(){
     Intent intent=new Intent(MainActivity.this,MainActivity.class);
     startActivity(intent);
 }
+    public void k3()
+    {
+        Intent intent=new Intent(MainActivity.this,Ratetheapp.class);
+        startActivity(intent);
+    }
+    public void k4()
+    {
+        Intent intent=new Intent(Intent.ACTION_SEND);
+        intent.setType("Text");
+        String sharebody="Your Body Here";
+        String sharesub="Your subject here";
+        intent.putExtra(Intent.EXTRA_SUBJECT,sharesub);
+        intent.putExtra(Intent.EXTRA_TEXT,sharebody);
+        startActivity(Intent.createChooser(intent,"Share using"));
+    }
 }

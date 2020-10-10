@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Help"></activity>
+        <activity android:name=".Ratetheapp"></activity>
+        <activity android:name=".Help" />
         <activity android:name=".manageUserndlistofalladmin" />
         <activity android:name=".privaceandsecurity" />
         <activity android:name=".Adminactivity" />
@@ -42,7 +43,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegistrationActivity" />
-        <activity android:name=".ImageFirebaseUploadDemo"></activity>
+        <activity android:name=".ImageFirebaseUploadDemo" />
         <activity android:name=".ForgotActivity" />
     </application>
 

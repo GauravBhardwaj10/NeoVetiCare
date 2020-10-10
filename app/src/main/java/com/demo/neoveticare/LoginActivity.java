@@ -70,6 +70,16 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this,"Privacy & security Page:",Toast.LENGTH_SHORT).show();
                     b3();
                 }
+                if(item.getItemId()==R.id.rating)
+                {
+                    Toast.makeText(LoginActivity.this,"Rate this app:",Toast.LENGTH_SHORT).show();
+                    k11();
+                }
+                if(item.getItemId()==R.id.share)
+                {
+                    Toast.makeText(LoginActivity.this,"Share the link of app by:",Toast.LENGTH_SHORT).show();
+                    k12();
+                }
                 DrawerLayout drawerLayout=findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
@@ -138,7 +148,7 @@ public class LoginActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     if (firebaseAuth.getCurrentUser().isEmailVerified()) {
-                                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                        startActivity(new Intent(getApplicationContext(), RetreivedataActivity.class));
                                     } else {
                                         Toast.makeText(LoginActivity.this, "please verified your email address", Toast.LENGTH_SHORT).show();
 
@@ -200,5 +210,19 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent=new Intent(LoginActivity.this,Help.class);
         startActivity(intent);
     }
-
+    public void k11()
+    {
+        Intent intent=new Intent(LoginActivity.this,Ratetheapp.class);
+        startActivity(intent);
+    }
+    public void k12()
+    {
+        Intent intent=new Intent(Intent.ACTION_SEND);
+        intent.setType("Text");
+        String sharebody="Your Body Here";
+        String sharesub="Your subject here";
+        intent.putExtra(Intent.EXTRA_SUBJECT,sharesub);
+        intent.putExtra(Intent.EXTRA_TEXT,sharebody);
+        startActivity(Intent.createChooser(intent,"Share using"));
+    }
 }

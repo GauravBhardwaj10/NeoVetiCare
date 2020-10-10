@@ -76,6 +76,16 @@ public class cartakerLoginActivity extends AppCompatActivity {
                     Toast.makeText(cartakerLoginActivity.this,"Privacy & security Page:",Toast.LENGTH_SHORT).show();
                     kKK();
                 }
+                if(item.getItemId()==R.id.rating)
+                {
+                    Toast.makeText(cartakerLoginActivity.this,"Rate this app:",Toast.LENGTH_SHORT).show();
+                    k1();
+                }
+                if(item.getItemId()==R.id.share)
+                {
+                    Toast.makeText(cartakerLoginActivity.this,"Share the link of app by:",Toast.LENGTH_SHORT).show();
+                    k2();
+                }
                 DrawerLayout drawerLayout=findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
@@ -234,6 +244,21 @@ public class cartakerLoginActivity extends AppCompatActivity {
     {
         Intent intent=new Intent(cartakerLoginActivity.this,MainActivity.class);
         startActivity(intent);
+    }
+    public void k1()
+    {
+        Intent intent=new Intent(cartakerLoginActivity.this,Ratetheapp.class);
+        startActivity(intent);
+    }
+    public void k2()
+    {
+        Intent intent=new Intent(Intent.ACTION_SEND);
+        intent.setType("Text");
+        String sharebody="Your Body Here";
+        String sharesub="Your subject here";
+        intent.putExtra(Intent.EXTRA_SUBJECT,sharesub);
+        intent.putExtra(Intent.EXTRA_TEXT,sharebody);
+        startActivity(Intent.createChooser(intent,"Share using"));
     }
 
 }

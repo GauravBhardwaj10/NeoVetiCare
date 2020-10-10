@@ -130,6 +130,16 @@ public class imageUploadsenior extends AppCompatActivity {
                     Toast.makeText(imageUploadsenior.this, "Privacy & security Page:", Toast.LENGTH_SHORT).show();
                     a3();
                 }
+                if(item.getItemId()==R.id.rating)
+                {
+                    Toast.makeText(imageUploadsenior.this,"Rate this app:",Toast.LENGTH_SHORT).show();
+                    k7();
+                }
+                if(item.getItemId()==R.id.share)
+                {
+                    Toast.makeText(imageUploadsenior.this,"Share the link of app by:",Toast.LENGTH_SHORT).show();
+                    k8();
+                }
                 DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
@@ -769,5 +779,20 @@ public class imageUploadsenior extends AppCompatActivity {
     public void a7()
     {
         finish();
+    }
+    public void k7()
+    {
+        Intent intent=new Intent(imageUploadsenior.this,Ratetheapp.class);
+        startActivity(intent);
+    }
+    public void k8()
+    {
+        Intent intent=new Intent(Intent.ACTION_SEND);
+        intent.setType("Text");
+        String sharebody="Your Body Here";
+        String sharesub="Your subject here";
+        intent.putExtra(Intent.EXTRA_SUBJECT,sharesub);
+        intent.putExtra(Intent.EXTRA_TEXT,sharebody);
+        startActivity(Intent.createChooser(intent,"Share using"));
     }
 }
