@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".manageUserndlistofalladmin"></activity>
+        <activity android:name=".Help"></activity>
+        <activity android:name=".manageUserndlistofalladmin" />
         <activity android:name=".privaceandsecurity" />
         <activity android:name=".Adminactivity" />
         <activity android:name=".firstActivity" />
@@ -31,21 +32,18 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-          </activity>
-
-        <activity android:name=".imageUploadsenior"></activity>
+        </activity>
+        <activity android:name=".imageUploadsenior" />
         <activity android:name=".CareTakerDescription" />
-        <activity android:name=".RetreivedataActivity"></activity>
+        <activity android:name=".RetreivedataActivity" />
         <activity android:name=".cartakerRegistrationActivity" />
         <activity android:name=".cartakerLoginActivity" />
         <activity android:name=".naniesUpload" />
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegistrationActivity" />
-        <activity android:name=".ImageFirebaseUploadDemo">
-
-        </activity>
-        <activity android:name=".ForgotActivity"/>
+        <activity android:name=".ImageFirebaseUploadDemo"></activity>
+        <activity android:name=".ForgotActivity" />
     </application>
 
 </manifest>
