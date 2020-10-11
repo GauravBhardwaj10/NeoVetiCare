@@ -4,18 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@drawable/bg2"
     tools:context=".cartakerLoginActivity">
+
 
     <ImageView
         android:id="@+id/image"
         android:layout_width="272dp"
         android:layout_height="107dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="80dp"
         android:src="@drawable/l3" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image"
+        android:text="Babysitter/caretaker"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
 
+        android:fontFamily="@font/coustard"
+        android:gravity="center_horizontal" />
 
 
     <EditText
@@ -23,46 +34,50 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/image"
-        android:layout_marginTop="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/edit"
         android:drawableLeft="@drawable/ic_person"
         android:drawablePadding="10dp"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:padding="20dp"
-        android:textColor="@color/green"
-        android:textColorHighlight="@color/green"
-        android:textColorHint="@color/green" />
+
+        android:textColorHighlight="@color/black"
+        android:textColorHint="@color/black" />
 
     <EditText
         android:id="@+id/pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/email"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+
         android:layout_marginTop="20dp"
         android:background="@drawable/edit"
         android:drawableLeft="@drawable/lock"
         android:drawablePadding="10dp"
+
         android:hint="password"
         android:inputType="textPassword"
         android:padding="20dp"
-
-        android:textColorHighlight="@color/green"
-        android:textColorHint="@color/green" />
+        android:textColorHighlight="@color/black"
+        android:textColorHint="@color/black" />
 
     <Button
         android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_below="@id/pass"
+        android:layout_alignParentStart="true"
         android:layout_marginTop="30dp"
+
         android:background="@drawable/custom_button"
 
-        android:text="Login"
+        android:text="Login"/>
 
-        android:textColorHighlight="@color/green"
-        android:textColorHint="@color/green"
-        android:textColorLink="@color/green" />
 
     <TextView
         android:id="@+id/textsignup"
@@ -71,13 +86,12 @@
         android:layout_below="@+id/login"
 
         android:layout_marginStart="28dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="26dp"
         android:layout_marginBottom="294dp"
         android:text="SignUp?"
-
-       android:textColor="@color/black"
+        android:fontFamily="@font/coustard"
+        android:textColor="@color/black"
         android:textSize="20dp" />
-
 
     <TextView
         android:id="@+id/txtForgot"
@@ -85,45 +99,15 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/login"
         android:layout_alignParentEnd="true"
-        android:layout_margin="10dp"
-        android:text="Forgot Password"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="16sp" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/emailtextview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/login"
-        android:layout_alignParentEnd="true"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="51dp"
-        android:layout_marginEnd="6dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="18dp"
         android:layout_marginBottom="10dp"
-        android:text=""
-        android:visibility="gone"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="16sp" />
+        android:fontFamily="@font/coustard"
+        android:text="Forgot Password?"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/firstnametextview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/login"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="108dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:visibility="gone"
-        android:text=""
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="16sp" />
 
-    </LinearLayout>
 </RelativeLayout>
 

@@ -4,26 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_light"
+    android:background="@drawable/newbg"
     tools:context=".MainActivity">
 
 
     <ImageView
         android:id="@+id/img"
-        android:layout_width="289dp"
-        android:layout_height="516dp"
-        android:layout_centerInParent="true"
+        android:layout_width="305dp"
+        android:layout_height="219dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="204dp"
         android:src="@drawable/l3" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
+        android:layout_marginStart="89dp"
+        android:layout_marginBottom="110dp"
+        android:fontFamily="@font/coustard"
         android:text="Nanny service"
         android:textColor="@color/green"
-        android:textSize="20dp" />
+        android:textSize="30dp" />
 
 </RelativeLayout>
 
