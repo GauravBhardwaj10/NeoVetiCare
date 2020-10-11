@@ -41,7 +41,7 @@ public class RetreivedataActivity extends AppCompatActivity {
                         ArrayList<Upload> CTList = new ArrayList<>();
                         for (DocumentSnapshot document : task.getResult()) {
                             Upload Caretaker = document.toObject(Upload.class);
-                                CTList.add(Caretaker);
+                            CTList.add(Caretaker);
                         }
 
                         listnanies =new ListofnanniesAdapter(getApplicationContext(),CTList);
@@ -128,12 +128,12 @@ public class RetreivedataActivity extends AppCompatActivity {
                         ArrayList<Upload> CTList = new ArrayList<>();
                         for (DocumentSnapshot document : task.getResult()) {
 
-                                Upload caretaker = document.toObject(Upload.class);
-                                CTList.add(caretaker);
+                            Upload caretaker = document.toObject(Upload.class);
+                            CTList.add(caretaker);
 
-                                listnanies =new ListofnanniesAdapter(getApplicationContext(),CTList);
+                            listnanies =new ListofnanniesAdapter(getApplicationContext(),CTList);
 
-                                recyclerview.setAdapter(listnanies);
+                            recyclerview.setAdapter(listnanies);
 
                         }
 

@@ -44,38 +44,38 @@ public class ListofnanniesAdapter extends RecyclerView.Adapter<ListofnanniesAdap
 
         StorageReference str=firebaseStorage.getReferenceFromUrl(values.get(position).getUrl());
         str.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-        @Override
-        public void onSuccess(Uri uri) {
-            Picasso.with(context)
-                    .load(values.get(position).getUrl().toString())
-                    .placeholder(R.mipmap.ic_launcher)
-                    .into(holder.ctimg);
-        }
-    });
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.with(context)
+                        .load(values.get(position).getUrl().toString())
+                        .placeholder(R.mipmap.ic_launcher)
+                        .into(holder.ctimg);
+            }
+        });
 
         holder.ctdesc.setText(values.get(position).getWritaboutyourself());
         holder.ctrate.setText(values.get(position).getPrice());
         holder.ctname.setText(values.get(position).getName());
         holder.details.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
 
-            Intent in=new Intent(context,CareTakerDescription.class);
-            in.putExtra("image",values.get(position).getUrl());
-            in.putExtra("price",values.get(position).getPrice());
-            in.putExtra("name",values.get(position).getName());
-            in.putExtra("gender",values.get(position).getGender());
-            in.putExtra("city",values.get(position).getCity());
-            in.putExtra("province",values.get(position).getProvience());
-            in.putExtra("description",values.get(position).getWritaboutyourself());
-            in.putExtra("rate",values.get(position).getAddress());
-            in.putExtra("experience",values.get(position).getExperience());
-            in.putStringArrayListExtra("list", (ArrayList<String>) values.get(position).getSchedulelist());
-            //in.putExtra("availability",values.get(position).getSchedulelist());
-            in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(in);
-        }
-    });
+                Intent in=new Intent(context,CareTakerDescription.class);
+                in.putExtra("image",values.get(position).getUrl());
+                in.putExtra("price",values.get(position).getPrice());
+                in.putExtra("name",values.get(position).getName());
+                in.putExtra("gender",values.get(position).getGender());
+                in.putExtra("city",values.get(position).getCity());
+                in.putExtra("province",values.get(position).getProvience());
+                in.putExtra("description",values.get(position).getWritaboutyourself());
+                in.putExtra("rate",values.get(position).getAddress());
+                in.putExtra("experience",values.get(position).getExperience());
+                in.putStringArrayListExtra("list", (ArrayList<String>) values.get(position).getSchedulelist());
+                //in.putExtra("availability",values.get(position).getSchedulelist());
+                in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(in);
+            }
+        });
 //        StorageReference str=firebaseStorage.getReferenceFromUrl(values.get(position).getUrl());
 //        str.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
 //            @Override
@@ -86,7 +86,7 @@ public class ListofnanniesAdapter extends RecyclerView.Adapter<ListofnanniesAdap
 //            }
 //        });
 
-}
+    }
 
     @Override
     public int getItemCount() {
