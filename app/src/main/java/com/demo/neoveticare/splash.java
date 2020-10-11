@@ -34,7 +34,7 @@ public class splash extends AppCompatActivity {
                     @Override
                     public void run() {
                         finish();
-                        Intent i = new Intent(splash.this, RetreivedataActivity.class);
+                        Intent i = new Intent(splash.this, Select_Category.class);
                         startActivity(i);
 
                     }
