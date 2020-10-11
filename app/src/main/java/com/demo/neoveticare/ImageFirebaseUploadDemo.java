@@ -124,6 +124,14 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
         });
 
 
+
+        String firstname=getIntent().getStringExtra("firstname");
+        String email=getIntent().getStringExtra("email");
+
+        editTextName.setText(firstname);
+        editTextemailaddress.setText(email);
+
+
         spinnerjobtype = findViewById(R.id.JobType);
 
         List<String> job = new ArrayList<>();
@@ -371,6 +379,48 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
                                         public void onSuccess(DocumentReference documentReference) {
                                             Toast.makeText(ImageFirebaseUploadDemo.this, "Success", Toast.LENGTH_SHORT).show();
                                             progressDialog.dismiss();
+
+
+
+                                            String firstname=editTextName.getText().toString().trim();
+                                            String phone=editTextphone.getText().toString().trim();
+                                            String address=editTextaddress.getText().toString().trim();
+                                            String writeaboutyourself=editTextaboutyourself.getText().toString().trim();
+                                            String experience=editTextexperience.getText().toString().trim();
+                                            String timings=spinnerttimings.getSelectedItem().toString();
+
+                                            String jobtype=spinnerjobtype.getSelectedItem().toString();
+                                            String gender=spinnergender.getSelectedItem().toString();
+                                            String provience=editTextaboutyourself.getText().toString().trim();
+                                            String city=editTextcity.getText().toString().trim();
+                                            String emailaddress=editTextemailaddress.getText().toString().trim();
+                                            String price=editTextprice.getText().toString().trim();
+                                            String age=editTextage.getText().toString().trim();
+
+
+
+                                            String imageurl=downloadUri;
+                                            Intent intent = new Intent(ImageFirebaseUploadDemo.this, displayProfile.class);
+                                            intent.putExtra("firstname", firstname);
+                                            intent.putExtra("url", downloadUri);
+                                            intent.putExtra("phone", phone);
+                                            intent.putExtra("address", address);
+                                            intent.putExtra("writeaboutyourself", writeaboutyourself);
+                                            intent.putExtra("experience", experience);
+                                            intent.putExtra("timings", timings);
+                                            intent.putExtra("jobtype", jobtype);
+                                            intent.putExtra("gender", gender);
+                                            intent.putExtra("provience", provience);
+                                            intent.putExtra("city", city);
+                                            intent.putExtra("emailaddress", emailaddress);
+                                            intent.putExtra("url", imageurl);
+                                            intent.putExtra("price", price);
+                                            intent.putExtra("age", age);
+                                            intent.putStringArrayListExtra("arraylist",arrlst);
+                                            startActivity(intent);
+
+
+
                                         }
                                     });
 
@@ -466,6 +516,46 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
                                         public void onSuccess(DocumentReference documentReference) {
                                             Toast.makeText(ImageFirebaseUploadDemo.this, "Success", Toast.LENGTH_SHORT).show();
                                             progressDialog.dismiss();
+
+
+
+                                            String firstname=editTextName.getText().toString().trim();
+                                            String phone=editTextphone.getText().toString().trim();
+                                            String address=editTextaddress.getText().toString().trim();
+                                            String writeaboutyourself=editTextaboutyourself.getText().toString().trim();
+                                            String experience=editTextexperience.getText().toString().trim();
+                                            String timings=spinnerttimings.getSelectedItem().toString();
+
+                                            String jobtype=spinnerjobtype.getSelectedItem().toString();
+                                            String gender=spinnergender.getSelectedItem().toString();
+                                            String provience=editTextaboutyourself.getText().toString().trim();
+                                            String city=editTextcity.getText().toString().trim();
+                                            String emailaddress=editTextemailaddress.getText().toString().trim();
+                                            String price=editTextprice.getText().toString().trim();
+                                            String age=editTextage.getText().toString().trim();
+
+
+
+                                            String imageurl=downloadUri;
+                                            Intent intent = new Intent(ImageFirebaseUploadDemo.this, displayProfile.class);
+                                            intent.putExtra("firstname", firstname);
+                                            intent.putExtra("url", downloadUri);
+                                            intent.putExtra("phone", phone);
+                                            intent.putExtra("address", address);
+                                            intent.putExtra("writeaboutyourself", writeaboutyourself);
+                                            intent.putExtra("experience", experience);
+                                            intent.putExtra("timings", timings);
+                                            intent.putExtra("jobtype", jobtype);
+                                            intent.putExtra("gender", gender);
+                                            intent.putExtra("provience", provience);
+                                            intent.putExtra("city", city);
+                                            intent.putExtra("emailaddress", emailaddress);
+                                            intent.putExtra("url", imageurl);
+                                            intent.putExtra("price", price);
+                                            intent.putExtra("age", age);
+                                            intent.putStringArrayListExtra("arraylist",arrlst);
+                                            startActivity(intent);
+
                                         }
                                     });
 
