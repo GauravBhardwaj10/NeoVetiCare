@@ -24,7 +24,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class CareTakerDescription extends AppCompatActivity {
-    TextView ctgender,ctname,ctcity,ctprovince,currency,ctexperience,ctrate,ctdesc,ctavaialbility;
+    TextView ctgender,ctname,ctcity,ctprovince,currency,ctimings,ctexperience,ctrate,ctdesc,ctavaialbility,ctage;
     ImageView ctimg;
     ArrayList<String> list;
     Button Hire;
@@ -38,6 +38,8 @@ public class CareTakerDescription extends AppCompatActivity {
         String price=in.getStringExtra("price");
         String city=in.getStringExtra("city");
         String gender=in.getStringExtra("gender");
+        String timings=in.getStringExtra("timings");
+        String age=in.getStringExtra("age");
         String province=in.getStringExtra("province");
         String writaboutyourself=in.getStringExtra("description");
         String rate=in.getStringExtra("price");
@@ -55,8 +57,10 @@ public class CareTakerDescription extends AppCompatActivity {
         ctcity=(TextView)findViewById(R.id.ctcity);
         ctprovince=(TextView)findViewById(R.id.ctprovince);
         ctdesc=(TextView)findViewById(R.id.ctDesc);
+        ctimings=(TextView)findViewById(R.id.ctimings);
         currency=(TextView)findViewById(R.id.currency);
         ctrate=(TextView)findViewById(R.id.ctrate_single);
+        ctage=(TextView)findViewById(R.id.ctage);
         ctexperience=(TextView)findViewById(R.id.experience);
         ctavaialbility=(TextView)findViewById(R.id.ctavailibility);
         ctimg=(ImageView) findViewById(R.id.ctimage);
@@ -81,7 +85,9 @@ public class CareTakerDescription extends AppCompatActivity {
         ctcity.setText(city);
         ctprovince.setText(province);
         ctdesc.setText(writaboutyourself);
+        ctimings.setText(timings);
         ctrate.setText(rate);
+        ctage.setText(age);
         ctexperience.setText(experience);
         ctavaialbility.setText(availability);
 

@@ -23,6 +23,7 @@
                 android:id="@id/ctimage"
                 android:layout_width="match_parent"
                 android:layout_height="126dp"
+                android:layout_marginTop="20dp"
                 android:layout_centerHorizontal="true" />
 
             <TextView
@@ -42,7 +43,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ctimage"
-                android:layout_marginLeft="150dp"
+                android:layout_toRightOf="@id/name"
+                android:layout_marginLeft="70dp"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/abeezee"
                 android:hint="Care Taker Name"
@@ -170,8 +172,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ctcity"
-                android:layout_marginLeft="150dp"
-                android:layout_marginTop="15dp"
+
+                
+          
+                android:layout_toRightOf="@id/cty"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="90dp"
+
                 android:fontFamily="@font/abeezee"
                 android:hint="Care Taker Province"
                 android:textColor="@color/black"
@@ -244,6 +251,9 @@
                 android:hint="Experience"
                 android:textSize="20dp"
                 android:layout_marginTop="10dp"
+
+
+                android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/exp"
                 android:fontFamily="@font/coustard"
                 android:textColor="@color/black"

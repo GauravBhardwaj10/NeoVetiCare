@@ -64,7 +64,9 @@ public class ListofnanniesAdapter extends RecyclerView.Adapter<ListofnanniesAdap
                 in.putExtra("image",values.get(position).getUrl());
                 in.putExtra("price",values.get(position).getPrice());
                 in.putExtra("name",values.get(position).getName());
+                in.putExtra("age",values.get(position).getAge());
                 in.putExtra("gender",values.get(position).getGender());
+                in.putExtra("timings",values.get(position).getTimings());
                 in.putExtra("city",values.get(position).getCity());
                 in.putExtra("province",values.get(position).getProvience());
                 in.putExtra("description",values.get(position).getWritaboutyourself());
