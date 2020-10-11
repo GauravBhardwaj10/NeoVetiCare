@@ -267,12 +267,12 @@ public class imageUploadsenior extends AppCompatActivity {
         });
 
 
+
         buttonUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final ProgressDialog progressDialog = new ProgressDialog(imageUploadsenior.this);
                 progressDialog.setTitle("Uploading");
-
                 if ((!TextUtils.isEmpty(editTextName.getText().toString())) && (!TextUtils.isEmpty(editTextphone.getText().toString()))
                         && (!TextUtils.isEmpty(editTextaddress.getText().toString())) &&
                         (!TextUtils.isEmpty(editTextaboutyourself.getText().toString())) &&
@@ -286,7 +286,6 @@ public class imageUploadsenior extends AppCompatActivity {
                         && ((spinnerttimings.getSelectedItem().toString().equals("Morning")) || (spinnerttimings.getSelectedItem().toString().equals("Evening")) || (spinnerttimings.getSelectedItem().toString().equals("Night")))
                         && ((spinnergender.getSelectedItem().toString().equals("Male")) || (spinnergender.getSelectedItem().toString().equals("Female")) || (spinnergender.getSelectedItem().toString().equals("other")))
                 ) {
-
 
                     if (spinnerjobtype.getSelectedItem().toString().equals("Full Time")) {
 
@@ -364,8 +363,8 @@ public class imageUploadsenior extends AppCompatActivity {
                                             spinnerjobtype.getSelectedItem().toString(),
                                             downloadUri,
                                             spinnergender.getSelectedItem().toString(),
-                                            arrlst,editTextprovience.getText().toString(),editTextcity.getText().toString(),
-                                            editTextemailaddress.getText().toString(),editTextprice.getText().toString(),editTextage.getText().toString());
+                                            arrlst, editTextprovience.getText().toString(), editTextcity.getText().toString(),
+                                            editTextemailaddress.getText().toString(), editTextprice.getText().toString(), editTextage.getText().toString());
 
                                     CollectionReference dbupload = mDatabase.collection("seniorfulltime");
                                     dbupload.add(uploadSenior).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -373,7 +372,6 @@ public class imageUploadsenior extends AppCompatActivity {
                                         public void onSuccess(DocumentReference documentReference) {
                                             Toast.makeText(imageUploadsenior.this, "Success", Toast.LENGTH_SHORT).show();
                                             progressDialog.dismiss();
-
                                         }
                                     });
 
@@ -382,8 +380,7 @@ public class imageUploadsenior extends AppCompatActivity {
                             });
                         }
 
-                    }
-                    else if (spinnerjobtype.getSelectedItem().toString().equals("Part Time")) {
+                    } else if (spinnerjobtype.getSelectedItem().toString().equals("Part Time")) {
 
 
                         if (filePath != null) {
@@ -461,8 +458,8 @@ public class imageUploadsenior extends AppCompatActivity {
                                             downloadUri,
                                             spinnergender.getSelectedItem().toString(),
 
-                                            arrlst,editTextprovience.getText().toString(),editTextcity.getText().toString(),
-                                            editTextemailaddress.getText().toString(),editTextprice.getText().toString(),editTextage.getText().toString());
+                                            arrlst, editTextprovience.getText().toString(), editTextcity.getText().toString(),
+                                            editTextemailaddress.getText().toString(), editTextprice.getText().toString(), editTextage.getText().toString());
 
                                     CollectionReference dbupload = mDatabase.collection("seniorparttime");
                                     dbupload.add(uploadSeniorPartTimepojo).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -479,21 +476,17 @@ public class imageUploadsenior extends AppCompatActivity {
                         }
 
                     }
+
                 }
                 else{
                     Toast.makeText(imageUploadsenior.this,"Please enter all the Credentials",Toast.LENGTH_LONG).show();
                 }
 
             }
-
-
         });
 
 
-
     }
-
-
 
 
     private List<FilterModel> getSchedules(){
@@ -562,12 +555,12 @@ public class imageUploadsenior extends AppCompatActivity {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.filter_brand_item, parent, false);
 
-            ViewHolder viewHolder = new ViewHolder(view);
+            ProductFilterRecyclerViewAdapter.ViewHolder viewHolder = new ProductFilterRecyclerViewAdapter.ViewHolder(view);
             return viewHolder;
         }
 
         @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
+        public void onBindViewHolder(ProductFilterRecyclerViewAdapter.ViewHolder holder, int position) {
             FilterModel filterM = filterList.get(position);
             holder.days.setText(filterM.getSchedule());
             //holder.productCount.setText("" + filterM.getPrice());
@@ -690,5 +683,6 @@ public class imageUploadsenior extends AppCompatActivity {
             }
         }
     }
+
 
 }

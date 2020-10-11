@@ -15,7 +15,6 @@
         android:layout_height="wrap_content"
        android:textColor="@color/black"
         android:textAlignment="center"
-        android:fontFamily="@font/bree_serif"
         android:textSize="30dp"
         android:text="Choose Your type" />
 

@@ -1,14 +1,16 @@
 package com.demo.neoveticare;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-
-import androidx.appcompat.app.AppCompatActivity;
+import android.widget.Toast;
 
 public class Select_Category extends AppCompatActivity {
 
@@ -88,21 +90,21 @@ public class Select_Category extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            if(category.equals("senior")){
-                radioSTimerGroup.setVisibility(View.GONE);
-                radioCTimerGroup.setVisibility(View.GONE);
+                if(category.equals("senior")){
+                    radioSTimerGroup.setVisibility(View.GONE);
+                    radioCTimerGroup.setVisibility(View.GONE);
 
-                kids.setVisibility(View.VISIBLE);
-                seniors.setVisibility(View.VISIBLE);
-            }else if(category.equals("kid")){
-                radioCTimerGroup.setVisibility(View.GONE);
-                radioSTimerGroup.setVisibility(View.GONE);
+                    kids.setVisibility(View.VISIBLE);
+                    seniors.setVisibility(View.VISIBLE);
+                }else if(category.equals("kid")){
+                    radioCTimerGroup.setVisibility(View.GONE);
+                    radioSTimerGroup.setVisibility(View.GONE);
 
-                kids.setVisibility(View.VISIBLE);
-                seniors.setVisibility(View.VISIBLE);
-            }else{
-                System.exit(0);
-            }
+                    kids.setVisibility(View.VISIBLE);
+                    seniors.setVisibility(View.VISIBLE);
+                }else{
+                    System.exit(0);
+                }
             }
         });
 
@@ -111,7 +113,7 @@ public class Select_Category extends AppCompatActivity {
         nxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in=new Intent(Select_Category.this, RetreivedataActivity.class);
+                Intent in=new Intent(Select_Category.this,RetreivedataActivity.class);
                 in.putExtra("category",Value);
                 startActivity(in);
             }

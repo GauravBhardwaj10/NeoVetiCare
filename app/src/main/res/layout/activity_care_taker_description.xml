@@ -70,7 +70,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Currency"
+        android:hint="CAD "
         android:textSize="20dp"
         android:textColorHint="@color/black"
         android:id="@+id/currency"
