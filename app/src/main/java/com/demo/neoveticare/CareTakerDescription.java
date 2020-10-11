@@ -107,7 +107,7 @@ public class CareTakerDescription extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull final AvailableDaysList.ViewHolder holder, final int position) {
-           holder.daystext.setText(values.get(position));
+            holder.daystext.setText(values.get(position));
         }
 
         @Override
@@ -121,7 +121,7 @@ public class CareTakerDescription extends AppCompatActivity {
             Button details;
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
-              daystext=(TextView) itemView.findViewById(R.id.textdays);
+                daystext=(TextView) itemView.findViewById(R.id.textdays);
             }
         }
     }
