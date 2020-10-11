@@ -70,7 +70,7 @@
 
                     android:background="@drawable/custom_button"
                     android:text="Details"
-                    android:textColor="#F6F3F3" />
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/ctrate"
@@ -78,6 +78,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:text="Price"
+                    android:textColor="@color/black"
                     android:layout_marginLeft="110dp"
                     android:paddingBottom="10dp"
                     />
@@ -86,7 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-
+                     android:textColor="@color/black"
                     android:text="CAD "
                     android:layout_marginLeft="5dp"
                     android:layout_toRightOf="@id/ctrate"

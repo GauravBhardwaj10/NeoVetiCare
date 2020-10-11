@@ -7,12 +7,11 @@
     android:background="#FFF1F1"
     tools:context=".CareTakerDescription">
 
+
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
         android:id="@id/ctimage"
-        android:layout_width="193dp"
-        android:layout_height="149dp"
+        android:layout_width="188dp"
+        android:layout_height="126dp"
         android:layout_centerHorizontal="true" />
     <TextView
         android:layout_width="match_parent"
@@ -83,7 +82,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Care Taker Rate/ hour"
+        android:textColorHint="@color/black"
+        android:textSize="20dp"
         android:id="@+id/ctrate_single"
+        android:layout_marginTop="10dp"
         android:layout_below="@id/ctDesc"
         android:layout_toRightOf="@id/currency">
     </TextView>
@@ -117,7 +119,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/availabledays"
         android:id="@+id/hirecaretaker"
+        android:background="@drawable/custom_button"
         android:layout_marginTop="10dp"
         android:text="Hire"/>
+
+
 
 </RelativeLayout>
