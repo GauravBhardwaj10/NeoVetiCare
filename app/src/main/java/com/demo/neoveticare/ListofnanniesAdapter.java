@@ -2,6 +2,7 @@ package com.demo.neoveticare;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -35,31 +39,43 @@ public class ListofnanniesAdapter extends RecyclerView.Adapter<ListofnanniesAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        FirebaseStorage firebaseStorage=FirebaseStorage.getInstance();
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
+        FirebaseStorage firebaseStorage= FirebaseStorage.getInstance();
+
+        StorageReference str=firebaseStorage.getReferenceFromUrl(values.get(position).getUrl());
+        str.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        @Override
+        public void onSuccess(Uri uri) {
+            Picasso.with(context)
+                    .load(values.get(position).getUrl().toString())
+                    .placeholder(R.mipmap.ic_launcher)
+                    .into(holder.ctimg);
+        }
+    });
 
         holder.ctdesc.setText(values.get(position).getWritaboutyourself());
-        holder.ctrate.setText(values.get(position).getAddress());
+        holder.ctrate.setText(values.get(position).getPrice());
         holder.ctname.setText(values.get(position).getName());
         holder.details.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        @Override
+        public void onClick(View v) {
 
-                Intent in=new Intent(context,CareTakerDescription.class);
-                in.putExtra("image",values.get(position).getUrl());
-                in.putExtra("price",values.get(position).getAddress());
-                in.putExtra("name",values.get(position).getName());
-                in.putExtra("gender",values.get(position).getGender());
-                in.putExtra("city",values.get(position).getCity());
-                in.putExtra("province",values.get(position).getProvience());
-                in.putExtra("description",values.get(position).getWritaboutyourself());
-                in.putExtra("rate",values.get(position).getAddress());
-                in.putExtra("experience",values.get(position).getExperience());
-                //in.putExtra("availability",values.get(position).getSchedulelist());
-                in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(in);
-            }
-        });
+            Intent in=new Intent(context,CareTakerDescription.class);
+            in.putExtra("image",values.get(position).getUrl());
+            in.putExtra("price",values.get(position).getPrice());
+            in.putExtra("name",values.get(position).getName());
+            in.putExtra("gender",values.get(position).getGender());
+            in.putExtra("city",values.get(position).getCity());
+            in.putExtra("province",values.get(position).getProvience());
+            in.putExtra("description",values.get(position).getWritaboutyourself());
+            in.putExtra("rate",values.get(position).getAddress());
+            in.putExtra("experience",values.get(position).getExperience());
+            in.putStringArrayListExtra("list", (ArrayList<String>) values.get(position).getSchedulelist());
+            //in.putExtra("availability",values.get(position).getSchedulelist());
+            in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(in);
+        }
+    });
 //        StorageReference str=firebaseStorage.getReferenceFromUrl(values.get(position).getUrl());
 //        str.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
 //            @Override
@@ -70,7 +86,7 @@ public class ListofnanniesAdapter extends RecyclerView.Adapter<ListofnanniesAdap
 //            }
 //        });
 
-    }
+}
 
     @Override
     public int getItemCount() {

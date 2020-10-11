@@ -39,7 +39,7 @@ public class splash extends AppCompatActivity {
 
                     }
                 };
-                mHandler.postDelayed(mRunnable, 2000);
+                mHandler.postDelayed(mRunnable, 1000);
             }
 
             @Override
