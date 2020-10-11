@@ -1,5 +1,6 @@
 package com.demo.neoveticare;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -29,7 +30,8 @@ public class RetreivedataActivity extends AppCompatActivity {
         final RecyclerView recyclerview=findViewById(R.id.recyclerListView);
         recyclerview.setLayoutManager(new LinearLayoutManager(this));
         FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
-        String abc="";
+        Intent in=getIntent();
+        String abc=in.getStringExtra("category");
 
         if(abc.equals("childernparttime")) {
 
@@ -41,7 +43,7 @@ public class RetreivedataActivity extends AppCompatActivity {
                         ArrayList<Upload> CTList = new ArrayList<>();
                         for (DocumentSnapshot document : task.getResult()) {
                             Upload Caretaker = document.toObject(Upload.class);
-                                CTList.add(Caretaker);
+                            CTList.add(Caretaker);
                         }
 
                         listnanies =new ListofnanniesAdapter(getApplicationContext(),CTList);
@@ -69,10 +71,14 @@ public class RetreivedataActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                     if (task.isSuccessful()) {
-                        List<Upload> CTList = new ArrayList<>();
+                        ArrayList<Upload> CTList = new ArrayList<>();
                         for (DocumentSnapshot document : task.getResult()) {
                             Upload caretaker = document.toObject(Upload.class);
                             CTList.add(caretaker);
+
+                            listnanies =new ListofnanniesAdapter(getApplicationContext(),CTList);
+
+                            recyclerview.setAdapter(listnanies);
                         }
 
                         int CTListSize = CTList.size();
@@ -97,10 +103,14 @@ public class RetreivedataActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                     if (task.isSuccessful()) {
-                        List<Upload> CTList = new ArrayList<>();
+                        ArrayList<Upload> CTList = new ArrayList<>();
                         for (DocumentSnapshot document : task.getResult()) {
                             Upload Caretaker = document.toObject(Upload.class);
                             CTList.add(Caretaker);
+
+                            listnanies =new ListofnanniesAdapter(getApplicationContext(),CTList);
+
+                            recyclerview.setAdapter(listnanies);
                         }
 
                         int CTListSize = CTList.size();
@@ -128,12 +138,12 @@ public class RetreivedataActivity extends AppCompatActivity {
                         ArrayList<Upload> CTList = new ArrayList<>();
                         for (DocumentSnapshot document : task.getResult()) {
 
-                                Upload caretaker = document.toObject(Upload.class);
-                                CTList.add(caretaker);
+                            Upload caretaker = document.toObject(Upload.class);
+                            CTList.add(caretaker);
 
-                                listnanies =new ListofnanniesAdapter(getApplicationContext(),CTList);
+                            listnanies =new ListofnanniesAdapter(getApplicationContext(),CTList);
 
-                                recyclerview.setAdapter(listnanies);
+                            recyclerview.setAdapter(listnanies);
 
                         }
 

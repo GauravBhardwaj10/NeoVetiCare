@@ -11,9 +11,6 @@ import android.os.Handler;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
@@ -29,10 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,7 +35,6 @@ import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -59,17 +52,14 @@ public class imageUploadsenior extends AppCompatActivity {
 
     //constant to track image chooser intent
     private static final int PICK_IMAGE_REQUEST = 234;
-    private NavigationView navigationView;
-    private DrawerLayout drawerLayout;
-    private ActionBarDrawerToggle mtoggle;
 
     //view objects
     private Button buttonChoose;
     private Button buttonUpload;
-    private EditText editTextName, editTextphone, editTextaddress, editTextprovience, editTextaboutyourself, editTextexperience, editTextcity, editTextemailaddress, editTextprice, editTextage;
+    private EditText editTextName,editTextphone,editTextaddress,editTextprovience,editTextaboutyourself,editTextexperience,editTextcity,editTextemailaddress,editTextprice,editTextage;
     private TextView textViewShow;
-    private ImageView imageView, getImageView;
-    Spinner spinnerjobtype, spinnergender, spinnerttimings;
+    private ImageView imageView,getImageView;
+    Spinner spinnerjobtype,spinnergender,spinnerttimings;
 
     //uri to store file
     private Uri filePath;
@@ -77,20 +67,20 @@ public class imageUploadsenior extends AppCompatActivity {
     String downloadUri;
 
     //firebase objects
-    private StorageReference storageReference, parttimestoragereference;
+    private StorageReference storageReference,parttimestoragereference;
     //    private FirebaseStorage firebaseStorage;
-    private FirebaseFirestore mDatabase, parttimeDatabase;
+    private FirebaseFirestore mDatabase,parttimeDatabase;
 
     private RecyclerView RecyclerView;
-    int count = 0;
-    ArrayList<String> arrlst = new ArrayList<>();
-    TextView textViewemail, textViewfirstname;
+    int count=0;
+    ArrayList<String> arrlst=new ArrayList<>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.nav_activity_main6);
+        setContentView(R.layout.activity_image_uploadsenior);
+
 
 
         buttonChoose = (Button) findViewById(R.id.buttonChoose);
@@ -109,49 +99,15 @@ public class imageUploadsenior extends AppCompatActivity {
         editTextemailaddress = (EditText) findViewById(R.id.emailaddress);
         editTextprice = (EditText) findViewById(R.id.price);
         editTextage = (EditText) findViewById(R.id.age);
-        drawerLayout = findViewById(R.id.drawer_layout);
-        mtoggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.Open, R.string.Close);
-        drawerLayout.addDrawerListener(mtoggle);
-        mtoggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.nav_home) {
-                    Toast.makeText(imageUploadsenior.this, "home Page:", Toast.LENGTH_SHORT).show();
-                    a1();
-                }
-                if (item.getItemId() == R.id.Admin) {
-                    Toast.makeText(imageUploadsenior.this, "Admin Login page:", Toast.LENGTH_SHORT).show();
-                    a2();
-                }
-                if (item.getItemId() == R.id.security) {
-                    Toast.makeText(imageUploadsenior.this, "Privacy & security Page:", Toast.LENGTH_SHORT).show();
-                    a3();
-                }
-                if(item.getItemId()==R.id.rating)
-                {
-                    Toast.makeText(imageUploadsenior.this,"Rate this app:",Toast.LENGTH_SHORT).show();
-                    k7();
-                }
-                if(item.getItemId()==R.id.share)
-                {
-                    Toast.makeText(imageUploadsenior.this,"Share the link of app by:",Toast.LENGTH_SHORT).show();
-                    k8();
-                }
-                DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-                drawerLayout.closeDrawer(GravityCompat.START);
-                return true;
-            }
-        });
+
 
 
         mDatabase = FirebaseFirestore.getInstance();
 //        firebaseStorage = FirebaseStorage.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference("seniorfulltime");
 
-
+        parttimeDatabase=FirebaseFirestore.getInstance();
+        parttimestoragereference=FirebaseStorage.getInstance().getReference("seniorparttime");
 
 //        final CollectionReference dbupload = mDatabase.collection("upload");
 
@@ -167,16 +123,6 @@ public class imageUploadsenior extends AppCompatActivity {
 
             }
         });
-
-
-        textViewemail = (TextView) findViewById(R.id.emailtextview);
-        textViewfirstname = (TextView) findViewById(R.id.firstnametextview);
-
-        String firstname = getIntent().getStringExtra("firstname");
-        String email = getIntent().getStringExtra("email");
-
-        editTextName.setText(firstname);
-        editTextemailaddress.setText(email);
 
 
         spinnerjobtype = findViewById(R.id.JobType);
@@ -212,6 +158,8 @@ public class imageUploadsenior extends AppCompatActivity {
 
             }
         });
+
+
 
 
         spinnergender = findViewById(R.id.gender);
@@ -286,6 +234,9 @@ public class imageUploadsenior extends AppCompatActivity {
         });
 
 
+
+
+
         RecyclerView = (RecyclerView) findViewById(R.id.recyclerlistview);
 
         //RecyclerView layout manager
@@ -300,8 +251,12 @@ public class imageUploadsenior extends AppCompatActivity {
 
         //RecyclerView adapater
         ProductFilterRecyclerViewAdapter recyclerViewAdapter = new
-                ProductFilterRecyclerViewAdapter(getSchedules(), this);
+                ProductFilterRecyclerViewAdapter(getSchedules(),this);
         RecyclerView.setAdapter(recyclerViewAdapter);
+
+
+
+
 
 
         buttonChoose.setOnClickListener(new View.OnClickListener() {
@@ -335,6 +290,10 @@ public class imageUploadsenior extends AppCompatActivity {
 
                     if (spinnerjobtype.getSelectedItem().toString().equals("Full Time")) {
 
+                        if (filePath != null) {
+                            //displaying progress dialog while image is uploading
+
+                            progressDialog.show();
 
                             final StorageReference sRef = storageReference.child(editTextName.getText().toString().trim() + "." + getFileExtension(filePath));
 
@@ -405,24 +364,32 @@ public class imageUploadsenior extends AppCompatActivity {
                                             spinnerjobtype.getSelectedItem().toString(),
                                             downloadUri,
                                             spinnergender.getSelectedItem().toString(),
-                                            arrlst, editTextprovience.getText().toString(), editTextcity.getText().toString(),
-                                            editTextemailaddress.getText().toString(), editTextprice.getText().toString(), editTextage.getText().toString());
+                                            arrlst,editTextprovience.getText().toString(),editTextcity.getText().toString(),
+                                            editTextemailaddress.getText().toString(),editTextprice.getText().toString(),editTextage.getText().toString());
 
                                     CollectionReference dbupload = mDatabase.collection("seniorfulltime");
                                     dbupload.add(uploadSenior).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                         @Override
                                         public void onSuccess(DocumentReference documentReference) {
                                             Toast.makeText(imageUploadsenior.this, "Success", Toast.LENGTH_SHORT).show();
+                                            progressDialog.dismiss();
+
                                         }
+                                    });
 
 
                                 }
                             });
                         }
 
-                    } else if (spinnerjobtype.getSelectedItem().toString().equals("Part Time")) {
+                    }
+                    else if (spinnerjobtype.getSelectedItem().toString().equals("Part Time")) {
 
 
+                        if (filePath != null) {
+                            //displaying progress dialog while image is uploading
+
+                            progressDialog.show();
 
                             final StorageReference sRef = parttimestoragereference.child(editTextName.getText().toString().trim() + "." + getFileExtension(filePath));
 
@@ -494,15 +461,17 @@ public class imageUploadsenior extends AppCompatActivity {
                                             downloadUri,
                                             spinnergender.getSelectedItem().toString(),
 
-                                            arrlst, editTextprovience.getText().toString(), editTextcity.getText().toString(),
-                                            editTextemailaddress.getText().toString(), editTextprice.getText().toString(), editTextage.getText().toString());
+                                            arrlst,editTextprovience.getText().toString(),editTextcity.getText().toString(),
+                                            editTextemailaddress.getText().toString(),editTextprice.getText().toString(),editTextage.getText().toString());
 
                                     CollectionReference dbupload = mDatabase.collection("seniorparttime");
                                     dbupload.add(uploadSeniorPartTimepojo).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                         @Override
                                         public void onSuccess(DocumentReference documentReference) {
                                             Toast.makeText(imageUploadsenior.this, "Success", Toast.LENGTH_SHORT).show();
+                                            progressDialog.dismiss();
                                         }
+                                    });
 
 
                                 }
@@ -510,8 +479,9 @@ public class imageUploadsenior extends AppCompatActivity {
                         }
 
                     }
-                } else {
-                    Toast.makeText(imageUploadsenior.this, "Please enter all the Credentials", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Toast.makeText(imageUploadsenior.this,"Please enter all the Credentials",Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -520,18 +490,21 @@ public class imageUploadsenior extends AppCompatActivity {
         });
 
 
+
     }
 
 
-    private List<FilterModel> getSchedules() {
+
+
+    private List<FilterModel> getSchedules(){
         List<FilterModel> modelList = new ArrayList<FilterModel>();
-        modelList.add(new FilterModel("Monday", false));
+        modelList.add(new FilterModel("Monday",  false));
         modelList.add(new FilterModel("Tuesday", false));
-        modelList.add(new FilterModel("Wednesday", false));
-        modelList.add(new FilterModel("Thursday", false));
-        modelList.add(new FilterModel("Friday", false));
-        modelList.add(new FilterModel("Saturday", false));
-        modelList.add(new FilterModel("Sunday", false));
+        modelList.add(new FilterModel("Wednesday",  false));
+        modelList.add(new FilterModel("Thursday",  false));
+        modelList.add(new FilterModel("Friday",  false));
+        modelList.add(new FilterModel("Saturday",  false));
+        modelList.add(new FilterModel("Sunday",  false));
 
 
         return modelList;
@@ -566,6 +539,8 @@ public class imageUploadsenior extends AppCompatActivity {
             }
         }
     }
+
+
 
 
     public class ProductFilterRecyclerViewAdapter extends
@@ -664,7 +639,8 @@ public class imageUploadsenior extends AppCompatActivity {
 //                                    Toast.LENGTH_SHORT).show();
 //                        }
                             }
-                        } else if (spinnerjobtype.getSelectedItem().toString().equals("Part Time")) {
+                        }
+                        else  if (spinnerjobtype.getSelectedItem().toString().equals("Part Time")) {
 
 
                             if (count <= 2) {
@@ -715,72 +691,4 @@ public class imageUploadsenior extends AppCompatActivity {
         }
     }
 
-    public void a2() {
-        Intent intent = new Intent(imageUploadsenior.this, Adminactivity.class);
-        startActivity(intent);
-    }
-
-    public void a3() {
-        Intent intent = new Intent(imageUploadsenior.this, privaceandsecurity.class);
-        startActivity(intent);
-    }
-
-    public void a1() {
-        Intent intent = new Intent(imageUploadsenior.this, MainActivity.class);
-        startActivity(intent);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.Hellp:
-                Toast.makeText(this,"Help",Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.back:
-                Toast.makeText(this,"Back to previous Page:",Toast.LENGTH_SHORT).show();
-                a4();
-                break;
-            case R.id.LogOut:
-                Toast.makeText(this,"Log Out:",Toast.LENGTH_SHORT).show();
-                a7();
-                break;
-        }
-        {
-            if (mtoggle.onOptionsItemSelected(item)) {
-                return true;
-            }
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void a4() {
-        Intent intent = new Intent(imageUploadsenior.this, naniesUpload.class);
-        startActivity(intent);
-    }
-    public void a7()
-    {
-        finish();
-    }
-    public void k7()
-    {
-        Intent intent=new Intent(imageUploadsenior.this,Ratetheapp.class);
-        startActivity(intent);
-    }
-    public void k8()
-    {
-        Intent intent=new Intent(Intent.ACTION_SEND);
-        intent.setType("Text");
-        String sharebody="Your Body Here";
-        String sharesub="Your subject here";
-        intent.putExtra(Intent.EXTRA_SUBJECT,sharesub);
-        intent.putExtra(Intent.EXTRA_TEXT,sharebody);
-        startActivity(Intent.createChooser(intent,"Share using"));
-    }
 }
