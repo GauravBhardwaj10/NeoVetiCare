@@ -127,15 +127,14 @@ public class RetreivedataActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         ArrayList<Upload> CTList = new ArrayList<>();
                         for (DocumentSnapshot document : task.getResult()) {
-                            try {
+
                                 Upload caretaker = document.toObject(Upload.class);
                                 CTList.add(caretaker);
-                            }catch (Exception ee){
-                                ee.toString();
+
                                 listnanies =new ListofnanniesAdapter(getApplicationContext(),CTList);
 
                                 recyclerview.setAdapter(listnanies);
-                            }
+
                         }
 
 

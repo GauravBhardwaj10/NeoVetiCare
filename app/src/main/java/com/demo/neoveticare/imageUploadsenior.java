@@ -104,10 +104,10 @@ public class imageUploadsenior extends AppCompatActivity {
 
         mDatabase = FirebaseFirestore.getInstance();
 //        firebaseStorage = FirebaseStorage.getInstance();
-        storageReference = FirebaseStorage.getInstance().getReference("uploadsenior");
+        storageReference = FirebaseStorage.getInstance().getReference("seniorfulltime");
 
         parttimeDatabase=FirebaseFirestore.getInstance();
-        parttimestoragereference=FirebaseStorage.getInstance().getReference("uploadseniorparttime");
+        parttimestoragereference=FirebaseStorage.getInstance().getReference("seniorparttime");
 
 //        final CollectionReference dbupload = mDatabase.collection("upload");
 
@@ -270,7 +270,8 @@ public class imageUploadsenior extends AppCompatActivity {
         buttonUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                final ProgressDialog progressDialog = new ProgressDialog(imageUploadsenior.this);
+                progressDialog.setTitle("Uploading");
 
                 if ((!TextUtils.isEmpty(editTextName.getText().toString())) && (!TextUtils.isEmpty(editTextphone.getText().toString()))
                         && (!TextUtils.isEmpty(editTextaddress.getText().toString())) &&
@@ -291,8 +292,7 @@ public class imageUploadsenior extends AppCompatActivity {
 
                     if (filePath != null) {
                         //displaying progress dialog while image is uploading
-                        final ProgressDialog progressDialog = new ProgressDialog(imageUploadsenior.this);
-                        progressDialog.setTitle("Uploading");
+
                         progressDialog.show();
 
                         final StorageReference sRef = storageReference.child(editTextName.getText().toString().trim() + "." + getFileExtension(filePath));
@@ -372,6 +372,8 @@ public class imageUploadsenior extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(DocumentReference documentReference) {
                                         Toast.makeText(imageUploadsenior.this, "Success", Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
+
                                     }
                                 });
 
@@ -386,8 +388,7 @@ public class imageUploadsenior extends AppCompatActivity {
 
                     if (filePath != null) {
                         //displaying progress dialog while image is uploading
-                        final ProgressDialog progressDialog = new ProgressDialog(imageUploadsenior.this);
-                        progressDialog.setTitle("Uploading");
+
                         progressDialog.show();
 
                         final StorageReference sRef = parttimestoragereference.child(editTextName.getText().toString().trim() + "." + getFileExtension(filePath));
@@ -468,6 +469,7 @@ public class imageUploadsenior extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(DocumentReference documentReference) {
                                         Toast.makeText(imageUploadsenior.this, "Success", Toast.LENGTH_SHORT).show();
+                              progressDialog.dismiss();
                                     }
                                 });
 

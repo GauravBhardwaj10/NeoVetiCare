@@ -34,12 +34,12 @@ public class splash extends AppCompatActivity {
                     @Override
                     public void run() {
                         finish();
-                        Intent i = new Intent(splash.this, MainActivity.class);
+                        Intent i = new Intent(splash.this, RetreivedataActivity.class);
                         startActivity(i);
 
                     }
                 };
-                mHandler.postDelayed(mRunnable, 2000);
+                mHandler.postDelayed(mRunnable, 1000);
             }
 
             @Override
