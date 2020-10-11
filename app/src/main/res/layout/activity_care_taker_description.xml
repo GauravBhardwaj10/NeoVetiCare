@@ -27,12 +27,34 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Care Taker Age"
+        android:id="@+id/ctage"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:textColorHint="@color/black"
+        android:layout_below="@id/ctname">
+
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:hint="Care Taker Gender"
         android:textSize="20dp"
         android:layout_marginTop="10dp"
         android:textColorHint="@color/black"
         android:id="@+id/ctgender"
-        android:layout_below="@id/ctname">
+        android:layout_below="@id/ctage">
+
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Care Taker Timings"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:textColorHint="@color/black"
+        android:id="@+id/ctimings"
+        android:layout_below="@id/ctgender">
 
     </TextView>
     <TextView
@@ -43,7 +65,7 @@
         android:layout_marginTop="10dp"
         android:textColorHint="@color/black"
         android:id="@+id/ctcity"
-        android:layout_below="@id/ctgender">
+        android:layout_below="@id/ctimings">
     </TextView>
     <TextView
         android:layout_width="wrap_content"
@@ -53,7 +75,7 @@
         android:layout_marginTop="10dp"
         android:textSize="20dp"
         android:textColorHint="@color/black"
-        android:layout_below="@id/ctgender"
+        android:layout_below="@id/ctimings"
         android:layout_toRightOf="@id/ctcity">
     </TextView>
 

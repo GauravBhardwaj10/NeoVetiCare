@@ -11,7 +11,6 @@ public class Upload {
     public String writaboutyourself;
     public String experience;
     public String timings;
-
     public  String gender;
     public  String jobtype;
     public String url;
