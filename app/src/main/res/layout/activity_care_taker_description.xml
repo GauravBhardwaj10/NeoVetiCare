@@ -4,18 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF1F1"
     tools:context=".CareTakerDescription">
 
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:id="@id/ctimage"
-        android:layout_centerHorizontal="true"/>
+        android:layout_width="193dp"
+        android:layout_height="149dp"
+        android:layout_centerHorizontal="true" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Care Taker Name"
         android:id="@id/ctname"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:textColorHint="@color/black"
         android:layout_below="@id/ctimage">
 
     </TextView>
@@ -23,6 +29,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Care Taker Gender"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:textColorHint="@color/black"
         android:id="@+id/ctgender"
         android:layout_below="@id/ctname">
 
@@ -31,6 +40,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Care Taker City"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:textColorHint="@color/black"
         android:id="@+id/ctcity"
         android:layout_below="@id/ctgender">
     </TextView>
@@ -39,6 +51,9 @@
         android:layout_height="wrap_content"
         android:hint="Care Taker Province"
         android:id="@+id/ctprovince"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        android:textColorHint="@color/black"
         android:layout_below="@id/ctgender"
         android:layout_toRightOf="@id/ctcity">
     </TextView>
@@ -47,6 +62,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Care Taker Description"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:textColorHint="@color/black"
         android:id="@id/ctDesc"
         android:layout_below="@id/ctprovince">
     </TextView>
@@ -54,7 +72,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Currency"
+        android:textSize="20dp"
+        android:textColorHint="@color/black"
         android:id="@+id/currency"
+        android:layout_marginTop="10dp"
         android:layout_below="@id/ctDesc">
     </TextView>
 
@@ -70,12 +91,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Experience"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:textColorHint="@color/black"
         android:id="@id/experience"
         android:layout_below="@id/currency" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Availability"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:textColorHint="@color/black"
         android:id="@+id/ctavailibility"
         android:layout_below="@id/experience">
     </TextView>
@@ -90,6 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/availabledays"
         android:id="@+id/hirecaretaker"
+        android:layout_marginTop="10dp"
         android:text="Hire"/>
 
 </RelativeLayout>

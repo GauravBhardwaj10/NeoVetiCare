@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".naniesUpload"
+    android:background="@drawable/bg2"
     android:orientation="vertical">
 
 
@@ -18,7 +19,7 @@
 
         android:id="@+id/childern"
         android:text="for children"
-        android:background="@drawable/editwithboder"
+        android:background="@drawable/custom_button"
         />
 
 
@@ -33,7 +34,7 @@
         android:layout_marginTop="20dp"
         android:id="@+id/seniorCitizen"
         android:text="For Senior citizen"
-        android:background="@drawable/editwithboder"
+        android:background="@drawable/custom_button"
         />
 
     <LinearLayout

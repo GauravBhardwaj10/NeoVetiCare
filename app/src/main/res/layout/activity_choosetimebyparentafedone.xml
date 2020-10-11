@@ -1,135 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg2"
     tools:context=".choosetimebyparentafedone">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="322dp"
+        android:layout_width="match_parent"
         android:layout_height="33dp"
-        android:text="Fill details"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.359"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        android:layout_marginTop="150dp"
+        android:fontFamily="@font/coustard"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:text="Fill details" />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
         android:layout_width="363dp"
         android:layout_height="44dp"
-        android:ems="10"
+        android:layout_marginTop="20dp"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:layout_below="@+id/textView"
         android:inputType="textPersonName"
-        android:text="Do you need nanny for ?"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.159"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.107" />
+        android:text="Do you need nanny for ?" />
 
     <RadioButton
         android:id="@+id/radioButton"
         android:layout_width="144dp"
         android:layout_height="30dp"
-        android:text="Part time"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.071"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.171" />
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:layout_below="@+id/editTextTextPersonName"
+        android:text="Part time" />
 
     <RadioButton
         android:id="@+id/radioButton2"
         android:layout_width="143dp"
         android:layout_height="37dp"
-        android:text="Full time"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.062"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.235" />
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:layout_below="@+id/radioButton"
+        android:text="Full time" />
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
         android:layout_width="375dp"
         android:layout_height="44dp"
         android:ems="10"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:layout_below="@+id/radioButton2"
         android:inputType="textPersonName"
-        android:text="Do you need nanny for ?"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.039"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.325" />
+        android:text="Do you need nanny for ?" />
 
     <RadioButton
         android:id="@+id/radioButton3"
         android:layout_width="145dp"
         android:layout_height="38dp"
-        android:text="Day"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.056"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.396" />
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:layout_below="@+id/editTextTextPersonName2"
+        android:text="Day" />
 
     <RadioButton
         android:id="@+id/radioButton4"
         android:layout_width="138dp"
         android:layout_height="34dp"
-        android:text="Night"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.062"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.463" />
+        android:layout_below="@id/radioButton3"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+
+
+        android:text="Night" />
 
     <EditText
         android:id="@+id/editTextTextPersonName3"
         android:layout_width="379dp"
         android:layout_height="43dp"
         android:ems="10"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:layout_below="@id/radioButton4"
         android:inputType="textPersonName"
-        android:text="Do you need nanny for?"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.039"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.536" />
+        android:text="Do you need nanny for?" />
 
     <RadioButton
         android:id="@+id/radioButton5"
         android:layout_width="133dp"
         android:layout_height="32dp"
-        android:text="Weekdays"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.097"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.608" />
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:layout_below="@id/editTextTextPersonName3"
+        android:text="Weekdays" />
 
     <RadioButton
         android:id="@+id/radioButton6"
         android:layout_width="131dp"
         android:layout_height="32dp"
-        android:text="Weekend"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.105"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.668" />
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:layout_below="@id/radioButton5"
+        android:text="Weekend" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

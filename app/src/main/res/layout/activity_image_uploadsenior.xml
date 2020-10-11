@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/activity_main"
+    android:background="#FFF1F1"
     tools:context=".imageUploadsenior"
     android:orientation="vertical">
 
@@ -44,9 +45,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:background="@drawable/editwithboder"
+                    android:background="@drawable/custom_button"
                     android:layout_weight="1"
-                    android:text="Choose" />
+                    android:text="Choose Image" />
 
                 <EditText
                     android:id="@+id/name"
@@ -55,18 +56,22 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="15dp"
-                    android:background="@drawable/editwithboder"
-                    android:hint="   Enter name for Image" />
+                    android:background="@drawable/edit"
+                    android:textColorHint="@color/black"
+                    android:padding="10dp"
+                    android:hint="   Enter name " />
 
                 <EditText
                     android:id="@+id/emailaddress"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:padding="10dp"
                     android:layout_marginLeft="5dp"
                     android:inputType="textEmailAddress"
                     android:layout_marginRight="5dp"
+                    android:textColorHint="@color/black"
                     android:layout_marginTop="5dp"
-                    android:background="@drawable/editwithboder"
+                    android:background="@drawable/edit"
                     android:hint="   Enter your email" />
 
                 <EditText
@@ -76,8 +81,10 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:inputType="number"
+                    android:padding="10dp"
+                    android:textColorHint="@color/black"
                     android:layout_marginTop="5dp"
-                    android:background="@drawable/editwithboder"
+                    android:background="@drawable/edit"
                     android:hint="   Enter phone" />
                 <EditText
                     android:id="@+id/address"
@@ -86,7 +93,9 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
-                    android:background="@drawable/editwithboder"
+                    android:padding="10dp"
+                    android:textColorHint="@color/black"
+                    android:background="@drawable/edit"
                     android:hint="   Enter your Address" />
                 <EditText
                     android:id="@+id/price"
@@ -94,9 +103,11 @@
                     android:layout_height="40dp"
                     android:layout_marginLeft="5dp"
                     android:inputType="number"
+                    android:padding="10dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
-                    android:background="@drawable/editwithboder"
+                    android:textColorHint="@color/black"
+                    android:background="@drawable/edit"
                     android:hint="   Enter your Price" />
 
 
@@ -122,6 +133,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" Select Job Type"
+                        android:textColor="@color/black"
+
                         android:textSize="15dp"/>
 
                     <Spinner
@@ -157,8 +170,10 @@
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:inputType="number"
+                        android:textColorHint="@color/black"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/editwithboder"
+                        android:padding="10dp"
+                        android:background="@drawable/edit"
                         android:hint="   enter your age" />
 
                     <EditText
@@ -168,7 +183,9 @@
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/editwithboder"
+                        android:padding="10dp"
+                        android:textColorHint="@color/black"
+                        android:background="@drawable/edit"
                         android:hint="   Provience" />
 
 
@@ -179,7 +196,9 @@
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/editwithboder"
+                        android:textColorHint="@color/black"
+                        android:padding="10dp"
+                        android:background="@drawable/edit"
                         android:hint="City" />
 
 
@@ -216,10 +235,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginLeft="5dp"
+                        android:padding="10dp"
+                        android:textColorHint="@color/black"
                         android:inputType="textMultiLine"
                         android:layout_marginRight="5dp"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/editwithboder"
+                        android:background="@drawable/edit"
                         android:hint="   write about yourself" />
 
 
@@ -227,11 +248,13 @@
                         android:id="@+id/experience"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
+                        android:textColorHint="@color/black"
+                        android:padding="10dp"
                         android:layout_marginLeft="5dp"
                         android:inputType="textMultiLine"
                         android:layout_marginRight="5dp"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/editwithboder"
+                        android:background="@drawable/edit"
                         android:hint="   how many year of experience do you have ?" />
 
 

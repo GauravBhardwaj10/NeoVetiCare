@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF1F1"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -34,7 +35,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/ctimage"
-                    android:fontFamily="sans-serif"
+                    android:fontFamily="@font/coustard"
+                    android:textColor="@color/black"
                     android:paddingLeft="15sp"
                     android:paddingTop="7sp"
                     android:text="Caretaker Name"
@@ -48,6 +50,9 @@
                     android:layout_marginLeft="1dp"
                     android:layout_toRightOf="@id/ctimage"
                     android:paddingLeft="10sp"
+                    android:textSize="20dp"
+                    android:fontFamily="sans-serif"
+                    android:textColor="@color/black"
                     android:paddingTop="37sp"
                     android:text="Description" />
 
@@ -62,8 +67,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentBottom="true"
-                    android:backgroundTint="#000000"
-                    android:background="#55930D"
+
+                    android:background="@drawable/custom_button"
                     android:text="Details"
                     android:textColor="#F6F3F3" />
 
@@ -81,10 +86,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
+
                     android:text="CAD "
                     android:layout_marginLeft="5dp"
                     android:layout_toRightOf="@id/ctrate"
-
                     android:paddingBottom="10dp"
                     />
 

@@ -66,17 +66,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void btnbabysitter(View view) {
+    public void btnsitter(View view) {
         Intent intent=new Intent(MainActivity.this,cartakerLoginActivity.class);
         startActivity(intent);
     }
 
-    public void btncaretaker(View view) {
-        Intent intent=new Intent(MainActivity.this,cartakerLoginActivity.class);
-        startActivity(intent);
-    }
 
-    public void btnboth(View view) {
+
+    public void btnlookingfor(View view) {
         Intent intent=new Intent(MainActivity.this,LoginActivity.class);
         startActivity(intent);
     }
@@ -129,4 +126,6 @@ public void Ho(){
         intent.putExtra(Intent.EXTRA_TEXT,sharebody);
         startActivity(Intent.createChooser(intent,"Share using"));
     }
+
+
 }
