@@ -95,7 +95,7 @@
         android:layout_below="@+id/btnlogin"
         android:layout_alignParentEnd="true"
         android:layout_margin="22dp"
-        android:text="Forgot Password"
+        android:text="Forgot Password?"
         android:textColor="@color/black"
         android:textSize="20sp" />
 

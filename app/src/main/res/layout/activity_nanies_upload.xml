@@ -8,14 +8,23 @@
     android:background="@drawable/bg2"
     android:orientation="vertical">
 
-
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_marginTop="150dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:textColor="@color/black"
+        android:textAlignment="center"
+        android:fontFamily="@font/bree_serif"
+        android:textSize="30dp"
+        android:text="Choose Your type" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="50dp"
 
         android:id="@+id/childern"
         android:text="for children"
@@ -23,19 +32,15 @@
         />
 
 
-
-
-
     <Button
+        android:id="@+id/seniorCitizen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
-        android:id="@+id/seniorCitizen"
-        android:text="For Senior citizen"
+        android:layout_marginRight="10dp"
         android:background="@drawable/custom_button"
-        />
+        android:text="For Senior citizen" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -73,7 +78,6 @@
             android:textSize="16sp" />
 
     </LinearLayout>
-
 
 
 
