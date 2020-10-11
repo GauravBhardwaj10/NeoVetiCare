@@ -11,6 +11,9 @@ import android.os.Handler;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
@@ -26,7 +29,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,6 +41,7 @@ import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -54,12 +61,16 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 234;
 
     //view objects
+    private NavigationView navigationView;
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle mtoggle;
+
     private Button buttonChoose;
     private Button buttonUpload;
-    private EditText editTextName,editTextphone,editTextaddress,editTextprovience,editTextaboutyourself,editTextexperience,editTextcity,editTextemailaddress,editTextprice,editTextage;
+    private EditText editTextName, editTextphone, editTextaddress, editTextprovience, editTextaboutyourself, editTextexperience, editTextcity, editTextemailaddress, editTextprice, editTextage;
     private TextView textViewShow;
-    private ImageView imageView,getImageView;
-    Spinner spinnerjobtype,spinnergender,spinnerttimings;
+    private ImageView imageView, getImageView;
+    Spinner spinnerjobtype, spinnergender, spinnerttimings;
 
     //uri to store file
     private Uri filePath;
@@ -67,22 +78,27 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
     String downloadUri;
 
     //firebase objects
-    private StorageReference storageReference,parttimestoragereference;
+    private StorageReference storageReference, parttimestoragereference;
     //    private FirebaseStorage firebaseStorage;
-    private FirebaseFirestore mDatabase,parttimeDatabase;
+    private FirebaseFirestore mDatabase, parttimeDatabase;
 
     private RecyclerView RecyclerView;
-    int count=0;
-    ArrayList<String> arrlst=new ArrayList<>();
+    int count = 0;
+    ArrayList<String> arrlst = new ArrayList<>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image_firebase_upload_demo);
+        setContentView(R.layout.nav_activity_main5);
 
 
-
+        drawerLayout = findViewById(R.id.drawer_layout);
+        mtoggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.Open, R.string.Close);
+        drawerLayout.addDrawerListener(mtoggle);
+        mtoggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        navigationView = findViewById(R.id.nav_view);
         buttonChoose = (Button) findViewById(R.id.buttonChoose);
         buttonUpload = (Button) findViewById(R.id.buttonUpload);
         imageView = (ImageView) findViewById(R.id.imageView);
@@ -100,13 +116,41 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
         editTextprice = (EditText) findViewById(R.id.price);
         editTextage = (EditText) findViewById(R.id.age);
 
-
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.nav_home) {
+                    Toast.makeText(ImageFirebaseUploadDemo.this, "home Page:", Toast.LENGTH_SHORT).show();
+                    m1();
+                }
+                if (item.getItemId() == R.id.Admin) {
+                    Toast.makeText(ImageFirebaseUploadDemo.this, "Admin Login page:", Toast.LENGTH_SHORT).show();
+                    m2();
+                }
+                if (item.getItemId() == R.id.security) {
+                    Toast.makeText(ImageFirebaseUploadDemo.this, "Privacy & security Page:", Toast.LENGTH_SHORT).show();
+                    m3();
+                }
+                if(item.getItemId()==R.id.rating)
+                {
+                    Toast.makeText(ImageFirebaseUploadDemo.this,"Rate this app:",Toast.LENGTH_SHORT).show();
+                    k5();
+                }
+                if(item.getItemId()==R.id.share)
+                {
+                    Toast.makeText(ImageFirebaseUploadDemo.this,"Share the link of app by:",Toast.LENGTH_SHORT).show();
+                    k6();
+                }
+                DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
         mDatabase = FirebaseFirestore.getInstance();
 //        firebaseStorage = FirebaseStorage.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference("uploadchildernfulltime");
 
-        parttimeDatabase=FirebaseFirestore.getInstance();
-        parttimestoragereference=FirebaseStorage.getInstance().getReference("childernparttime");
+
 
 //        final CollectionReference dbupload = mDatabase.collection("upload");
 
@@ -122,6 +166,13 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
 
             }
         });
+
+
+        String firstname = getIntent().getStringExtra("firstname");
+        String email = getIntent().getStringExtra("email");
+
+        editTextName.setText(firstname);
+        editTextemailaddress.setText(email);
 
 
         spinnerjobtype = findViewById(R.id.JobType);
@@ -157,8 +208,6 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
 
             }
         });
-
-
 
 
         spinnergender = findViewById(R.id.gender);
@@ -233,9 +282,6 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
         });
 
 
-
-
-
         RecyclerView = (RecyclerView) findViewById(R.id.recyclerlistview);
 
         //RecyclerView layout manager
@@ -250,12 +296,8 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
 
         //RecyclerView adapater
         ProductFilterRecyclerViewAdapter recyclerViewAdapter = new
-                ProductFilterRecyclerViewAdapter(getSchedules(),this);
+                ProductFilterRecyclerViewAdapter(getSchedules(), this);
         RecyclerView.setAdapter(recyclerViewAdapter);
-
-
-
-
 
 
         buttonChoose.setOnClickListener(new View.OnClickListener() {
@@ -266,34 +308,11 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
         });
 
 
+        buttonUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-            buttonUpload.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    final ProgressDialog progressDialog = new ProgressDialog(ImageFirebaseUploadDemo.this);
-                    progressDialog.setTitle("Uploading");
-                    if ((!TextUtils.isEmpty(editTextName.getText().toString())) && (!TextUtils.isEmpty(editTextphone.getText().toString()))
-                            && (!TextUtils.isEmpty(editTextaddress.getText().toString())) &&
-                            (!TextUtils.isEmpty(editTextaboutyourself.getText().toString())) &&
-                            (!TextUtils.isEmpty(editTextexperience.getText().toString())) &&
-                            (!TextUtils.isEmpty(editTextprovience.getText().toString()))
-                            && (!TextUtils.isEmpty(editTextcity.getText().toString()))
-                            && (!TextUtils.isEmpty(editTextemailaddress.getText().toString()))
-                            && (!TextUtils.isEmpty(editTextprice.getText().toString()))
-                            && (!TextUtils.isEmpty(editTextage.getText().toString()))
-                            && ((spinnerjobtype.getSelectedItem().toString().equals("Full Time")) || (spinnerjobtype.getSelectedItem().toString().equals("Part Time")))
-                            && ((spinnerttimings.getSelectedItem().toString().equals("Morning")) || (spinnerttimings.getSelectedItem().toString().equals("Evening")) || (spinnerttimings.getSelectedItem().toString().equals("Night")))
-                            && ((spinnergender.getSelectedItem().toString().equals("Male")) || (spinnergender.getSelectedItem().toString().equals("Female")) || (spinnergender.getSelectedItem().toString().equals("other")))
-                    ) {
 
-                        if (spinnerjobtype.getSelectedItem().toString().equals("Full Time")) {
-
-                            if (filePath != null) {
-                                //displaying progress dialog while image is uploading
-
-                                progressDialog.show();
-
-                                final StorageReference sRef = storageReference.child(editTextName.getText().toString().trim() + "." + getFileExtension(filePath));
 
 //                    sRef.putFile(filePath)
 //                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -331,63 +350,58 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
 //                        }
 //                    });
 
-                                sRef.putFile(filePath).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                                    @Override
-                                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                                        if (!task.isSuccessful()) {
-                                            throw task.getException();
-                                        }
-                                        return sRef.getDownloadUrl();
+                            sRef.putFile(filePath).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                                @Override
+                                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                                    if (!task.isSuccessful()) {
+                                        throw task.getException();
                                     }
-                                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Uri> task) {
-                                        if (task.isSuccessful()) {
-                                            Handler handler = new Handler();
-                                            handler.postDelayed(new Runnable() {
-                                                @Override
-                                                public void run() {
-                                                    progressDialog.setProgress(0);
-                                                }
-                                            }, 500);
-                                        }
-                                        downloadUri = task.getResult().toString();
-                                        Upload upload = new Upload(editTextName.getText().toString().trim(),
-                                                editTextphone.getText().toString().trim(),
-                                                editTextaddress.getText().toString().trim(),
-                                                editTextaboutyourself.getText().toString(),
-                                                editTextexperience.getText().toString()
-                                                        .trim(),
-                                                spinnerttimings.getSelectedItem().toString(),
-                                                spinnerjobtype.getSelectedItem().toString(),
-                                                downloadUri,
-                                                spinnergender.getSelectedItem().toString(),
-                                                arrlst, editTextprovience.getText().toString(), editTextcity.getText().toString(),
-                                                editTextemailaddress.getText().toString(), editTextprice.getText().toString(), editTextage.getText().toString());
-
-                                        CollectionReference dbupload = mDatabase.collection("uploadchildernfulltime");
-                                        dbupload.add(upload).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    return sRef.getDownloadUrl();
+                                }
+                            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                    if (task.isSuccessful()) {
+                                        Handler handler = new Handler();
+                                        handler.postDelayed(new Runnable() {
                                             @Override
-                                            public void onSuccess(DocumentReference documentReference) {
-                                                Toast.makeText(ImageFirebaseUploadDemo.this, "Success", Toast.LENGTH_SHORT).show();
-                                     progressDialog.dismiss();
+
                                             }
-                                        });
-
-
+                                        }, 500);
                                     }
-                                });
-                            }
+                                    downloadUri = task.getResult().toString();
+                                    Upload upload = new Upload(editTextName.getText().toString().trim(),
+                                            editTextphone.getText().toString().trim(),
+                                            editTextaddress.getText().toString().trim(),
+                                            editTextaboutyourself.getText().toString(),
+                                            editTextexperience.getText().toString()
+                                                    .trim(),
+                                            spinnerttimings.getSelectedItem().toString(),
+                                            spinnerjobtype.getSelectedItem().toString(),
+                                            downloadUri,
+                                            spinnergender.getSelectedItem().toString(),
+                                            arrlst, editTextprovience.getText().toString(), editTextcity.getText().toString(),
+                                            editTextemailaddress.getText().toString(), editTextprice.getText().toString(), editTextage.getText().toString());
 
-                        } else if (spinnerjobtype.getSelectedItem().toString().equals("Part Time")) {
+                                    CollectionReference dbupload = mDatabase.collection("uploadchildernfulltime");
+                                    dbupload.add(upload).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                        @Override
+                                        public void onSuccess(DocumentReference documentReference) {
+                                            Toast.makeText(ImageFirebaseUploadDemo.this, "Success", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
 
 
-                            if (filePath != null) {
-                                //displaying progress dialog while image is uploading
+                                }
+                            });
+                        }
 
-                                progressDialog.show();
+                    } else if (spinnerjobtype.getSelectedItem().toString().equals("Part Time")) {
 
-                                final StorageReference sRef = parttimestoragereference.child(editTextName.getText().toString().trim() + "." + getFileExtension(filePath));
+
+
+
+                            final StorageReference sRef = parttimestoragereference.child(editTextName.getText().toString().trim() + "." + getFileExtension(filePath));
 
 //                    sRef.putFile(filePath)
 //                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -425,79 +439,74 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
 //                        }
 //                    });
 
-                                sRef.putFile(filePath).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                                    @Override
-                                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                                        if (!task.isSuccessful()) {
-                                            throw task.getException();
-                                        }
-                                        return sRef.getDownloadUrl();
+                            sRef.putFile(filePath).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                                @Override
+                                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                                    if (!task.isSuccessful()) {
+                                        throw task.getException();
                                     }
-                                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Uri> task) {
-                                        if (task.isSuccessful()) {
-                                            Handler handler = new Handler();
-                                            handler.postDelayed(new Runnable() {
-                                                @Override
-                                                public void run() {
-                                                    progressDialog.setProgress(0);
-                                                }
-                                            }, 500);
-                                        }
-                                        downloadUri = task.getResult().toString();
-                                        UploadChildrenPartTimepojo uploadChildrenPartTimepojo = new UploadChildrenPartTimepojo(editTextName.getText().toString().trim(),
-                                                editTextphone.getText().toString().trim(),
-                                                editTextaddress.getText().toString().trim(),
-                                                editTextaboutyourself.getText().toString(),
-                                                editTextexperience.getText().toString()
-                                                        .trim(),
-                                                spinnerttimings.getSelectedItem().toString(),
-                                                spinnerjobtype.getSelectedItem().toString(),
-                                                downloadUri,
-                                                spinnergender.getSelectedItem().toString(),
-
-                                                arrlst, editTextprovience.getText().toString(), editTextcity.getText().toString(),
-                                                editTextemailaddress.getText().toString(), editTextprice.getText().toString(), editTextage.getText().toString());
-
-                                        CollectionReference dbupload = mDatabase.collection("childernparttime");
-                                        dbupload.add(uploadChildrenPartTimepojo).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    return sRef.getDownloadUrl();
+                                }
+                            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                    if (task.isSuccessful()) {
+                                        Handler handler = new Handler();
+                                        handler.postDelayed(new Runnable() {
                                             @Override
-                                            public void onSuccess(DocumentReference documentReference) {
-                                                Toast.makeText(ImageFirebaseUploadDemo.this, "Success", Toast.LENGTH_SHORT).show();
-                                      progressDialog.dismiss();
+
                                             }
-                                        });
-
-
+                                        }, 500);
                                     }
-                                });
-                            }
+                                    downloadUri = task.getResult().toString();
+                                    UploadChildrenPartTimepojo uploadChildrenPartTimepojo = new UploadChildrenPartTimepojo(editTextName.getText().toString().trim(),
+                                            editTextphone.getText().toString().trim(),
+                                            editTextaddress.getText().toString().trim(),
+                                            editTextaboutyourself.getText().toString(),
+                                            editTextexperience.getText().toString()
+                                                    .trim(),
+                                            spinnerttimings.getSelectedItem().toString(),
+                                            spinnerjobtype.getSelectedItem().toString(),
+                                            downloadUri,
+                                            spinnergender.getSelectedItem().toString(),
 
+                                            arrlst, editTextprovience.getText().toString(), editTextcity.getText().toString(),
+                                            editTextemailaddress.getText().toString(), editTextprice.getText().toString(), editTextage.getText().toString());
+
+                                    CollectionReference dbupload = mDatabase.collection("childernparttime");
+                                    dbupload.add(uploadChildrenPartTimepojo).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                        @Override
+                                        public void onSuccess(DocumentReference documentReference) {
+                                            Toast.makeText(ImageFirebaseUploadDemo.this, "Success", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+
+
+                                }
+                            });
                         }
 
                     }
-                    else{
-                        Toast.makeText(ImageFirebaseUploadDemo.this,"Please enter all the Credentials",Toast.LENGTH_LONG).show();
-                    }
 
+                } else {
+                    Toast.makeText(ImageFirebaseUploadDemo.this, "Please enter all the Credentials", Toast.LENGTH_LONG).show();
                 }
-            });
 
-
+            }
+        });
 
 
     }
 
-    private List<FilterModel> getSchedules(){
+
         List<FilterModel> modelList = new ArrayList<FilterModel>();
-        modelList.add(new FilterModel("Monday",  false));
+        modelList.add(new FilterModel("Monday", false));
         modelList.add(new FilterModel("Tuesday", false));
-        modelList.add(new FilterModel("Wednesday",  false));
-        modelList.add(new FilterModel("Thursday",  false));
-        modelList.add(new FilterModel("Friday",  false));
-        modelList.add(new FilterModel("Saturday",  false));
-        modelList.add(new FilterModel("Sunday",  false));
+        modelList.add(new FilterModel("Wednesday", false));
+        modelList.add(new FilterModel("Thursday", false));
+        modelList.add(new FilterModel("Friday", false));
+        modelList.add(new FilterModel("Saturday", false));
+        modelList.add(new FilterModel("Sunday", false));
 
 
         return modelList;
@@ -532,8 +541,6 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
             }
         }
     }
-
-
 
 
     public class ProductFilterRecyclerViewAdapter extends
@@ -632,8 +639,7 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
 //                                    Toast.LENGTH_SHORT).show();
 //                        }
                             }
-                        }
-                        else  if (spinnerjobtype.getSelectedItem().toString().equals("Part Time")) {
+                        } else if (spinnerjobtype.getSelectedItem().toString().equals("Part Time")) {
 
 
                             if (count <= 2) {
@@ -684,5 +690,73 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
         }
     }
 
+    public void m2() {
+        Intent intent = new Intent(ImageFirebaseUploadDemo.this, Adminactivity.class);
+        startActivity(intent);
+    }
 
+    public void m3() {
+        Intent intent = new Intent(ImageFirebaseUploadDemo.this, privaceandsecurity.class);
+        startActivity(intent);
+    }
+
+    public void m1() {
+        Intent intent = new Intent(ImageFirebaseUploadDemo.this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.Hellp:
+                Toast.makeText(this, "Help", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.back:
+                Toast.makeText(this, "Back to previous Page:", Toast.LENGTH_SHORT).show();
+                homeee();
+                break;
+            case R.id.LogOut:
+                Toast.makeText(this, "Log Out:", Toast.LENGTH_SHORT).show();
+                a5();
+                break;
+        }
+        {
+            if (mtoggle.onOptionsItemSelected(item)) {
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    public void homeee() {
+        Intent intent = new Intent(ImageFirebaseUploadDemo.this, naniesUpload.class);
+        startActivity(intent);
+    }
+
+    public void a5() {
+        finish();
+    }
+    public void k5()
+    {
+        Intent intent=new Intent(ImageFirebaseUploadDemo.this,Ratetheapp.class);
+        startActivity(intent);
+    }
+    public void k6()
+    {
+        Intent intent=new Intent(Intent.ACTION_SEND);
+        intent.setType("Text");
+        String sharebody="Your Body Here";
+        String sharesub="Your subject here";
+        intent.putExtra(Intent.EXTRA_SUBJECT,sharesub);
+        intent.putExtra(Intent.EXTRA_TEXT,sharebody);
+        startActivity(Intent.createChooser(intent,"Share using"));
+    }
 }

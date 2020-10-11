@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -18,12 +19,17 @@ import com.google.android.material.navigation.NavigationView;
 public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle mtoggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_activity_main2);
         drawerLayout=findViewById(R.id.drawer_layout);
+        mtoggle=new ActionBarDrawerToggle(this,drawerLayout, R.string.Open,R.string.Close);
+        drawerLayout.addDrawerListener(mtoggle);
+        mtoggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         navigationView=findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -41,6 +47,16 @@ public class MainActivity extends AppCompatActivity {
                 {
                     Toast.makeText(MainActivity.this,"Privacy & security Page:",Toast.LENGTH_SHORT).show();
                     KK();
+                }
+                if(item.getItemId()==R.id.rating)
+                {
+                    Toast.makeText(MainActivity.this,"Rate this app:",Toast.LENGTH_SHORT).show();
+                    k3();
+                }
+                if(item.getItemId()==R.id.share)
+                {
+                    Toast.makeText(MainActivity.this,"Share the link of app by:",Toast.LENGTH_SHORT).show();
+                    k4();
                 }
                 DrawerLayout drawerLayout=findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
@@ -79,7 +95,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.Help:
                 Toast.makeText(this,"Help",Toast.LENGTH_SHORT).show();
                 break;
-        }
+        }{if(mtoggle.onOptionsItemSelected(item)){
+            return true;
+        }}
         return super.onOptionsItemSelected(item);
     }
     public void jj()
@@ -96,4 +114,19 @@ public void Ho(){
     Intent intent=new Intent(MainActivity.this,MainActivity.class);
     startActivity(intent);
 }
+    public void k3()
+    {
+        Intent intent=new Intent(MainActivity.this,Ratetheapp.class);
+        startActivity(intent);
+    }
+    public void k4()
+    {
+        Intent intent=new Intent(Intent.ACTION_SEND);
+        intent.setType("Text");
+        String sharebody="Your Body Here";
+        String sharesub="Your subject here";
+        intent.putExtra(Intent.EXTRA_SUBJECT,sharesub);
+        intent.putExtra(Intent.EXTRA_TEXT,sharebody);
+        startActivity(Intent.createChooser(intent,"Share using"));
+    }
 }

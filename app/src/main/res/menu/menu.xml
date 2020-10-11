@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <item
-    android:id="@+id/Help3"
+    android:id="@+id/Hellp"
 android:title="Help"
     app:showAsAction="never" />
     <item
