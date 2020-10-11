@@ -45,6 +45,7 @@
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".ImageFirebaseUploadDemo" />
         <activity android:name=".ForgotActivity" />
+        <activity android:name=".Select_Category" />
     </application>
 
 </manifest>
