@@ -8,10 +8,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#4DFFFFFF"
-        android:layout_marginTop="85dp"
+        android:layout_marginTop="45dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginBottom="25dp">
+        android:layout_marginBottom="15dp">
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="135dp"
@@ -88,7 +88,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                      android:textColor="@color/black"
-                    android:text="CAD "
+                    android:text="CAD/hr "
                     android:layout_marginLeft="5dp"
                     android:layout_toRightOf="@id/ctrate"
                     android:paddingBottom="10dp"

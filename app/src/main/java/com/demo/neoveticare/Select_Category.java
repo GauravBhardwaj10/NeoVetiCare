@@ -55,8 +55,16 @@ public class Select_Category extends AppCompatActivity {
                 radioSTimerButton = (RadioButton) findViewById(checkedId);
                 if (radioSTimerButton.getText().toString().equals("Full Time")) {
                     Value = "seniorfulltime";
+                    Intent in = new Intent(Select_Category.this, RetreivedataActivity.class);
+                    in.putExtra("category", Value);
+                    startActivity(in);
+
                 } else {
                     Value = "seniorparttime";
+                    Intent in = new Intent(Select_Category.this, RetreivedataActivity.class);
+                    in.putExtra("category", Value);
+                    startActivity(in);
+
                 }
             }
         });
@@ -81,8 +89,17 @@ public class Select_Category extends AppCompatActivity {
 
                 if(radioCTimerButton.getText().toString().equals("Full Time")){
                     Value="uploadchildernfulltime";
+
+                    Intent in = new Intent(Select_Category.this, RetreivedataActivity.class);
+                    in.putExtra("category", Value);
+                    startActivity(in);
+
                 }else{
                     Value="childernparttime";
+                    Intent in = new Intent(Select_Category.this, RetreivedataActivity.class);
+                    in.putExtra("category", Value);
+                    startActivity(in);
+
                 }
             }
         });
@@ -109,15 +126,10 @@ public class Select_Category extends AppCompatActivity {
         });
 
 
-        Button nxt=(Button) findViewById(R.id.nxtpage);
-        nxt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent in=new Intent(Select_Category.this,RetreivedataActivity.class);
-                in.putExtra("category",Value);
-                startActivity(in);
+
+
+
+
             }
-        });
-    }
 
 }

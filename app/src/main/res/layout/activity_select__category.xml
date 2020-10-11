@@ -13,6 +13,7 @@
         android:id="@+id/backimg"
         android:src="@drawable/ic_baseline_arrow_back_24"/>
     <Button
+
         android:id="@+id/senior"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,7 +22,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="250dp"
         android:background="@drawable/custom_button"
-        android:text="Seniors">
+        android:text="Looking Nanny for a Baby">
 
     </Button>
 
@@ -35,7 +36,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="45dp"
         android:background="@drawable/custom_button"
-        android:text="Kids">
+        android:text="Looking Caretaker for a aged Person">
 
     </Button>
     <RadioGroup
@@ -97,16 +98,6 @@
     </RadioGroup>
 
 
-    <Button
-        android:id="@+id/nxtpage"
-        android:layout_width="228dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/kids"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="72dp"
-        android:background="@drawable/custom_button"
-        android:text="GO" />
 
 
 </RelativeLayout>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".displayProfile"
+    android:background="#FFF1F1"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/coustard"
+                android:text="Your Profile Is Ready"
+
+                android:layout_marginLeft="90dp"
+                android:textSize="25dp"
+                android:textColor="@color/black"/>
+
+
+
+            <ImageView
+                android:id="@+id/profilepicture"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/firstname"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/coustard"
+                android:layout_marginTop="10dp"
+                android:text="Name" />
+            <TextView
+                android:id="@+id/phonedisplayprofile"
+                android:layout_width="match_parent"
+
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/coustard"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+
+                android:text="Phone" />
+            <TextView
+                android:id="@+id/addressdisplayprofile"
+                android:layout_width="match_parent"
+
+                android:layout_height="30dp"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/coustard"
+                android:layout_marginTop="10dp"
+
+                android:text="address" />
+            <TextView
+                android:id="@+id/writeaboutyourselfisplayprofile"
+                android:layout_width="match_parent"
+
+                android:layout_height="30dp"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/coustard"
+                android:layout_marginTop="10dp"
+
+                android:text="About yourself" />
+            <TextView
+                android:id="@+id/experiencedisplayprofile"
+                android:layout_width="match_parent"
+
+                android:layout_height="30dp"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/coustard"
+                android:layout_marginTop="10dp"
+
+                android:text="Experience" />
+
+            <TextView
+                android:id="@+id/timingsdisplayprofile"
+                android:layout_width="match_parent"
+
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/coustard"
+                android:text="Timings"
+                android:textColor="@color/black"
+
+                android:textSize="20dp" />
+            <TextView
+                android:id="@+id/jobTypedisplayprofile"
+                android:layout_width="match_parent"
+
+                android:layout_height="30dp"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/coustard"
+                android:layout_marginTop="10dp"
+
+                android:text="Job Type" />
+
+
+            <TextView
+                android:id="@+id/genderdisplayprofile"
+                android:layout_width="match_parent"
+
+                android:layout_height="30dp"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/coustard"
+                android:layout_marginTop="10dp"
+
+                android:text="Gender" />
+
+            <TextView
+                android:id="@+id/proviencedisplayprofile"
+                android:layout_width="match_parent"
+
+
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/coustard"
+                android:text="Province"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+            <TextView
+                android:id="@+id/citydisplayprofile"
+                android:layout_width="match_parent"
+
+                android:layout_height="30dp"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/coustard"
+                android:layout_marginTop="10dp"
+
+                android:text="City" />
+
+            <TextView
+                android:id="@+id/emailaddressdisplayprofile"
+                android:layout_width="match_parent"
+
+
+                android:layout_height="30dp"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/coustard"
+                android:layout_marginTop="10dp"
+                android:text="Email" />
+            <TextView
+                android:id="@+id/pricedisplayprofile"
+                android:layout_width="match_parent"
+
+                android:layout_height="30dp"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/coustard"
+                android:layout_marginTop="10dp"
+                android:text="Hourly price" />
+
+            <TextView
+                android:id="@+id/agedisplayprofile"
+                android:layout_width="match_parent"
+
+                android:layout_height="30dp"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/coustard"
+                android:layout_marginTop="10dp"
+                android:text="Age" />
+
+            <Button
+                android:id="@+id/returnbutton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Check Bookings"
+                android:background="@drawable/custom_button"/>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="270dp"
+                android:id="@+id/recyclerlistview"/>
+
+
+
+
+
+
+
+
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
