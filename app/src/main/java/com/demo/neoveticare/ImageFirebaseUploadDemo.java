@@ -148,10 +148,9 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
         });
         mDatabase = FirebaseFirestore.getInstance();
 //        firebaseStorage = FirebaseStorage.getInstance();
-        storageReference = FirebaseStorage.getInstance().getReference("uploadChildern");
+        storageReference = FirebaseStorage.getInstance().getReference("uploadchildernfulltime");
 
-        parttimeDatabase = FirebaseFirestore.getInstance();
-        parttimestoragereference = FirebaseStorage.getInstance().getReference("uploadChildrenparttime");
+
 
 //        final CollectionReference dbupload = mDatabase.collection("upload");
 
@@ -313,29 +312,7 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if ((!TextUtils.isEmpty(editTextName.getText().toString())) && (!TextUtils.isEmpty(editTextphone.getText().toString()))
-                        && (!TextUtils.isEmpty(editTextaddress.getText().toString())) &&
-                        (!TextUtils.isEmpty(editTextaboutyourself.getText().toString())) &&
-                        (!TextUtils.isEmpty(editTextexperience.getText().toString())) &&
-                        (!TextUtils.isEmpty(editTextprovience.getText().toString()))
-                        && (!TextUtils.isEmpty(editTextcity.getText().toString()))
-                        && (!TextUtils.isEmpty(editTextemailaddress.getText().toString()))
-                        && (!TextUtils.isEmpty(editTextprice.getText().toString()))
-                        && (!TextUtils.isEmpty(editTextage.getText().toString()))
-                        && ((spinnerjobtype.getSelectedItem().toString().equals("Full Time")) || (spinnerjobtype.getSelectedItem().toString().equals("Part Time")))
-                        && ((spinnerttimings.getSelectedItem().toString().equals("Morning")) || (spinnerttimings.getSelectedItem().toString().equals("Evening")) || (spinnerttimings.getSelectedItem().toString().equals("Night")))
-                        && ((spinnergender.getSelectedItem().toString().equals("Male")) || (spinnergender.getSelectedItem().toString().equals("Female")) || (spinnergender.getSelectedItem().toString().equals("other")))
-                ) {
 
-                    if (spinnerjobtype.getSelectedItem().toString().equals("Full Time")) {
-
-                        if (filePath != null) {
-                            //displaying progress dialog while image is uploading
-                            final ProgressDialog progressDialog = new ProgressDialog(ImageFirebaseUploadDemo.this);
-                            progressDialog.setTitle("Uploading");
-                            progressDialog.show();
-
-                            final StorageReference sRef = storageReference.child(editTextName.getText().toString().trim() + "." + getFileExtension(filePath));
 
 //                    sRef.putFile(filePath)
 //                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -388,8 +365,7 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
                                         Handler handler = new Handler();
                                         handler.postDelayed(new Runnable() {
                                             @Override
-                                            public void run() {
-                                                progressDialog.setProgress(0);
+
                                             }
                                         }, 500);
                                     }
@@ -423,11 +399,7 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
                     } else if (spinnerjobtype.getSelectedItem().toString().equals("Part Time")) {
 
 
-                        if (filePath != null) {
-                            //displaying progress dialog while image is uploading
-                            final ProgressDialog progressDialog = new ProgressDialog(ImageFirebaseUploadDemo.this);
-                            progressDialog.setTitle("Uploading");
-                            progressDialog.show();
+
 
                             final StorageReference sRef = parttimestoragereference.child(editTextName.getText().toString().trim() + "." + getFileExtension(filePath));
 
@@ -482,8 +454,7 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
                                         Handler handler = new Handler();
                                         handler.postDelayed(new Runnable() {
                                             @Override
-                                            public void run() {
-                                                progressDialog.setProgress(0);
+
                                             }
                                         }, 500);
                                     }
@@ -528,7 +499,6 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
     }
 
 
-    private List<FilterModel> getSchedules() {
         List<FilterModel> modelList = new ArrayList<FilterModel>();
         modelList.add(new FilterModel("Monday", false));
         modelList.add(new FilterModel("Tuesday", false));

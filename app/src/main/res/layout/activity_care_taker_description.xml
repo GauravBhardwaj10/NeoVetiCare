@@ -8,6 +8,8 @@
     tools:context=".CareTakerDescription">
 
     <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@id/ctimage"
         android:layout_width="193dp"
         android:layout_height="149dp"
@@ -81,10 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Care Taker Rate/ hour"
-        android:id="@id/ctrate"
-        android:textSize="20dp"
-        android:layout_marginTop="10dp"
-        android:textColorHint="@color/black"
+        android:id="@+id/ctrate_single"
         android:layout_below="@id/ctDesc"
         android:layout_toRightOf="@id/currency">
     </TextView>
@@ -107,11 +106,16 @@
         android:id="@+id/ctavailibility"
         android:layout_below="@id/experience">
     </TextView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/availabledays"
+        android:layout_marginTop="3dp"
+        android:layout_below="@+id/ctavailibility"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/custom_button"
-        android:layout_below="@id/ctavailibility"
+        android:layout_below="@id/availabledays"
         android:id="@+id/hirecaretaker"
         android:layout_marginTop="10dp"
         android:text="Hire"/>

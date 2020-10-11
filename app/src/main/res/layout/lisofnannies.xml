@@ -70,18 +70,7 @@
 
                     android:background="@drawable/custom_button"
                     android:text="Details"
-                    android:textColor="@color/black" />
-                <TextView
-                    android:id="@+id/currency"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:textColor="@color/black"
-                    android:fontFamily="sans-serif"
-                    android:text="CAD"
-                    android:layout_marginLeft="110dp"
-                    android:paddingBottom="10dp"
-                    />
+                    android:textColor="#F6F3F3" />
 
                 <TextView
                     android:id="@+id/ctrate"
@@ -89,11 +78,21 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:text="Price"
-                    android:textColor="@color/black"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@id/currency"
+                    android:layout_marginLeft="110dp"
                     android:paddingBottom="10dp"
                     />
+                <TextView
+                    android:id="@+id/currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+
+                    android:text="CAD "
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/ctrate"
+                    android:paddingBottom="10dp"
+                    />
+
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
