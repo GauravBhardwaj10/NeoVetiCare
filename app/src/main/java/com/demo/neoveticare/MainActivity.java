@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         {
             case R.id.Help:
                 Toast.makeText(this,"Help",Toast.LENGTH_SHORT).show();
+                h();
                 break;
         }{if(mtoggle.onOptionsItemSelected(item)){
             return true;
@@ -125,6 +126,11 @@ public void Ho(){
         intent.putExtra(Intent.EXTRA_SUBJECT,sharesub);
         intent.putExtra(Intent.EXTRA_TEXT,sharebody);
         startActivity(Intent.createChooser(intent,"Share using"));
+    }
+    public void h()
+    {
+        Intent intent=new Intent(MainActivity.this,Help.class);
+        startActivity(intent);
     }
 
 
