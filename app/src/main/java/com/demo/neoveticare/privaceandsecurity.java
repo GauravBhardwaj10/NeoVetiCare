@@ -13,12 +13,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.github.barteksc.pdfviewer.PDFView;
 import com.google.android.material.navigation.NavigationView;
 
 public class privaceandsecurity extends AppCompatActivity {
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle mtoggle;
+    PDFView pdfView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,8 @@ public class privaceandsecurity extends AppCompatActivity {
         drawerLayout=findViewById(R.id.drawer_layout);
         mtoggle=new ActionBarDrawerToggle(this,drawerLayout, R.string.Open,R.string.Close);
         drawerLayout.addDrawerListener(mtoggle);
+        pdfView=findViewById(R.id.pdfview);
+        pdfView.fromAsset("term.pdf").load();
         mtoggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         navigationView=findViewById(R.id.nav_view);

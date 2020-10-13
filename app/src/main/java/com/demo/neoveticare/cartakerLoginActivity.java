@@ -86,6 +86,11 @@ public class cartakerLoginActivity extends AppCompatActivity {
                     Toast.makeText(cartakerLoginActivity.this,"Share the link of app by:",Toast.LENGTH_SHORT).show();
                     k2();
                 }
+                if(item.getItemId()==R.id.About)
+                {
+                    Toast.makeText(cartakerLoginActivity.this,"About Us:",Toast.LENGTH_SHORT).show();
+                    k3();
+                }
                 DrawerLayout drawerLayout=findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
@@ -220,6 +225,7 @@ public class cartakerLoginActivity extends AppCompatActivity {
         {
             case R.id.Help1:
                 Toast.makeText(this,"Help",Toast.LENGTH_SHORT).show();
+                hj();
                 break;
             case R.id.back1:
                 Toast.makeText(this,"Back to previous Page:",Toast.LENGTH_SHORT).show();
@@ -259,6 +265,16 @@ public class cartakerLoginActivity extends AppCompatActivity {
         intent.putExtra(Intent.EXTRA_SUBJECT,sharesub);
         intent.putExtra(Intent.EXTRA_TEXT,sharebody);
         startActivity(Intent.createChooser(intent,"Share using"));
+    }
+    public void k3()
+    {
+        Intent intent=new Intent(cartakerLoginActivity.this,About_us.class);
+        startActivity(intent);
+    }
+    public void hj()
+    {
+        Intent intent=new Intent(cartakerLoginActivity.this,Help.class);
+        startActivity(intent);
     }
 
 }

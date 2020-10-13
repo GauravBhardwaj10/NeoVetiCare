@@ -69,6 +69,11 @@ public class Adminactivity extends AppCompatActivity {
                     Toast.makeText(Adminactivity.this,"Share the link of app by:",Toast.LENGTH_SHORT).show();
                     c10();
                 }
+                if(item.getItemId()==R.id.About)
+                {
+                    Toast.makeText(Adminactivity.this,"Share the link of app by:",Toast.LENGTH_SHORT).show();
+                    c11();
+                }
                 DrawerLayout drawerLayout=findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
@@ -113,6 +118,7 @@ public class Adminactivity extends AppCompatActivity {
         {
             case R.id.Help:
                 Toast.makeText(this,"Help",Toast.LENGTH_SHORT).show();
+                hi();
                 break;
         }{if(mtoggle.onOptionsItemSelected(item)){
             return true;
@@ -145,6 +151,11 @@ public class Adminactivity extends AppCompatActivity {
         Intent intent=new Intent(Adminactivity.this,Ratetheapp.class);
         startActivity(intent);
     }
+    public void c11()
+    {
+        Intent intent=new Intent(Adminactivity.this,About_us.class);
+        startActivity(intent);
+    }
     public void c10()
     {
         Intent intent=new Intent(Intent.ACTION_SEND);
@@ -154,5 +165,10 @@ public class Adminactivity extends AppCompatActivity {
         intent.putExtra(Intent.EXTRA_SUBJECT,sharesub);
         intent.putExtra(Intent.EXTRA_TEXT,sharebody);
         startActivity(Intent.createChooser(intent,"Share using"));
+    }
+    public void hi()
+    {
+        Intent intent=new Intent(Adminactivity.this,Help.class);
+        startActivity(intent);
     }
 }

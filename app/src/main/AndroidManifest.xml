@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".layout5"></activity>
+        <activity android:name=".Notification"></activity>
+        <activity android:name=".About_us" />
+        <activity android:name=".layout5" />
         <activity android:name=".Ratetheapp" />
         <activity android:name=".Help" />
         <activity android:name=".manageUserndlistofalladmin" />
@@ -25,7 +27,7 @@
         <activity android:name=".layout3" />
         <activity android:name=".layout2" />
         <activity android:name=".layout1" />
-        <activity android:name=".displayProfile"></activity>
+        <activity android:name=".displayProfile" />
         <activity android:name=".Welcome" />
         <activity
             android:name=".splash"
@@ -36,18 +38,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".imageUploadsenior"></activity>
-        <activity android:name=".CareTakerDescription"></activity>
+        <activity android:name=".imageUploadsenior" />
+        <activity android:name=".CareTakerDescription" />
         <activity android:name=".RetreivedataActivity" />
         <activity android:name=".cartakerRegistrationActivity" />
         <activity android:name=".cartakerLoginActivity" />
-        <activity android:name=".naniesUpload"></activity>
+        <activity android:name=".naniesUpload" />
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".ImageFirebaseUploadDemo" />
         <activity android:name=".ForgotActivity" />
-        <activity android:name=".Select_Category"></activity>
+        <activity android:name=".Select_Category" />
 
         <meta-data
             android:name="preloaded_fonts"
