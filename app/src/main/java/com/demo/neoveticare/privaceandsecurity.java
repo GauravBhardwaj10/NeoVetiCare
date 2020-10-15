@@ -81,6 +81,7 @@ public class privaceandsecurity extends AppCompatActivity {
         {
             case R.id.Help:
                 Toast.makeText(this,"Help",Toast.LENGTH_SHORT).show();
+                l();
                 break;
         }{if(mtoggle.onOptionsItemSelected(item)){
             return true;
@@ -115,5 +116,10 @@ public class privaceandsecurity extends AppCompatActivity {
         intent.putExtra(Intent.EXTRA_SUBJECT,sharesub);
         intent.putExtra(Intent.EXTRA_TEXT,sharebody);
         startActivity(Intent.createChooser(intent,"Share using"));
+    }
+    public void l()
+    {
+        Intent intent=new Intent(privaceandsecurity.this,Help.class);
+        startActivity(intent);
     }
 }

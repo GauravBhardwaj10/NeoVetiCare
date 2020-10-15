@@ -51,7 +51,6 @@
             android:text="1."
             android:textSize="25dp"
             android:textStyle="normal"
-
             />
     </LinearLayout>
 </ScrollView>
