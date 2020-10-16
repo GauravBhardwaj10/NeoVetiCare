@@ -119,6 +119,7 @@ navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigation
         {
             case R.id.Help:
                 Toast.makeText(this,"Help",Toast.LENGTH_SHORT).show();
+                ll();
                 break;
         }{if(mtoggle.onOptionsItemSelected(item)){
             return true;
@@ -157,6 +158,11 @@ navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigation
     public void e7()
     {
         Intent intent=new Intent(Ratetheapp.this,MainActivity.class);
+        startActivity(intent);
+    }
+    public void ll()
+    {
+        Intent intent=new Intent(Ratetheapp.this,Help.class);
         startActivity(intent);
     }
 }

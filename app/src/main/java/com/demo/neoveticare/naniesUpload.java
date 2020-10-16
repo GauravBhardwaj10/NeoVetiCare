@@ -77,6 +77,11 @@ navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigation
             Toast.makeText(naniesUpload.this,"Share the link of app by:",Toast.LENGTH_SHORT).show();
             k10();
         }
+        if(item.getItemId()==R.id.About)
+        {
+            Toast.makeText(naniesUpload.this,"About Us:",Toast.LENGTH_SHORT).show();
+            k11();
+        }
         DrawerLayout drawerLayout=findViewById(R.id.drawer_layout);
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
@@ -139,6 +144,7 @@ navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigation
         {
             case R.id.Hellp:
                 Toast.makeText(this,"Help",Toast.LENGTH_SHORT).show();
+                help();
                 break;
             case R.id.back:
                 Toast.makeText(this,"Back to previous Page:",Toast.LENGTH_SHORT).show();
@@ -175,5 +181,15 @@ navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigation
         intent.putExtra(Intent.EXTRA_SUBJECT,sharesub);
         intent.putExtra(Intent.EXTRA_TEXT,sharebody);
         startActivity(Intent.createChooser(intent,"Share using"));
+    }
+    public void k11()
+    {
+        Intent intent=new Intent(naniesUpload.this,About_us.class);
+        startActivity(intent);
+    }
+    public void help()
+    {
+        Intent intent=new Intent(naniesUpload.this,Help.class);
+        startActivity(intent);
     }
 }

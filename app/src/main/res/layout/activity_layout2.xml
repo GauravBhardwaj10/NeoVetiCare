@@ -1,19 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".layout2">
+    tools:context=".Help">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="358dp"
-        android:layout_height="653dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/senior" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:layout_width="426dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="60dp"
+            android:width="80dp"
+            android:height="80dp"
+            android:background="@drawable/custom_button"
+            android:text="How to Sign In/Sign Up as Parent/SeniorCitizen >>"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+        <ImageView
+            android:layout_width="426dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="60dp"
+            android:background="@drawable/custom_button"
+            android:width="80dp"
+            android:height="80dp"
+            android:src="@drawable/l3"/>
+
+        <Button
+            android:layout_width="426dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="60dp"
+            android:width="80dp"
+            android:height="80dp"
+            android:background="@drawable/custom_button"
+            android:text=" Read Steps: >>"
+            android:textSize="25dp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="426dp"
+            android:layout_height="502dp"
+            android:layout_marginRight="60dp"
+            android:width="80dp"
+            android:height="80dp"
+            android:background="@drawable/custom_button"
+            android:padding="20dp"
+            android:text="1."
+            android:textSize="25dp"
+            android:textStyle="bold"
+
+            />
+    </LinearLayout>
+</ScrollView>

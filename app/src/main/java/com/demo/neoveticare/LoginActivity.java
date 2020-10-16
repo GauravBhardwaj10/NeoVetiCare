@@ -80,6 +80,12 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this,"Share the link of app by:",Toast.LENGTH_SHORT).show();
                     k12();
                 }
+
+                if(item.getItemId()==R.id.About)
+                {
+                    Toast.makeText(LoginActivity.this,"About Us:",Toast.LENGTH_SHORT).show();
+                    k13();
+                }
                 DrawerLayout drawerLayout=findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
@@ -224,5 +230,10 @@ public class LoginActivity extends AppCompatActivity {
         intent.putExtra(Intent.EXTRA_SUBJECT,sharesub);
         intent.putExtra(Intent.EXTRA_TEXT,sharebody);
         startActivity(Intent.createChooser(intent,"Share using"));
+    }
+    public void k13()
+    {
+        Intent intent=new Intent(LoginActivity.this,About_us.class);
+        startActivity(intent);
     }
 }

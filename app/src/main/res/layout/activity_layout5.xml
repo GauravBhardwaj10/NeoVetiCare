@@ -17,7 +17,7 @@
             android:width="80dp"
             android:height="80dp"
             android:background="@drawable/custom_button"
-            android:text="How to Sign In/Sign Up as BabySitter/CareTaker >>"
+            android:text="How to Contact with BabySitter/careTaker >>"
             android:textSize="20dp"
             android:textStyle="bold"/>
         <ImageView
@@ -51,6 +51,7 @@
             android:text="1."
             android:textSize="25dp"
             android:textStyle="normal"
+
             />
     </LinearLayout>
 </ScrollView>
