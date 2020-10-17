@@ -108,7 +108,7 @@ public class Adminactivity extends AppCompatActivity {
     }
     public void done()
     {
-        Intent intent= new Intent(Adminactivity.this,manageUserndlistofalladmin.class);
+        Intent intent= new Intent(Adminactivity.this,Dialogboxofreport.class);
         startActivity(intent);
     }
 
