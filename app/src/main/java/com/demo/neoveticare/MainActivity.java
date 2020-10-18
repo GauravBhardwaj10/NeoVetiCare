@@ -1,6 +1,5 @@
 package com.demo.neoveticare;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,7 +10,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -56,9 +54,10 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Share the link of app by:", Toast.LENGTH_SHORT).show();
                     k4();
                 }
-                if (item.getItemId() == R.id.About) {
-                    Toast.makeText(MainActivity.this, "About Us:", Toast.LENGTH_SHORT).show();
-                    k5();
+
+                if (item.getItemId() == R.id.contact) {
+                    Intent contact = new Intent(MainActivity.this, ContactActivity.class);
+                    startActivity(contact);
                 }
                 DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
@@ -91,12 +90,6 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.Help:
                 Toast.makeText(this, "Help", Toast.LENGTH_SHORT).show();
-                h();
-                break;
-
-            case R.id.notification:
-                Toast.makeText(this, "Help", Toast.LENGTH_SHORT).show();
-                note();
                 break;
         }
         {
@@ -137,16 +130,5 @@ public class MainActivity extends AppCompatActivity {
         startActivity(Intent.createChooser(intent, "Share using"));
     }
 
-    public void h() {
-        Intent intent = new Intent(MainActivity.this, Help.class);
-        startActivity(intent);
-    }
 
-    public void k5() {
-        Intent intent = new Intent(MainActivity.this, About_us.class);
-        startActivity(intent);
-    }
-
-    public void note() {
-    }
 }
