@@ -11,18 +11,21 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.github.barteksc.pdfviewer.PDFView;
 import com.google.android.material.navigation.NavigationView;
 
 public class layout4 extends AppCompatActivity {
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle mtoggle;
-
+PDFView pdf4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_activity_layout4);
         drawerLayout = findViewById(R.id.drawer_layout);
+        pdf4=findViewById(R.id.pdfviewlayou4);
+        pdf4.fromAsset("About.pdf").load();
         mtoggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.Open, R.string.Close);
         drawerLayout.addDrawerListener(mtoggle);
         mtoggle.syncState();

@@ -15,6 +15,30 @@
       },
       "oauth_client": [
         {
+          "client_id": "167512150862-567rsui87b4kucqih7vffgdkk0p0rome.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.demo.neoveticare",
+            "certificate_hash": "17d49da4cdfe6f07c3cdf8838ff228cdb7c90858"
+          }
+        },
+        {
+          "client_id": "167512150862-ujmlh29sgkiu7qe7caciivrmlp1a93nf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.demo.neoveticare",
+            "certificate_hash": "185fb08ccc3975c7b4bdc2bf91fde782e3461fca"
+          }
+        },
+        {
+          "client_id": "167512150862-iabdoq4v2mruaggf86nbq7rvvs3igf41.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.demo.neoveticare",
+            "certificate_hash": "8b36427d535a405517206081aaac2bc19c63e056"
+          }
+        },
+        {
           "client_id": "167512150862-20a5hufrat53g9kldqoeg7kdq7qb4nn9.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
