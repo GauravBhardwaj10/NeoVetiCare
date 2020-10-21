@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle mtoggle;
-    String selectedGender = "Sexual Content:";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,10 +60,6 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "About Us:", Toast.LENGTH_SHORT).show();
                     k5();
                 }
-                if (item.getItemId() == R.id.report) {
-                    Toast.makeText(MainActivity.this, "Report this App:", Toast.LENGTH_SHORT).show();
-                    showonDialog();
-                }
                 DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
@@ -97,6 +92,11 @@ public class MainActivity extends AppCompatActivity {
             case R.id.Help:
                 Toast.makeText(this, "Help", Toast.LENGTH_SHORT).show();
                 h();
+                break;
+
+            case R.id.notification:
+                Toast.makeText(this, "Help", Toast.LENGTH_SHORT).show();
+                note();
                 break;
         }
         {
@@ -147,38 +147,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void showonDialog() {
-        final String[] genders={"Sexual Content","Violent or repulsive Content","Hateful or abusive Content","Harmful or dangerous Content:","Spam or misleading"};
-        AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle("Choose");
-        builder.setSingleChoiceItems(genders, 0, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int which) {
-                selectedGender=genders[which];
-                Toast.makeText(MainActivity.this,"you Choose:" +selectedGender,Toast.LENGTH_LONG).show();
-
-            }
-        });
-        builder.setPositiveButton("Report", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                go();
-                dialogInterface.dismiss();
-            }
-        });
-        builder.setNegativeButton("Exit", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-            }
-        });
-        builder.show();
+    public void note() {
     }
-
-public void go()
-        {
-        Toast.makeText(MainActivity.this,"Reporting Done" ,Toast.LENGTH_LONG).show();
-        }
-
-
-    }
+}

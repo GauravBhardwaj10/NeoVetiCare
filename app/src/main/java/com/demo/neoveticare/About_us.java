@@ -56,10 +56,10 @@ PDFView pdfView1;
                     Toast.makeText(About_us.this, "Share the link of app by:", Toast.LENGTH_SHORT).show();
                     k4();
                 }
-                if (item.getItemId() == R.id.About) {
+               /* if (item.getItemId() == R.id.About) {
                     Toast.makeText(About_us.this, "About Us:", Toast.LENGTH_SHORT).show();
                     k5();
-                }
+                }*/
                 DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
