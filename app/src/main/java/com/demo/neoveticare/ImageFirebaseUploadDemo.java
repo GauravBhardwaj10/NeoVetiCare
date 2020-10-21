@@ -400,8 +400,9 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
 
 
                                             String imageurl=downloadUri;
-                                            Intent intent = new Intent(ImageFirebaseUploadDemo.this, displayProfile.class);
-                                            intent.putExtra("firstname", firstname);
+                                            Intent intent = new Intent(ImageFirebaseUploadDemo.this, TabActivity.class);
+                                            intent.putExtra("table","uploadchildernfulltime");
+                                           /* intent.putExtra("firstname", firstname);
                                             intent.putExtra("url", downloadUri);
                                             intent.putExtra("phone", phone);
                                             intent.putExtra("address", address);
@@ -416,7 +417,7 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
                                             intent.putExtra("url", imageurl);
                                             intent.putExtra("price", price);
                                             intent.putExtra("age", age);
-                                            intent.putStringArrayListExtra("arraylist",arrlst);
+                                            intent.putStringArrayListExtra("arraylist",arrlst);*/
                                             startActivity(intent);
 
 
@@ -537,8 +538,9 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
 
 
                                             String imageurl=downloadUri;
-                                            Intent intent = new Intent(ImageFirebaseUploadDemo.this, displayProfile.class);
-                                            intent.putExtra("firstname", firstname);
+                                            Intent intent = new Intent(ImageFirebaseUploadDemo.this, TabActivity.class);
+                                            intent.putExtra("table","childernparttime");
+                                           /* intent.putExtra("firstname", firstname);
                                             intent.putExtra("url", downloadUri);
                                             intent.putExtra("phone", phone);
                                             intent.putExtra("address", address);
@@ -553,7 +555,7 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
                                             intent.putExtra("url", imageurl);
                                             intent.putExtra("price", price);
                                             intent.putExtra("age", age);
-                                            intent.putStringArrayListExtra("arraylist",arrlst);
+                                            intent.putStringArrayListExtra("arraylist",arrlst);*/
                                             startActivity(intent);
 
                                         }

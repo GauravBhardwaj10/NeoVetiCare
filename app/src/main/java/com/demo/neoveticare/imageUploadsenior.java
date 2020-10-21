@@ -391,8 +391,9 @@ public class imageUploadsenior extends AppCompatActivity {
 
 
                                             String imageurl=downloadUri;
-                                            Intent intent = new Intent(imageUploadsenior.this, displayProfile.class);
-                                            intent.putExtra("firstname", firstname);
+                                            Intent intent = new Intent(imageUploadsenior.this, TabActivity.class);
+                                            intent.putExtra("table","seniorfulltime");
+                                           /* intent.putExtra("firstname", firstname);
                                             intent.putExtra("url", downloadUri);
                                             intent.putExtra("phone", phone);
                                             intent.putExtra("address", address);
@@ -407,7 +408,7 @@ public class imageUploadsenior extends AppCompatActivity {
                                             intent.putExtra("url", imageurl);
                                             intent.putExtra("price", price);
                                             intent.putExtra("age", age);
-                                            intent.putStringArrayListExtra("arraylist",arrlst);
+                                            intent.putStringArrayListExtra("arraylist",arrlst);*/
                                             startActivity(intent);
 
                                         }
@@ -524,8 +525,9 @@ public class imageUploadsenior extends AppCompatActivity {
 
 
                                             String imageurl=downloadUri;
-                                            Intent intent = new Intent(imageUploadsenior.this, displayProfile.class);
-                                            intent.putExtra("firstname", firstname);
+                                            Intent intent = new Intent(imageUploadsenior.this, TabActivity.class);
+                                            intent.putExtra("table","seniorparttime");
+                                           /* intent.putExtra("firstname", firstname);
                                             intent.putExtra("url", downloadUri);
                                             intent.putExtra("phone", phone);
                                             intent.putExtra("address", address);
@@ -540,7 +542,7 @@ public class imageUploadsenior extends AppCompatActivity {
                                             intent.putExtra("url", imageurl);
                                             intent.putExtra("price", price);
                                             intent.putExtra("age", age);
-                                            intent.putStringArrayListExtra("arraylist",arrlst);
+                                            intent.putStringArrayListExtra("arraylist",arrlst);*/
                                             startActivity(intent);
 
                                         }
