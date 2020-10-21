@@ -52,6 +52,7 @@
         <activity android:name=".ForgotActivity" />
         <activity android:name=".Select_Category" />
         <activity android:name=".ContactActivity" />
+        <activity android:name=".TabActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
