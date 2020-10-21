@@ -78,7 +78,7 @@ PDFView pdfView1;
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.backk:
-                Toast.makeText(this, "Help", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Back to Previous Page:", Toast.LENGTH_SHORT).show();
                 h1();
                 break;
 
