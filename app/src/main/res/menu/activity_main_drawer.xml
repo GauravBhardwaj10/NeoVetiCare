@@ -30,5 +30,11 @@
             android:icon="@drawable/ic_baseline_info_24"
             android:title="About Us:" />
 
+        <item
+            android:id="@+id/report"
+            android:icon="@drawable/ic_baseline_outlined_flag_24"
+            android:title="Report" />
+
+
     </group>
 </menu>

@@ -1,4 +1,4 @@
-package com.pgalo.pgalo.activities;
+package com.demo.neoveticare;
 
 import android.Manifest;
 import android.content.Context;
@@ -44,11 +44,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.pgalo.pgalo.Const;
-import com.pgalo.pgalo.DelayAutoCompleteTextView;
-import com.pgalo.pgalo.GeoAutoCompleteAdapter;
-import com.pgalo.pgalo.GeoSearchResult;
-import com.pgalo.pgalo.R;
+
 
 import java.io.IOException;
 import java.util.List;
@@ -136,8 +132,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
 
         tvLocation = (TextView) findViewById(R.id.tvLocation);
-        sharedPreferences = getSharedPreferences(Const.SHAREDPREFERENCE, MODE_PRIVATE);
-        SelectedLocation = sharedPreferences.getString(Const.Address, "");
+
         tvLocation.setText(SelectedLocation);
         btnChangeLocation = (Button) findViewById(R.id.btnLocation);
         btnChangeLocation.setOnClickListener(new View.OnClickListener() {
@@ -407,14 +402,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
         try {
             List<Address> addresses = geocoder.getFromLocation(LATITUDE, LONGITUDE, 1);
+
             if (addresses != null) {
                 Address returnedAddress = addresses.get(0);
+
                 StringBuilder strReturnedAddress = new StringBuilder("");
 
                 for (int i = 0; i <= returnedAddress.getMaxAddressLineIndex(); i++) {
                     strReturnedAddress.append(returnedAddress.getAddressLine(i)).append("\n");
                 }
-                strAdd = strReturnedAddress.toString();
+                strAdd = returnedAddress.getLocality();
                 // Log.e("My Current loction address", strReturnedAddress.toString());
             } else {
                 // Log.e("My Current loction address", "No Address returned!");
@@ -430,8 +427,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     @Override
-    public void onBackPressed()
-    {
+    public void onBackPressed() {
         Intent intent = new Intent();
         intent.putExtra("address", tvLocation.getText().toString());
         intent.putExtra("latitude", String.valueOf(LATITUDE));

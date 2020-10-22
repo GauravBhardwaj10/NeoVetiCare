@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,14 +21,17 @@ import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ListofnanniesAdapter extends RecyclerView.Adapter<ListofnanniesAdapter.ViewHolder> {
+public class ListofnanniesAdapter extends RecyclerView.Adapter<ListofnanniesAdapter.ViewHolder> implements Filterable {
     private Context context;
     ArrayList<Upload> values;
+    private List<Upload> valuesListFull;
 
     public ListofnanniesAdapter(Context context,ArrayList<Upload> values) {
         this.context = context;
         this.values = values;
+        valuesListFull = new ArrayList<>(values);
     }
 
     @NonNull
@@ -108,4 +113,33 @@ public class ListofnanniesAdapter extends RecyclerView.Adapter<ListofnanniesAdap
             details=(Button) itemView.findViewById(R.id.bookct);
         }
     }
+    @Override
+    public Filter getFilter() {
+        return exampleFilter;
+    }
+    private Filter exampleFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Upload> filteredList = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0) {
+                filteredList.addAll(valuesListFull);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for (Upload item : valuesListFull) {
+                    if (item.getCity().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(item);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            values.clear();
+            values.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
 }

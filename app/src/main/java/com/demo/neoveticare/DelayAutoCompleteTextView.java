@@ -1,4 +1,4 @@
-package com.pgalo.pgalo;
+package com.demo.neoveticare;
 
 
 import android.content.Context;
@@ -11,9 +11,7 @@ import android.widget.ProgressBar;
 
 import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 
-/**
- * Created by Neeraj on 14-06-2017.
- */
+
 
 public class DelayAutoCompleteTextView extends AppCompatAutoCompleteTextView {
 

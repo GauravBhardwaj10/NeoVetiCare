@@ -9,7 +9,7 @@
         android:layout_alignParentTop="true"
         android:background="@color/colorPrimaryDark">
 
-        <com.pgalo.pgalo.DelayAutoCompleteTextView
+        <com.demo.neoveticare.DelayAutoCompleteTextView
             android:id="@+id/geo_autocomplete"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
@@ -19,7 +19,7 @@
             android:layout_marginRight="55dp"
             android:layout_marginBottom="4dp"
             android:background="#fff"
-            android:drawableStart="@drawable/ic_search_black_24dp"
+            android:drawableStart="@drawable/ic_baseline_search_24"
             android:dropDownWidth="fill_parent"
             android:hint="Search"
             android:imeOptions="flagNoExtractUi|actionSearch"
@@ -69,7 +69,7 @@
         android:layout_alignParentBottom="true"
 
         android:orientation="vertical"
-        android:padding="@dimen/margin5">
+        android:padding="5dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -87,8 +87,8 @@
             android:id="@+id/btnLocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin5"
-            android:background="@color/colorPrimaryDark"
+            android:layout_marginTop="5dp"
+            android:background="#FA71CD"
             android:text="Set Address"
             android:textAllCaps="false"
             android:textColor="#fff"

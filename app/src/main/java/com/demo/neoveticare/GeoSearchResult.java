@@ -1,4 +1,4 @@
-package com.pgalo.pgalo;
+package com.demo.neoveticare;
 
 import android.location.Address;
 
