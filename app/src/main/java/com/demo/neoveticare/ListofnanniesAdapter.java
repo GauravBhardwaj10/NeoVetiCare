@@ -88,6 +88,7 @@ public class ListofnanniesAdapter extends RecyclerView.Adapter<ListofnanniesAdap
             public void onClick(View view) {
                 Intent i = new Intent(context, MessageActivity.class);
                 i.putExtra("email", values.get(position).getEmailaddress());
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(i);
             }
         });

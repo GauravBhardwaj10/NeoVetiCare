@@ -24,75 +24,70 @@ public class naniesUpload extends AppCompatActivity {
     private ActionBarDrawerToggle mtoggle;
 
 
-    Button forchildren,forsenior;
-    TextView textViewemail,textViewfirstname;
+    Button forchildren, forsenior;
+    TextView textViewemail, textViewfirstname;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_activity_main4);
-        drawerLayout=findViewById(R.id.drawer_layout);
-        mtoggle=new ActionBarDrawerToggle(this,drawerLayout, R.string.Open,R.string.Close);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        mtoggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.Open, R.string.Close);
         drawerLayout.addDrawerListener(mtoggle);
         mtoggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        navigationView=findViewById(R.id.nav_view);
-        forchildren=findViewById(R.id.childern);
-        forsenior=findViewById(R.id.seniorCitizen);
-        textViewemail=(TextView)findViewById(R.id.emailtextview);
-        textViewfirstname=(TextView)findViewById(R.id.firstnametextview);
+        navigationView = findViewById(R.id.nav_view);
+        forchildren = findViewById(R.id.childern);
+        forsenior = findViewById(R.id.seniorCitizen);
+        textViewemail = (TextView) findViewById(R.id.emailtextview);
+        textViewfirstname = (TextView) findViewById(R.id.firstnametextview);
 
-        String firstname=getIntent().getStringExtra("firstname");
-        String email=getIntent().getStringExtra("email");
+        String firstname = getIntent().getStringExtra("firstname");
+        String email = getIntent().getStringExtra("email");
 
         textViewfirstname.setText(firstname);
         textViewemail.setText(email);
 
 
-navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId()==R.id.nav_home)
-        {
-            Toast.makeText(naniesUpload.this,"home Page:",Toast.LENGTH_SHORT).show();
-            o();
-        }
-        if(item.getItemId()==R.id.Admin){
-            Toast.makeText(naniesUpload.this,"Admin Login page:",Toast.LENGTH_SHORT).show();
-            j();
-        }
-        if(item.getItemId()==R.id.security)
-        {
-            Toast.makeText(naniesUpload.this,"Privacy & security Page:",Toast.LENGTH_SHORT).show();
-            K();
-        }
-        if(item.getItemId()==R.id.rating)
-        {
-            Toast.makeText(naniesUpload.this,"Rate this app:",Toast.LENGTH_SHORT).show();
-            k9();
-        }
-        if(item.getItemId()==R.id.share)
-        {
-            Toast.makeText(naniesUpload.this,"Share the link of app by:",Toast.LENGTH_SHORT).show();
-            k10();
-        }
-        if(item.getItemId()==R.id.About)
-        {
-            Toast.makeText(naniesUpload.this,"About Us:",Toast.LENGTH_SHORT).show();
-            k11();
-        }
-        DrawerLayout drawerLayout=findViewById(R.id.drawer_layout);
-        drawerLayout.closeDrawer(GravityCompat.START);
-        return true;
-    }
-});
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.nav_home) {
+                    Toast.makeText(naniesUpload.this, "home Page:", Toast.LENGTH_SHORT).show();
+                    o();
+                }
+                if (item.getItemId() == R.id.Admin) {
+                    Toast.makeText(naniesUpload.this, "Admin Login page:", Toast.LENGTH_SHORT).show();
+                    j();
+                }
+                if (item.getItemId() == R.id.security) {
+                    Toast.makeText(naniesUpload.this, "Privacy & security Page:", Toast.LENGTH_SHORT).show();
+                    K();
+                }
+                if (item.getItemId() == R.id.rating) {
+                    Toast.makeText(naniesUpload.this, "Rate this app:", Toast.LENGTH_SHORT).show();
+                    k9();
+                }
+                if (item.getItemId() == R.id.share) {
+                    Toast.makeText(naniesUpload.this, "Share the link of app by:", Toast.LENGTH_SHORT).show();
+                    k10();
+                }
+                if (item.getItemId() == R.id.About) {
+                    Toast.makeText(naniesUpload.this, "About Us:", Toast.LENGTH_SHORT).show();
+                    k11();
+                }
+                DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
         forchildren.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String firstnametextview=textViewfirstname.getText().toString().trim();
-                String emailtextview=textViewemail.getText().toString().trim();
+                String firstnametextview = textViewfirstname.getText().toString().trim();
+                String emailtextview = textViewemail.getText().toString().trim();
                 Intent intent = new Intent(naniesUpload.this, ImageFirebaseUploadDemo.class);
                 intent.putExtra("email", emailtextview);
                 intent.putExtra("firstname", firstnametextview);
@@ -104,8 +99,8 @@ navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigation
         forsenior.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String firstnametextview=textViewfirstname.getText().toString().trim();
-                String emailtextview=textViewemail.getText().toString().trim();
+                String firstnametextview = textViewfirstname.getText().toString().trim();
+                String emailtextview = textViewemail.getText().toString().trim();
                 Intent intent = new Intent(naniesUpload.this, imageUploadsenior.class);
                 intent.putExtra("email", emailtextview);
                 intent.putExtra("firstname", firstnametextview);
@@ -116,80 +111,84 @@ navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigation
 
 
     }
-    public void j()
-    {
-        Intent intent=new Intent(naniesUpload.this,Adminactivity.class);
+
+    public void j() {
+        Intent intent = new Intent(naniesUpload.this, Adminactivity.class);
         startActivity(intent);
     }
-    public void K()
-    {
-        Intent intent=new Intent(naniesUpload.this,privaceandsecurity.class);
+
+    public void K() {
+        Intent intent = new Intent(naniesUpload.this, privaceandsecurity.class);
         startActivity(intent);
     }
-    public void o(){
-        Intent intent=new Intent(naniesUpload.this,MainActivity.class);
+
+    public void o() {
+        Intent intent = new Intent(naniesUpload.this, MainActivity.class);
         startActivity(intent);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.menu,menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId())
-        {
+        switch (item.getItemId()) {
             case R.id.Hellp:
-                Toast.makeText(this,"Help",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Help", Toast.LENGTH_SHORT).show();
                 help();
                 break;
             case R.id.back:
-                Toast.makeText(this,"Back to previous Page:",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Back to previous Page:", Toast.LENGTH_SHORT).show();
                 homee();
                 break;
             case R.id.LogOut:
-                Toast.makeText(this,"Log Out:",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Log Out:", Toast.LENGTH_SHORT).show();
                 a5();
                 break;
         }
-        {if(mtoggle.onOptionsItemSelected(item)){
-            return true;
-        }}
+        {
+            if (mtoggle.onOptionsItemSelected(item)) {
+                return true;
+            }
+        }
         return super.onOptionsItemSelected(item);
     }
-    public void homee(){
-        Intent intent=new Intent(naniesUpload.this,cartakerLoginActivity.class);
+
+    public void homee() {
+        Intent intent = new Intent(naniesUpload.this, cartakerLoginActivity.class);
         startActivity(intent);
     }
-    public void a5(){
+
+    public void a5() {
         finish();
     }
-    public void k9()
-    {
-        Intent intent=new Intent(naniesUpload.this,Ratetheapp.class);
+
+    public void k9() {
+        Intent intent = new Intent(naniesUpload.this, Ratetheapp.class);
         startActivity(intent);
     }
-    public void k10()
-    {
-        Intent intent=new Intent(Intent.ACTION_SEND);
+
+    public void k10() {
+        Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("Text");
-        String sharebody="Your Body Here";
-        String sharesub="Your subject here";
-        intent.putExtra(Intent.EXTRA_SUBJECT,sharesub);
-        intent.putExtra(Intent.EXTRA_TEXT,sharebody);
-        startActivity(Intent.createChooser(intent,"Share using"));
+        String sharebody = "Your Body Here";
+        String sharesub = "Your subject here";
+        intent.putExtra(Intent.EXTRA_SUBJECT, sharesub);
+        intent.putExtra(Intent.EXTRA_TEXT, sharebody);
+        startActivity(Intent.createChooser(intent, "Share using"));
     }
-    public void k11()
-    {
-        Intent intent=new Intent(naniesUpload.this,About_us.class);
+
+    public void k11() {
+        Intent intent = new Intent(naniesUpload.this, About_us.class);
         startActivity(intent);
     }
-    public void help()
-    {
-        Intent intent=new Intent(naniesUpload.this,Help.class);
+
+    public void help() {
+        Intent intent = new Intent(naniesUpload.this, Help.class);
         startActivity(intent);
     }
 }
