@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
@@ -29,6 +30,7 @@ public class ProfileFragment extends Fragment {
     FirebaseAuth firebaseAuth;
     String email;
     AppCompatTextView tvName, tvGender, tvAddress, tvCity, tvEmail, tvPhone, tvPrice, tvExperience, tvType;
+    TextView tvProfileType;
     CircleImageView ivProfile;
 
     public ProfileFragment() {
@@ -50,10 +52,16 @@ public class ProfileFragment extends Fragment {
         tvCity = root.findViewById(R.id.tvCity);
         tvEmail = root.findViewById(R.id.tvEmail);
         tvPhone = root.findViewById(R.id.tvPhone);
-
         tvPrice = root.findViewById(R.id.tvPrice);
         tvExperience = root.findViewById(R.id.tvExperience);
         tvType = root.findViewById(R.id.tvType);
+        tvProfileType = root.findViewById(R.id.tvProfileType);
+        if(TabActivity.table.contains("child")){
+            tvProfileType.setText("Babysitter");
+        }else{
+            tvProfileType.setText("Caretaker");
+        }
+
         getProfile();
         return root;
 
