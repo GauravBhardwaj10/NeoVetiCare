@@ -30,17 +30,18 @@ public class Select_Category extends AppCompatActivity {
     String selectedGender = "Sexual Content:";
 
 
-    Button seniors,kids;
-    private RadioGroup radioSTimerGroup,radioCTimerGroup;
-    private RadioButton radioSTimerButton,radioCTimerButton;
-    String category="";
+    Button seniors, kids, messages;
+    private RadioGroup radioSTimerGroup, radioCTimerGroup;
+    private RadioButton radioSTimerButton, radioCTimerButton;
+    String category = "";
     ImageView backbtn;
-    String Value="";
+    String Value = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_activity_category);
-        seniors=(Button) findViewById(R.id.senior);
+        seniors = (Button) findViewById(R.id.senior);
         drawerLayout = findViewById(R.id.drawer_layout);
         mtoggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.Open, R.string.Close);
         drawerLayout.addDrawerListener(mtoggle);
@@ -83,17 +84,18 @@ public class Select_Category extends AppCompatActivity {
                 return true;
             }
         });
-        kids=(Button) findViewById(R.id.kids);
-        radioSTimerGroup=(RadioGroup)findViewById(R.id.radioGroup);
-        radioCTimerGroup=(RadioGroup)findViewById(R.id.radioGroupchild);
-        backbtn =(ImageView) findViewById( R.id.backimg);
+        messages = findViewById(R.id.message);
+        kids = (Button) findViewById(R.id.kids);
+        radioSTimerGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        radioCTimerGroup = (RadioGroup) findViewById(R.id.radioGroupchild);
+        backbtn = (ImageView) findViewById(R.id.backimg);
         seniors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 radioSTimerGroup.setVisibility(View.VISIBLE);
                 kids.setVisibility(View.GONE);
                 seniors.setVisibility(View.GONE);
-                category="senior";
+                category = "senior";
 //                int selectedId=radioSTimerGroup.getCheckedRadioButtonId();
 //                radioSTimerButton=(RadioButton)findViewById(selectedId);
 //
@@ -132,9 +134,9 @@ public class Select_Category extends AppCompatActivity {
                 radioCTimerGroup.setVisibility(View.VISIBLE);
                 kids.setVisibility(View.GONE);
                 seniors.setVisibility(View.GONE);
-                category="kid";
-                int selectedId=radioCTimerGroup.getCheckedRadioButtonId();
-                radioCTimerButton=(RadioButton)findViewById(selectedId);
+                category = "kid";
+                int selectedId = radioCTimerGroup.getCheckedRadioButtonId();
+                radioCTimerButton = (RadioButton) findViewById(selectedId);
 
             }
         });
@@ -144,15 +146,15 @@ public class Select_Category extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 radioCTimerButton = (RadioButton) findViewById(checkedId);
 
-                if(radioCTimerButton.getText().toString().equals("Full Time")){
-                    Value="uploadchildernfulltime";
+                if (radioCTimerButton.getText().toString().equals("Full Time")) {
+                    Value = "uploadchildernfulltime";
 
                     Intent in = new Intent(Select_Category.this, RetreivedataActivity.class);
                     in.putExtra("category", Value);
                     startActivity(in);
 
-                }else{
-                    Value="childernparttime";
+                } else {
+                    Value = "childernparttime";
                     Intent in = new Intent(Select_Category.this, RetreivedataActivity.class);
                     in.putExtra("category", Value);
                     startActivity(in);
@@ -164,30 +166,34 @@ public class Select_Category extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(category.equals("senior")){
+                if (category.equals("senior")) {
                     radioSTimerGroup.setVisibility(View.GONE);
                     radioCTimerGroup.setVisibility(View.GONE);
 
                     kids.setVisibility(View.VISIBLE);
                     seniors.setVisibility(View.VISIBLE);
-                }else if(category.equals("kid")){
+                } else if (category.equals("kid")) {
                     radioCTimerGroup.setVisibility(View.GONE);
                     radioSTimerGroup.setVisibility(View.GONE);
 
                     kids.setVisibility(View.VISIBLE);
                     seniors.setVisibility(View.VISIBLE);
-                }else{
+                } else {
                     System.exit(0);
                 }
             }
         });
 
-
-
-
-
-
+        messages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Select_Category.this, MessagesActivity.class);
+                startActivity(intent);
             }
+        });
+
+
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -212,6 +218,7 @@ public class Select_Category extends AppCompatActivity {
         return true;
 
     }
+
     public void jj() {
         Intent intent = new Intent(Select_Category.this, Adminactivity.class);
         startActivity(intent);
@@ -253,14 +260,14 @@ public class Select_Category extends AppCompatActivity {
     }
 
     private void showonDialog() {
-        final String[] genders={"Sexual Content","Violent or repulsive Content","Hateful or abusive Content","Harmful or dangerous Content:","Spam or misleading"};
-        AlertDialog.Builder builder=new AlertDialog.Builder(Select_Category.this);
+        final String[] genders = {"Sexual Content", "Violent or repulsive Content", "Hateful or abusive Content", "Harmful or dangerous Content:", "Spam or misleading"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(Select_Category.this);
         builder.setTitle("Choose");
         builder.setSingleChoiceItems(genders, 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
-                selectedGender=genders[which];
-                Toast.makeText(Select_Category.this,"you Choose:" +selectedGender,Toast.LENGTH_LONG).show();
+                selectedGender = genders[which];
+                Toast.makeText(Select_Category.this, "you Choose:" + selectedGender, Toast.LENGTH_LONG).show();
 
             }
         });
@@ -280,11 +287,9 @@ public class Select_Category extends AppCompatActivity {
         builder.show();
     }
 
-    public void go()
-    {
-        Toast.makeText(Select_Category.this,"Reporting Done" ,Toast.LENGTH_LONG).show();
+    public void go() {
+        Toast.makeText(Select_Category.this, "Reporting Done", Toast.LENGTH_LONG).show();
     }
-
 
 
 }

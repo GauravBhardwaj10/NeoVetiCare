@@ -58,6 +58,7 @@
         <activity android:name=".TabActivity" />
         <activity android:name=".MapsActivity" />
         <activity android:name=".MessageActivity" />
+        <activity android:name=".MessagesActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
