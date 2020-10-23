@@ -26,7 +26,7 @@ public class MessageFragment extends Fragment {
     FirebaseFirestore firebaseFirestore;
     FirebaseAuth mAuth;
     private List<Message> messageList;
-    MessageAdapter adapter;
+    MessageReplyAdapter adapter;
     RecyclerView recyclerView;
     String TAG = "MessageFragment";
 
@@ -46,7 +46,7 @@ public class MessageFragment extends Fragment {
         // setup recycler view
         recyclerView = root.findViewById(R.id.recyclerListView);
         recyclerView.setHasFixedSize(true);
-        adapter = new MessageAdapter(getContext(), messageList, mAuth.getCurrentUser().getEmail());
+        adapter = new MessageReplyAdapter(getContext(), messageList, mAuth.getCurrentUser().getEmail());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         recyclerView.setAdapter(adapter);
 
