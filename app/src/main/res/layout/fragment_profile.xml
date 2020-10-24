@@ -6,8 +6,8 @@
 
     <TextView
         android:id="@+id/tvProfileType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="17dp"
         android:layout_margin="10dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
