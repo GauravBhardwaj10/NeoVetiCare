@@ -3,7 +3,6 @@ package com.demo.neoveticare;
 import android.location.Address;
 
 
-
 public class GeoSearchResult {
 
     private Address address;

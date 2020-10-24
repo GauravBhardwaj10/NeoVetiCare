@@ -36,24 +36,7 @@
             android:layout_marginRight="12dp"
             android:visibility="gone" />
 
-        <!-- <EditText
-             android:id="@+id/editText"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_weight="4"
-             android:hint="Search Location " />
 
-
-         <Button
-             android:id="@+id/search_button"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_weight="0.5"
-             android:background="@color/actionbar"
-             android:textColor="#fff"
-             android:onClick="onMapSearch"
-             android:text="Search" />
- -->
     </FrameLayout>
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
