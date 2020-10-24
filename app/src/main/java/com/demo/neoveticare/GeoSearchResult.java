@@ -2,9 +2,6 @@ package com.demo.neoveticare;
 
 import android.location.Address;
 
-/**
- * Created by Neeraj on 14-06-2017.
- */
 
 public class GeoSearchResult {
 
