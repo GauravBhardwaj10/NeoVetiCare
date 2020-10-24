@@ -30,7 +30,7 @@ public class privaceandsecurity extends AppCompatActivity {
         mtoggle=new ActionBarDrawerToggle(this,drawerLayout, R.string.Open,R.string.Close);
         drawerLayout.addDrawerListener(mtoggle);
         pdfView=findViewById(R.id.pdfview);
-        pdfView.fromAsset("term.pdf").load();
+        pdfView.fromAsset("terms.pdf").load();
         mtoggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         navigationView=findViewById(R.id.nav_view);
@@ -55,6 +55,10 @@ public class privaceandsecurity extends AppCompatActivity {
                 {
                     Toast.makeText(privaceandsecurity.this,"Rate this app:",Toast.LENGTH_SHORT).show();
                     e4();
+                }
+                if (item.getItemId() == R.id.About) {
+                    Toast.makeText(privaceandsecurity.this, "About Us:", Toast.LENGTH_SHORT).show();
+                    k5();
                 }
                 if(item.getItemId()==R.id.share)
                 {
@@ -105,6 +109,11 @@ public class privaceandsecurity extends AppCompatActivity {
     public void e4()
     {
         Intent intent=new Intent(privaceandsecurity.this,Ratetheapp.class);
+        startActivity(intent);
+    }
+    public void k5()
+    {
+        Intent intent=new Intent(privaceandsecurity.this,About_us.class);
         startActivity(intent);
     }
     public void e5()
