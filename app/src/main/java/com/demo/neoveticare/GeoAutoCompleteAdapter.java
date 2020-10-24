@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class GeoAutoCompleteAdapter extends BaseAdapter implements Filterable {
 
     private static final int MAX_RESULTS = 10;

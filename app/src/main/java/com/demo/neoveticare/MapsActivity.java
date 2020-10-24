@@ -74,8 +74,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -84,7 +82,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         geo_autocomplete = (DelayAutoCompleteTextView) findViewById(R.id.geo_autocomplete);
         geo_autocomplete.setThreshold(THRESHOLD);
-        geo_autocomplete.setAdapter(new GeoAutoCompleteAdapter(this)); // 'this' is Activity instance
+        geo_autocomplete.setAdapter(new GeoAutoCompleteAdapter(this));
 
         geo_autocomplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -148,7 +146,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 intent.putExtra("latitude", String.valueOf(LATITUDE));
                 intent.putExtra("longitude", String.valueOf(LONGITUDE));
                 setResult(2, intent);
-                finish();//finishing activity
+                finish();
 
 
             }
@@ -161,9 +159,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // mMap.setMapType(GoogleMap.MA);
 
-        //Initialize Google Play Services
         LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -175,7 +171,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                     finish();
-                    // owner.startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
                 }
             });
             builder.setNegativeButton("Cancel", null);
@@ -187,39 +182,35 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             buildGoogleApiClient();
             mMap.setMyLocationEnabled(true);
         }
-        /* else {
-            buildGoogleApiClient();
-            mMap.setMyLocationEnabled(true);
-        }
 
 
-*/
+
+
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
                 MarkerOptions markerOptions = new MarkerOptions();
 
-                // Setting the position for the marker
+
                 markerOptions.position(latLng);
 
 
                 getCompleteAddressString(latLng.latitude, latLng.longitude);
 
-                // Setting the title for the marker.
-                // This will be displayed on taping the marker
+
                 markerOptions.title(latLng.latitude + " : " + latLng.longitude);
 
-                // Clears the previously touched position
+
                 mMap.clear();
 
-                // Animating to the touched position
+
                 CameraPosition cameraPosition = new CameraPosition.Builder()
                         .target(latLng)
                         .zoom(17)
                         .build();
                 mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
-                // Placing a marker on the touched position
+
                 mMap.addMarker(markerOptions);
 
             }
@@ -232,7 +223,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                 Log.e("Location", getLoc);
                 getCompleteAddressString(marker.getPosition().latitude, marker.getPosition().longitude);
-                // new ReverseGeocodingTask(getBaseContext()).execute(marker.getPosition());
+
 
 
                 return true;
@@ -257,7 +248,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             mCurrLocationMarker.remove();
         }
 
-        //Place current location marker
+
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
         getCompleteAddressString(location.getLatitude(), location.getLongitude());
         markerOptions = new MarkerOptions();
@@ -272,11 +263,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
         mCurrLocationMarker = mMap.addMarker(markerOptions);
         ;
-        // mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        //  mMap.animateCamera(CameraUpdateFactory.zoomTo(18));
 
 
-        //stop location updates
+
+
         if (mGoogleApiClient != null) {
             LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
         }
