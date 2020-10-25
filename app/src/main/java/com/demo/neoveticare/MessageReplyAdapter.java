@@ -76,11 +76,11 @@ public class MessageReplyAdapter extends RecyclerView.Adapter<MessageReplyAdapte
 
         if (TextUtils.equals(message.getEmailfrom(), email)) {
 
-            holder.tvFrom.setText("From : " + message.getEmailfrom());
+            holder.tvFrom.setText("From : " + message.getEmailto());
             holder.btnReply.setVisibility(View.GONE);
 
         } else {
-            holder.tvFrom.setText("To : " + message.getEmailto());
+            holder.tvFrom.setText("From : " + message.getEmailfrom());
             holder.btnReply.setVisibility(View.VISIBLE);
         }
         holder.tvMessage.setText(message.getMessage());
