@@ -61,10 +61,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
         if (TextUtils.equals(message.getEmailfrom(), email)) {
 
-            holder.tvFrom.setText("From : " + message.getEmailfrom());
+            holder.tvFrom.setText("From : " + message.getEmailto());
 
         }else{
-            holder.tvFrom.setText("To : " + message.getEmailto());
+            holder.tvFrom.setText("From: " + message.getEmailfrom());
         }
         holder.tvMessage.setText(message.getMessage());
         holder.tvDate.setText(message.getDatetime());
