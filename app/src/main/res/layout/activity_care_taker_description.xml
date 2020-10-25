@@ -277,16 +277,9 @@
                 android:id="@+id/availabledays"
                 android:layout_marginTop="3dp"
 
+
                 android:layout_below="@+id/ctavailibility"/>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/availabledays"
-                android:id="@+id/hirecaretaker"
-                android:textColor="@color/black"
-                android:background="@drawable/custom_button"
-                android:layout_marginTop="10dp"
-                android:text="Contact"/>
+
         </RelativeLayout>
 
     </ScrollView>
