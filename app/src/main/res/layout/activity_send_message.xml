@@ -2,18 +2,19 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFF1F1">
 
 
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FA71CD"
+
         android:gravity="center_horizontal"
         android:padding="15dp"
         android:text="Send Message"
-        android:textColor="#ffffff"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,12 +22,15 @@
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etMessage"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Message"
-        android:background="@drawable/custom_button"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="100dp"
+        android:gravity="bottom"
+        android:hint="write message"
+        android:padding="10dp"
+        android:background="@drawable/background"
         android:minLines="10" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -36,8 +40,8 @@
         android:layout_marginTop="29dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
-        android:background="#FA71CD"
-        android:textColor="#fff"
+        android:background="@drawable/custom_button"
+
         android:text="Send"
         app:layout_constraintTop_toBottomOf="@+id/etMessage"/>
 
