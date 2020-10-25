@@ -76,15 +76,15 @@ PDFView pdfView1;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.back, menu);
+        inflater.inflate(R.menu.menu2, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.backk:
-                Toast.makeText(this, "Back to Previous Page:", Toast.LENGTH_SHORT).show();
+            case R.id.Help:
+                Toast.makeText(this, "Help Page:", Toast.LENGTH_SHORT).show();
                 h1();
                 break;
 

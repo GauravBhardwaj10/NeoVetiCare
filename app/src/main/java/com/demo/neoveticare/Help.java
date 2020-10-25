@@ -83,7 +83,7 @@ a55();
                     jj();
                 }
                 if (item.getItemId() == R.id.security) {
-                    Toast.makeText(Help.this, "Privacy & security Page:", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Help.this, "terms & conditions:", Toast.LENGTH_SHORT).show();
                     KK();
                 }
                 if (item.getItemId() == R.id.rating) {
