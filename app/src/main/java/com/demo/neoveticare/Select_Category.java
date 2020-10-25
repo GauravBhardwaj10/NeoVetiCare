@@ -95,6 +95,7 @@ public class Select_Category extends AppCompatActivity {
                 radioSTimerGroup.setVisibility(View.VISIBLE);
                 kids.setVisibility(View.GONE);
                 seniors.setVisibility(View.GONE);
+                messages.setVisibility(View.GONE);
                 category = "senior";
 //                int selectedId=radioSTimerGroup.getCheckedRadioButtonId();
 //                radioSTimerButton=(RadioButton)findViewById(selectedId);
@@ -134,6 +135,7 @@ public class Select_Category extends AppCompatActivity {
                 radioCTimerGroup.setVisibility(View.VISIBLE);
                 kids.setVisibility(View.GONE);
                 seniors.setVisibility(View.GONE);
+                messages.setVisibility(View.GONE);
                 category = "kid";
                 int selectedId = radioCTimerGroup.getCheckedRadioButtonId();
                 radioCTimerButton = (RadioButton) findViewById(selectedId);

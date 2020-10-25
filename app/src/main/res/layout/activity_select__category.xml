@@ -22,8 +22,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="250dp"
         android:background="@drawable/custom_button"
-        android:text="Looking Nanny for a Baby">
-
+        android:text="Looking Caretaker for a aged Person">
     </Button>
 
     <Button
@@ -36,7 +35,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="45dp"
         android:background="@drawable/custom_button"
-        android:text="Looking Caretaker for a aged Person"/>
+        android:text="Looking Nanny for a Baby"/>
 
 
 
@@ -74,7 +73,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/kids"
-        android:visibility="gone"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="0dp"
