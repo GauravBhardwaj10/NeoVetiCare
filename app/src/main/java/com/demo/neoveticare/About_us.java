@@ -62,10 +62,10 @@ PDFView pdfView1;
                 if (item.getItemId() == R.id.report) {
                     Toast.makeText(About_us.this, "Report this app:", Toast.LENGTH_SHORT).show();
                     showOptionDialog();}
-               /* if (item.getItemId() == R.id.About) {
+                if (item.getItemId() == R.id.About) {
                     Toast.makeText(About_us.this, "About Us:", Toast.LENGTH_SHORT).show();
                     k5();
-                }*/
+                }
                 DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;

@@ -3,6 +3,7 @@ package com.demo.neoveticare;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -11,6 +12,9 @@ import android.os.Handler;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
@@ -26,7 +30,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,6 +43,7 @@ import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -49,6 +58,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ImageFirebaseUploadDemo extends AppCompatActivity {
+    private NavigationView navigationView;
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle mtoggle;
+    String selectedGender = "Sexual Content";
 
     //constant to track image chooser intent
     private static final int PICK_IMAGE_REQUEST = 234;
@@ -74,12 +87,10 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
     private RecyclerView RecyclerView;
     int count=0;
     ArrayList<String> arrlst=new ArrayList<>();
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image_firebase_upload_demo);
+        setContentView(R.layout.nav_activity_babysitter);
 
 
 
@@ -99,6 +110,47 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
         editTextemailaddress = (EditText) findViewById(R.id.emailaddress);
         editTextprice = (EditText) findViewById(R.id.price);
         editTextage = (EditText) findViewById(R.id.age);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        mtoggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.Open, R.string.Close);
+        drawerLayout.addDrawerListener(mtoggle);
+        mtoggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.nav_home) {
+                    Toast.makeText(ImageFirebaseUploadDemo.this, "home Page:", Toast.LENGTH_SHORT).show();
+                    Ho();
+                }
+                if (item.getItemId() == R.id.Admin) {
+                    Toast.makeText(ImageFirebaseUploadDemo.this, "Admin Login page:", Toast.LENGTH_SHORT).show();
+                    jj();
+                }
+                if (item.getItemId() == R.id.security) {
+                    Toast.makeText(ImageFirebaseUploadDemo.this, "Privacy & security Page:", Toast.LENGTH_SHORT).show();
+                    KK();
+                }
+                if (item.getItemId() == R.id.rating) {
+                    Toast.makeText(ImageFirebaseUploadDemo.this, "Rate this app:", Toast.LENGTH_SHORT).show();
+                    k3();
+                }
+                if (item.getItemId() == R.id.share) {
+                    Toast.makeText(ImageFirebaseUploadDemo.this, "Share the link of app by:", Toast.LENGTH_SHORT).show();
+                    k4();
+                }
+                if (item.getItemId() == R.id.About) {
+                    Toast.makeText(ImageFirebaseUploadDemo.this, "About Us:", Toast.LENGTH_SHORT).show();
+                    k5();
+                }
+                if (item.getItemId() == R.id.report) {
+                    Toast.makeText(ImageFirebaseUploadDemo.this, "Report this app:", Toast.LENGTH_SHORT).show();
+                    showOptionDialog();}
+                DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
 
 
         mDatabase = FirebaseFirestore.getInstance();
@@ -776,5 +828,99 @@ public class ImageFirebaseUploadDemo extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.back, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.backk:
+                Toast.makeText(this, "Help", Toast.LENGTH_SHORT).show();
+                h1();
+                break;
+
+        }
+        {
+            if (mtoggle.onOptionsItemSelected(item)) {
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    public void jj() {
+        Intent intent = new Intent(ImageFirebaseUploadDemo.this, Adminactivity.class);
+        startActivity(intent);
+    }
+
+    public void KK() {
+        Intent intent = new Intent(ImageFirebaseUploadDemo.this, privaceandsecurity.class);
+        startActivity(intent);
+    }
+
+    public void Ho() {
+        Intent intent = new Intent(ImageFirebaseUploadDemo.this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void k3() {
+        Intent intent = new Intent(ImageFirebaseUploadDemo.this, Ratetheapp.class);
+        startActivity(intent);
+    }
+
+    public void k4() {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("Text");
+        String sharebody = "Your Body Here";
+        String sharesub = "Your subject here";
+        intent.putExtra(Intent.EXTRA_SUBJECT, sharesub);
+        intent.putExtra(Intent.EXTRA_TEXT, sharebody);
+        startActivity(Intent.createChooser(intent, "Share using"));
+    }
+
+    public void h1() {
+        Intent intent = new Intent(ImageFirebaseUploadDemo.this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void k5() {
+        Intent intent = new Intent(ImageFirebaseUploadDemo.this, About_us.class);
+        startActivity(intent);
+    }
+    public void showOptionDialog() {
+        final String[] genders = {"Sexual Content", "Violent or repulsive Content", "Hateful or abusive Content","Harmful or dangerous Content","Spam or misleading"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(ImageFirebaseUploadDemo.this);
+        builder.setTitle("Choose");
+        builder.setSingleChoiceItems(genders, 0, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+                selectedGender = genders[which];
+                Toast.makeText(ImageFirebaseUploadDemo.this, "your" + selectedGender, Toast.LENGTH_LONG).show();
+
+            }
+        });
+        builder.setPositiveButton("Proceesd", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                go();
+                dialogInterface.dismiss();
+            }
+        });
+        builder.setNegativeButton("Exit", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.show();
+    }
+    public void go()
+    {
+
+        Toast.makeText(ImageFirebaseUploadDemo.this, "You Report: " + selectedGender, Toast.LENGTH_LONG).show();
+
+    }
 }
