@@ -10,35 +10,40 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <Button
-            android:layout_width="426dp"
-            android:layout_height="match_parent"
-            android:layout_marginRight="60dp"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
             android:width="80dp"
             android:height="80dp"
-            android:background="@drawable/custom_button"
+            android:textColor="@color/black"
+            android:fontFamily="@font/abeezee"
             android:text="How to Contact with BabySitter/careTaker >>"
             android:textSize="20dp"
             android:textStyle="bold"/>
+
         <ImageView
-            android:layout_width="426dp"
-            android:layout_height="match_parent"
-            android:layout_marginRight="60dp"
-            android:background="@drawable/custom_button"
+            android:layout_width="match_parent"
+            android:layout_height="175dp"
+
+
             android:width="80dp"
             android:height="80dp"
-            android:src="@drawable/l3"/>
+            android:src="@drawable/l3" />
 
         <Button
-            android:layout_width="426dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginRight="60dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
             android:width="80dp"
             android:height="80dp"
             android:background="@drawable/custom_button"
             android:text=" Read Steps: >>"
             android:textSize="25dp"
             android:textStyle="italic"/>
+
 
         <com.github.barteksc.pdfviewer.PDFView
             android:id="@+id/pdfviewlayou5"

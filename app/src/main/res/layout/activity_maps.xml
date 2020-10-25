@@ -71,10 +71,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:background="#FA71CD"
+            android:background="@drawable/custom_button"
             android:text="Set Address"
             android:textAllCaps="false"
-            android:textColor="#fff"
+
             android:textSize="12sp" />
 
     </LinearLayout>

@@ -2,13 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFF1F1">
 
     <TextView
         android:id="@+id/tvProfileType"
         android:layout_width="0dp"
         android:layout_height="17dp"
         android:layout_margin="10dp"
+        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,6 +33,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textSize="20sp"
+        android:textColor="@color/black"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivProfile" />
@@ -42,6 +46,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:textSize="18sp"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvName" />
@@ -52,6 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textSize="18sp"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvGender" />
@@ -72,7 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="10dp"
-        android:background="#FA71CD"
+        android:background="#FF71CD"
         app:layout_constraintTop_toBottomOf="@+id/tvCity" />
 
 
@@ -80,11 +86,13 @@
         android:id="@+id/tvContactText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
 
         android:text="Contact"
         android:textSize="18sp"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
@@ -95,6 +103,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
+        android:textColor="@color/black"
         android:text="Email : contact@xyz.com"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,6 +115,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
+        android:textColor="@color/black"
         android:text="Phone : +1-154-786-843"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -126,6 +136,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
+        android:textColor="@color/black"
         android:text="Professional"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -139,6 +150,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:textSize="18sp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvProfessionalText" />
 
@@ -149,6 +161,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:textSize="18sp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPrice" />
 
@@ -159,6 +172,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:textSize="18sp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvExperience" />
 
