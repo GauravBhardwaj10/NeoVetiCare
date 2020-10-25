@@ -51,10 +51,13 @@ public class ListofnanniesAdapter extends RecyclerView.Adapter<ListofnanniesAdap
         str.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                Picasso.with(context)
-                        .load(values.get(position).getUrl().toString())
-                        .placeholder(R.mipmap.ic_launcher)
-                        .into(holder.ctimg);
+                if(values.size()>0){
+                    Picasso.with(context)
+                            .load(values.get(position).getUrl().toString())
+                            .placeholder(R.mipmap.ic_launcher)
+                            .into(holder.ctimg);
+                }
+
             }
         });
 

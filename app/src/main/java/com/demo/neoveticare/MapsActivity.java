@@ -185,8 +185,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
 
 
-
-
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
@@ -226,7 +224,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 getCompleteAddressString(marker.getPosition().latitude, marker.getPosition().longitude);
 
 
-
                 return true;
             }
         });
@@ -264,8 +261,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
         mCurrLocationMarker = mMap.addMarker(markerOptions);
         ;
-
-
 
 
         if (mGoogleApiClient != null) {
@@ -381,6 +376,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
             mMap.addMarker(new MarkerOptions().position(latLng).title("Marker"));
             mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+            tvLocation.setText(address.getLocality());
         }
     }
 
