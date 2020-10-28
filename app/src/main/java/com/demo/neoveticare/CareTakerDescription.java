@@ -38,46 +38,50 @@ public class CareTakerDescription extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle mtoggle;
     String selectedGender = "Sexual Content";
-    TextView ctgender,ctname,ctcity,ctprovince,currency,ctimings,ctexperience,ctrate,ctdesc,ctavaialbility,ctage;
+    TextView ctgender, ctname, ctcity, ctprovince, currency, ctimings, ctexperience, ctrate, ctdesc, ctavaialbility, ctage;
     ImageView ctimg;
     ArrayList<String> list;
-    Button Hire;
+    Button btnMessage, btnChat;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_activity_listofnanny);
+        btnMessage = findViewById(R.id.btnMessage);
+        btnChat = findViewById(R.id.btnChat);
 
-        Intent in=getIntent();
-        String name=in.getStringExtra("name");
-        String price=in.getStringExtra("price");
-        String city=in.getStringExtra("city");
-        String gender=in.getStringExtra("gender");
-        String timings=in.getStringExtra("timings");
-        String age=in.getStringExtra("age");
-        String province=in.getStringExtra("province");
-        String writaboutyourself=in.getStringExtra("description");
-        String rate=in.getStringExtra("price");
-        String experience=in.getStringExtra("experience");
-        String availability=in.getStringExtra("availablity");
-        final String image=in.getStringExtra("image");
-        list=in.getStringArrayListExtra("list");
-        FirebaseStorage firebaseStorage= FirebaseStorage.getInstance();
+        Intent in = getIntent();
+        final String email = in.getStringExtra("email");
+        String name = in.getStringExtra("name");
+        String price = in.getStringExtra("price");
+        String city = in.getStringExtra("city");
+        String gender = in.getStringExtra("gender");
+        String timings = in.getStringExtra("timings");
+        String age = in.getStringExtra("age");
+        String province = in.getStringExtra("province");
+        String writaboutyourself = in.getStringExtra("description");
+        String rate = in.getStringExtra("price");
+        String experience = in.getStringExtra("experience");
+        String availability = in.getStringExtra("availablity");
+        final String image = in.getStringExtra("image");
+        list = in.getStringArrayListExtra("list");
+        FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
 
-        StorageReference str=firebaseStorage.getReferenceFromUrl(image);
+        StorageReference str = firebaseStorage.getReferenceFromUrl(image);
 
         //ctimg=(ImageView)findViewById(R.id.ctimage);
-        ctname=(TextView)findViewById(R.id.ctname);
-        ctgender=(TextView)findViewById(R.id.ctgender);
-        ctcity=(TextView)findViewById(R.id.ctcity);
-        ctprovince=(TextView)findViewById(R.id.ctprovince);
-        ctdesc=(TextView)findViewById(R.id.ctDesc);
-        ctimings=(TextView)findViewById(R.id.ctimings);
-        currency=(TextView)findViewById(R.id.currency);
-        ctrate=(TextView)findViewById(R.id.ctrate_single);
-        ctage=(TextView)findViewById(R.id.ctage);
-        ctexperience=(TextView)findViewById(R.id.experience);
-        ctavaialbility=(TextView)findViewById(R.id.ctavailibility);
-        ctimg=(ImageView) findViewById(R.id.ctimage);
+        ctname = (TextView) findViewById(R.id.ctname);
+        ctgender = (TextView) findViewById(R.id.ctgender);
+        ctcity = (TextView) findViewById(R.id.ctcity);
+        ctprovince = (TextView) findViewById(R.id.ctprovince);
+        ctdesc = (TextView) findViewById(R.id.ctDesc);
+        ctimings = (TextView) findViewById(R.id.ctimings);
+        currency = (TextView) findViewById(R.id.currency);
+        ctrate = (TextView) findViewById(R.id.ctrate_single);
+        ctage = (TextView) findViewById(R.id.ctage);
+        ctexperience = (TextView) findViewById(R.id.experience);
+        ctavaialbility = (TextView) findViewById(R.id.ctavailibility);
+        ctimg = (ImageView) findViewById(R.id.ctimage);
         drawerLayout = findViewById(R.id.drawer_layout);
         mtoggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.Open, R.string.Close);
         drawerLayout.addDrawerListener(mtoggle);
@@ -109,7 +113,8 @@ public class CareTakerDescription extends AppCompatActivity {
                 }
                 if (item.getItemId() == R.id.report) {
                     Toast.makeText(CareTakerDescription.this, "Report this app:", Toast.LENGTH_SHORT).show();
-                    showOptionDialog();}
+                    showOptionDialog();
+                }
                 if (item.getItemId() == R.id.About) {
                     Toast.makeText(CareTakerDescription.this, "About Us:", Toast.LENGTH_SHORT).show();
                     k5();
@@ -121,10 +126,10 @@ public class CareTakerDescription extends AppCompatActivity {
             }
         });
 
-        RecyclerView aval_days=(RecyclerView) findViewById(R.id.availabledays);
+        RecyclerView aval_days = (RecyclerView) findViewById(R.id.availabledays);
         aval_days.setLayoutManager(new LinearLayoutManager(this));
 
-        AvailableDaysList availabledayslist =new AvailableDaysList(getApplicationContext(),list);
+        AvailableDaysList availabledayslist = new AvailableDaysList(getApplicationContext(), list);
 
         aval_days.setAdapter(availabledayslist);
         str.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -146,6 +151,27 @@ public class CareTakerDescription extends AppCompatActivity {
         ctage.setText(age);
         ctexperience.setText(experience);
         ctavaialbility.setText(availability);
+        btnMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(CareTakerDescription.this, MessageActivity.class);
+                i.putExtra("email", email);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
+            }
+        });
+
+        btnChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(CareTakerDescription.this, ChatActivity.class);
+                i.putExtra("email", email);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
+
+            }
+        });
 
     }
 
@@ -153,7 +179,7 @@ public class CareTakerDescription extends AppCompatActivity {
         private Context context;
         ArrayList<String> values;
 
-        public AvailableDaysList(Context context,ArrayList<String> values) {
+        public AvailableDaysList(Context context, ArrayList<String> values) {
             this.context = context;
             this.values = values;
         }
@@ -162,8 +188,8 @@ public class CareTakerDescription extends AppCompatActivity {
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view;
-            LayoutInflater layoutInflater=LayoutInflater.from(context);
-            view=layoutInflater.inflate(R.layout.availabledays,parent,false);
+            LayoutInflater layoutInflater = LayoutInflater.from(context);
+            view = layoutInflater.inflate(R.layout.availabledays, parent, false);
             return new AvailableDaysList.ViewHolder(view);
         }
 
@@ -177,13 +203,14 @@ public class CareTakerDescription extends AppCompatActivity {
             return values.size();
         }
 
-        public class ViewHolder extends RecyclerView.ViewHolder{
+        public class ViewHolder extends RecyclerView.ViewHolder {
 
             TextView daystext;
             Button details;
+
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
-                daystext=(TextView) itemView.findViewById(R.id.textdays);
+                daystext = (TextView) itemView.findViewById(R.id.textdays);
             }
         }
     }
@@ -211,6 +238,7 @@ public class CareTakerDescription extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     public void jj() {
         Intent intent = new Intent(CareTakerDescription.this, Adminactivity.class);
         startActivity(intent);
@@ -250,8 +278,9 @@ public class CareTakerDescription extends AppCompatActivity {
         Intent intent = new Intent(CareTakerDescription.this, About_us.class);
         startActivity(intent);
     }
+
     public void showOptionDialog() {
-        final String[] genders = {"Sexual Content", "Violent or repulsive Content", "Hateful or abusive Content","Harmful or dangerous Content","Spam or misleading"};
+        final String[] genders = {"Sexual Content", "Violent or repulsive Content", "Hateful or abusive Content", "Harmful or dangerous Content", "Spam or misleading"};
         AlertDialog.Builder builder = new AlertDialog.Builder(CareTakerDescription.this);
         builder.setTitle("Choose");
         builder.setSingleChoiceItems(genders, 0, new DialogInterface.OnClickListener() {
@@ -277,8 +306,8 @@ public class CareTakerDescription extends AppCompatActivity {
         });
         builder.show();
     }
-    public void go()
-    {
+
+    public void go() {
 
         Toast.makeText(CareTakerDescription.this, "You Report: " + selectedGender, Toast.LENGTH_LONG).show();
 
