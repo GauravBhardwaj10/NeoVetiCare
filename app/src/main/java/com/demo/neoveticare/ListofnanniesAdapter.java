@@ -51,7 +51,7 @@ public class ListofnanniesAdapter extends RecyclerView.Adapter<ListofnanniesAdap
         str.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                if(values.size()>0){
+                if (values.size() > 0) {
                     Picasso.with(context)
                             .load(values.get(position).getUrl().toString())
                             .placeholder(R.mipmap.ic_launcher)
@@ -69,6 +69,7 @@ public class ListofnanniesAdapter extends RecyclerView.Adapter<ListofnanniesAdap
             public void onClick(View v) {
 
                 Intent in = new Intent(context, CareTakerDescription.class);
+                in.putExtra("email", values.get(position).getEmailaddress());
                 in.putExtra("image", values.get(position).getUrl());
                 in.putExtra("price", values.get(position).getPrice());
                 in.putExtra("name", values.get(position).getName());

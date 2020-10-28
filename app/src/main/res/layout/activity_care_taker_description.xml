@@ -9,61 +9,87 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
+
             <ImageView
                 android:id="@id/ctimage"
                 android:layout_width="match_parent"
                 android:layout_height="126dp"
-                android:layout_marginTop="20dp"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp" />
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_below="@id/ctimage"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_button"
+                    android:text="Message" />
+
+                <Button
+                    android:layout_marginStart="40dp"
+                    android:id="@+id/btnChat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_button"
+                    android:text="chat" />
+
+            </LinearLayout>
 
             <TextView
+                android:id="@id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Name"
-                android:id="@id/name"
-                android:textSize="20dp"
+                android:layout_below="@id/linearLayout"
                 android:layout_marginLeft="20dp"
-                android:fontFamily="@font/coustard"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/coustard"
+                android:hint="Name"
                 android:textColorHint="@color/black"
-                android:layout_below="@id/ctimage"/>
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@id/ctname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/ctimage"
-                android:layout_toRightOf="@id/name"
+                android:layout_below="@id/linearLayout"
                 android:layout_marginLeft="70dp"
                 android:layout_marginTop="12dp"
+                android:layout_toRightOf="@id/name"
                 android:fontFamily="@font/abeezee"
                 android:hint="Care Taker Name"
                 android:textColor="@color/black"
                 android:textSize="20dp">
 
             </TextView>
+
             <TextView
+                android:id="@id/age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Age"
-                android:id="@id/age"
-                android:textSize="20dp"
+                android:layout_below="@id/name"
                 android:layout_marginLeft="20dp"
-                android:textColorHint="@color/black"
-                android:fontFamily="@font/coustard"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/coustard"
+                android:hint="Age"
                 android:textColor="@color/black"
-                android:layout_below="@id/name"/>
+                android:textColorHint="@color/black"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/ctage"
@@ -75,20 +101,20 @@
                 android:fontFamily="@font/abeezee"
                 android:hint="Care Taker age"
                 android:textColor="@color/black"
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
 
             <TextView
+                android:id="@id/gender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Gender"
-                android:id="@id/gender"
-                android:textSize="20dp"
+                android:layout_below="@id/age"
                 android:layout_marginLeft="20dp"
-                android:textColorHint="@color/black"
-                android:fontFamily="@font/coustard"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/coustard"
+                android:hint="Gender"
                 android:textColor="@color/black"
-                android:layout_below="@id/age"/>
+                android:textColorHint="@color/black"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/ctgender"
@@ -105,17 +131,17 @@
             </TextView>
 
             <TextView
+                android:id="@+id/timigs"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Timings"
-                android:id="@+id/timigs"
-                android:textSize="20dp"
+                android:layout_below="@id/gender"
                 android:layout_marginLeft="20dp"
-                android:textColorHint="@color/black"
-                android:fontFamily="@font/coustard"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/coustard"
+                android:hint="Timings"
                 android:textColor="@color/black"
-                android:layout_below="@id/gender"/>
+                android:textColorHint="@color/black"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/ctimings"
@@ -128,18 +154,19 @@
                 android:hint="Care Taker timings"
                 android:textColor="@color/black"
                 android:textSize="20dp"></TextView>
+
             <TextView
+                android:id="@+id/cty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="City"
-                android:id="@+id/cty"
-                android:textSize="20dp"
+                android:layout_below="@id/timigs"
                 android:layout_marginLeft="20dp"
-                android:textColorHint="@color/black"
-                android:fontFamily="@font/coustard"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/coustard"
+                android:hint="City"
                 android:textColor="@color/black"
-                android:layout_below="@id/timigs"/>
+                android:textColorHint="@color/black"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/ctcity"
@@ -155,17 +182,17 @@
 
 
             <TextView
+                android:id="@+id/pro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Province"
-                android:id="@+id/pro"
-                android:textSize="20dp"
+                android:layout_below="@id/cty"
                 android:layout_marginLeft="20dp"
-                android:textColorHint="@color/black"
-                android:fontFamily="@font/coustard"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/coustard"
+                android:hint="Province"
                 android:textColor="@color/black"
-                android:layout_below="@id/cty"/>
+                android:textColorHint="@color/black"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/ctprovince"
@@ -173,11 +200,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ctcity"
 
-                
-          
-                android:layout_toRightOf="@id/cty"
-                android:layout_marginTop="20dp"
+
                 android:layout_marginLeft="90dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/cty"
 
                 android:fontFamily="@font/abeezee"
                 android:hint="Care Taker Province"
@@ -185,105 +211,106 @@
                 android:textSize="20dp"></TextView>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="About Yourself"
-                android:textSize="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:fontFamily="@font/coustard"
-                android:textColorHint="@color/black"
                 android:id="@+id/about"
-                android:layout_below="@id/ctprovince"/>
-            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Care Taker Description"
-                android:textSize="20dp"
-                android:layout_marginTop="5dp"
+                android:layout_below="@id/ctprovince"
                 android:layout_marginLeft="20dp"
-                android:fontFamily="@font/abeezee"
-                android:textColor="@color/black"
-                android:id="@id/ctDesc"
-                android:layout_below="@id/about">
-            </TextView>
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/coustard"
+                android:hint="About Yourself"
+                android:textColorHint="@color/black"
+                android:textSize="20dp" />
+
             <TextView
+                android:id="@id/ctDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/about"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/abeezee"
+                android:hint="Care Taker Description"
+                android:textColor="@color/black"
+                android:textSize="20dp"></TextView>
+
+            <TextView
+                android:id="@+id/currency"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="CAD/hr"
-                android:textSize="20dp"
-                android:textColorHint="@color/black"
-                android:id="@+id/currency"
+                android:layout_below="@id/ctDesc"
                 android:layout_marginLeft="20dp"
-                android:fontFamily="@font/coustard"
                 android:layout_marginTop="10dp"
-                android:layout_below="@id/ctDesc">
-            </TextView>
+                android:fontFamily="@font/coustard"
+                android:hint="CAD/hr"
+                android:textColorHint="@color/black"
+                android:textSize="20dp"></TextView>
 
             <TextView
                 android:id="@+id/ctrate_single"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ctDesc"
+                android:layout_marginLeft="100dp"
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@id/currency"
                 android:fontFamily="@font/abeezee"
                 android:hint="Hourly Price"
-                android:layout_marginLeft="100dp"
                 android:textColor="@color/black"
                 android:textSize="20dp" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Experience(in years): "
                 android:id="@+id/exp"
-                android:textSize="20dp"
-                android:layout_marginLeft="20dp"
-                android:textColorHint="@color/black"
-                android:fontFamily="@font/coustard"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/black"
-                android:layout_below="@id/currency"/>
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Experience"
-                android:textSize="20dp"
+                android:layout_below="@id/currency"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/coustard"
+                android:hint="Experience(in years): "
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="20dp" />
 
-
+            <TextView
+                android:id="@id/experience"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/currency"
                 android:layout_marginLeft="10dp"
+
+
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@id/exp"
                 android:fontFamily="@font/coustard"
+                android:hint="Experience"
                 android:textColor="@color/black"
-                android:id="@id/experience"
-                android:layout_below="@id/currency" />
+                android:textSize="20dp" />
+
             <TextView
+                android:id="@+id/ctavailibility"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Availability"
-                android:textSize="20dp"
-                android:layout_marginTop="10dp"
-                android:textColorHint="@color/black"
+                android:layout_below="@id/experience"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/coustard"
-                android:id="@+id/ctavailibility"
-                android:layout_below="@id/experience">
-            </TextView>
+                android:hint="Availability"
+                android:textColorHint="@color/black"
+                android:textSize="20dp"></TextView>
+
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/availabledays"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/availabledays"
-                android:layout_marginTop="3dp"
+                android:layout_below="@+id/ctavailibility"
 
 
-                android:layout_below="@+id/ctavailibility"/>
+                android:layout_marginTop="3dp" />
 
         </RelativeLayout>
 
     </ScrollView>
-
 
 
 </RelativeLayout>
