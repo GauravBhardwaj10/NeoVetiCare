@@ -23,7 +23,7 @@ public class TabAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                MessageFragment messageFragment = new MessageFragment();
+                ChatFragment messageFragment = new ChatFragment();
                 return messageFragment;
             case 1:
                 ProfileFragment profileFragment = new ProfileFragment();
@@ -33,7 +33,7 @@ public class TabAdapter extends FragmentPagerAdapter {
                 return null;
         }
     }
-    // this counts total number of tabs
+
     @Override
     public int getCount() {
         return totalTabs;
