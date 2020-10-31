@@ -37,6 +37,7 @@ public class ChatActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private List<Chat> chatList;
     private ChatAdapter adapter;
+    boolean isChatExist = false;
 
 
     @Override
@@ -48,6 +49,35 @@ public class ChatActivity extends AppCompatActivity {
         etMessage = findViewById(R.id.etMessage);
         ivSend = findViewById(R.id.ivSend);
 
+        DatabaseReference databaseReferenceChats = FirebaseDatabase.getInstance().getReference("chats");
+
+        databaseReferenceChats.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
+                    Chat chat = dataSnapshot.getValue(Chat.class);
+
+
+                    if ((TextUtils.equals(chat.getMsgFrom(), mAuth.getCurrentUser().getEmail()) && TextUtils.equals(chat.getMsgTo(), email)) ||
+                            (TextUtils.equals(chat.getMsgTo(), mAuth.getCurrentUser().getEmail()) && TextUtils.equals(chat.getMsgFrom(), email))) {
+                        isChatExist = true;
+                    }
+
+
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+
+            }
+        });
+
         ivSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,10 +88,19 @@ public class ChatActivity extends AppCompatActivity {
                 }
                 SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
                 Date date = new Date();
-                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("chats");
-                String chatId = mDatabase.push().getKey();
-                Chat chat = new Chat(chatId, mAuth.getCurrentUser().getEmail(), email, msg, formatter.format(date));
-                mDatabase.child(Objects.requireNonNull(chatId)).setValue(chat);
+                if (!isChatExist) {
+                    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("chats");
+                    String chatId = mDatabase.push().getKey();
+                    Chat chat = new Chat(chatId, mAuth.getCurrentUser().getEmail(), email, "Chat Start", formatter.format(date));
+                    mDatabase.child(Objects.requireNonNull(chatId)).setValue(chat);
+                    isChatExist = true;
+                }
+
+
+                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("chat_details");
+                String chat_detailsId = mDatabase.push().getKey();
+                Chat chat = new Chat(chat_detailsId, mAuth.getCurrentUser().getEmail(), email, msg, formatter.format(date));
+                mDatabase.child(Objects.requireNonNull(chat_detailsId)).setValue(chat);
                 etMessage.setText("");
             }
         });
@@ -72,7 +111,7 @@ public class ChatActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(ChatActivity.this, RecyclerView.VERTICAL, false));
         recyclerView.setAdapter(adapter);
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("chats");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("chat_details");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
