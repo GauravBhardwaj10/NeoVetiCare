@@ -79,6 +79,11 @@ public class Select_Category extends AppCompatActivity {
                     Toast.makeText(Select_Category.this, "Report this App:", Toast.LENGTH_SHORT).show();
                     showonDialog();
                 }
+                if (item.getItemId() == R.id.contact) {
+                    Intent contact = new Intent(Select_Category.this, ContactActivity.class);
+                    startActivity(contact);
+
+                }
                 DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;

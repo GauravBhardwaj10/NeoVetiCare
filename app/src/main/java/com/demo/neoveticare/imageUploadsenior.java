@@ -127,6 +127,11 @@ public class imageUploadsenior extends AppCompatActivity {
                 if (item.getItemId() == R.id.report) {
                     Toast.makeText(imageUploadsenior.this, "Report this app:", Toast.LENGTH_SHORT).show();
                     showOptionDialog();}
+                if (item.getItemId() == R.id.contact) {
+                    Intent contact = new Intent(imageUploadsenior.this, ContactActivity.class);
+                    startActivity(contact);
+
+                }
                /* if (item.getItemId() == R.id.About) {
                     Toast.makeText(About_us.this, "About Us:", Toast.LENGTH_SHORT).show();
                     k5();

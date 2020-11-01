@@ -100,6 +100,11 @@ public class RetreivedataActivity extends AppCompatActivity {
                     Toast.makeText(RetreivedataActivity.this, "About Us:", Toast.LENGTH_SHORT).show();
                     k5();
                 }
+                if (item.getItemId() == R.id.contact) {
+                    Intent contact = new Intent(RetreivedataActivity.this, ContactActivity.class);
+                    startActivity(contact);
+
+                }
                 DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
 

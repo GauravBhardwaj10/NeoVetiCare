@@ -77,6 +77,11 @@ public class naniesUpload extends AppCompatActivity {
                     Toast.makeText(naniesUpload.this, "About Us:", Toast.LENGTH_SHORT).show();
                     k11();
                 }
+                if (item.getItemId() == R.id.contact) {
+                    Intent contact = new Intent(naniesUpload.this, ContactActivity.class);
+                    startActivity(contact);
+
+                }
                 DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
