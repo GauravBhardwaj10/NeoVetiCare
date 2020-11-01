@@ -97,7 +97,13 @@ public class cartakerLoginActivity extends AppCompatActivity {
                 }
                 if (item.getItemId() == R.id.report) {
                     Toast.makeText(cartakerLoginActivity.this, "Report this app:", Toast.LENGTH_SHORT).show();
-                    showOptionDialog();}
+                    showOptionDialog();
+                }
+                if (item.getItemId() == R.id.contact) {
+                    Intent contact = new Intent(cartakerLoginActivity.this, ContactActivity.class);
+                    startActivity(contact);
+
+                }
                 DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
@@ -226,7 +232,7 @@ public class cartakerLoginActivity extends AppCompatActivity {
                                     tab.putExtra("table", "uploadchildernfulltime");
                                     startActivity(tab);
                                     finish();
-                               return;
+                                    return;
                                 }
 
 
@@ -419,8 +425,9 @@ public class cartakerLoginActivity extends AppCompatActivity {
         Intent intent = new Intent(cartakerLoginActivity.this, Help.class);
         startActivity(intent);
     }
+
     public void showOptionDialog() {
-        final String[] genders = {"Sexual Content", "Violent or repulsive Content", "Hateful or abusive Content","Harmful or dangerous Content","Spam or misleading"};
+        final String[] genders = {"Sexual Content", "Violent or repulsive Content", "Hateful or abusive Content", "Harmful or dangerous Content", "Spam or misleading"};
         AlertDialog.Builder builder = new AlertDialog.Builder(cartakerLoginActivity.this);
         builder.setTitle("Choose");
         builder.setSingleChoiceItems(genders, 0, new DialogInterface.OnClickListener() {
@@ -446,8 +453,8 @@ public class cartakerLoginActivity extends AppCompatActivity {
         });
         builder.show();
     }
-    public void go()
-    {
+
+    public void go() {
 
         Toast.makeText(cartakerLoginActivity.this, "You Report: " + selectedGender, Toast.LENGTH_LONG).show();
 

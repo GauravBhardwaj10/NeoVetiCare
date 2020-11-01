@@ -119,6 +119,11 @@ public class CareTakerDescription extends AppCompatActivity {
                     Toast.makeText(CareTakerDescription.this, "About Us:", Toast.LENGTH_SHORT).show();
                     k5();
                 }
+                if (item.getItemId() == R.id.contact) {
+                    Intent contact = new Intent(CareTakerDescription.this, ContactActivity.class);
+                    startActivity(contact);
+
+                }
                 DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
 

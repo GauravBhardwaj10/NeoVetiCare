@@ -74,6 +74,11 @@ public class TabActivity extends AppCompatActivity {
                 if (item.getItemId() == R.id.report) {
                     Toast.makeText(TabActivity.this, "Report this app:", Toast.LENGTH_SHORT).show();
                     showOptionDialog();}
+                if (item.getItemId() == R.id.contact) {
+                    Intent contact = new Intent(TabActivity.this, ContactActivity.class);
+                    startActivity(contact);
+
+                }
                 DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;

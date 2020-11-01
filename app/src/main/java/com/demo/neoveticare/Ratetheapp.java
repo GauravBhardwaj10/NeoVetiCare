@@ -68,6 +68,11 @@ navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigation
         if (item.getItemId() == R.id.report) {
             Toast.makeText(Ratetheapp.this, "Report this app:", Toast.LENGTH_SHORT).show();
             showOptionDialog();}
+        if (item.getItemId() == R.id.contact) {
+            Intent contact = new Intent(Ratetheapp.this, ContactActivity.class);
+            startActivity(contact);
+
+        }
         DrawerLayout drawerLayout=findViewById(R.id.drawer_layout);
         drawerLayout.closeDrawer(GravityCompat.START);
 

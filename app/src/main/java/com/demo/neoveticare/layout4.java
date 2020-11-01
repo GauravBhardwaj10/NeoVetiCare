@@ -64,6 +64,11 @@ PDFView pdf4;
                 if (item.getItemId() == R.id.report) {
                     Toast.makeText(layout4.this, "Report this app:", Toast.LENGTH_SHORT).show();
                     showOptionDialog();}
+                if (item.getItemId() == R.id.contact) {
+                    Intent contact = new Intent(layout4.this, ContactActivity.class);
+                    startActivity(contact);
+
+                }
                 DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
