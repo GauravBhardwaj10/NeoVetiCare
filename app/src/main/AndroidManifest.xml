@@ -60,6 +60,7 @@
         <activity android:name=".MessageActivity" />
         <activity android:name=".MessagesActivity" />
         <activity android:name=".ChatActivity" />
+        <activity android:name=".FilterActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
