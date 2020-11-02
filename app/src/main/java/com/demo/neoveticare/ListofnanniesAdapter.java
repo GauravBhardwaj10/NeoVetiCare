@@ -34,6 +34,8 @@ public class ListofnanniesAdapter extends RecyclerView.Adapter<ListofnanniesAdap
         valuesListFull = new ArrayList<>(values);
     }
 
+
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
