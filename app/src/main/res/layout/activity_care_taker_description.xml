@@ -26,12 +26,12 @@
                 android:layout_marginTop="20dp" />
 
             <LinearLayout
-                android:layout_marginTop="10dp"
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
                 android:layout_below="@id/ctimage"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
                 <Button
@@ -39,13 +39,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/custom_button"
-                    android:text="Message" />
+                    android:text="Message"
+                    android:visibility="gone" />
 
                 <Button
-                    android:layout_marginStart="40dp"
                     android:id="@+id/btnChat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
                     android:background="@drawable/custom_button"
                     android:text="chat" />
 
