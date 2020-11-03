@@ -3,6 +3,7 @@ package com.demo.neoveticare;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -18,6 +19,7 @@ public class FilterActivity extends AppCompatActivity {
     private RadioGroup radioGenderGroup;
     private RadioButton radioGenderButton;
     AppCompatEditText etMin, etMax, etCity;
+    int minPrice, maxPrice;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,15 +33,30 @@ public class FilterActivity extends AppCompatActivity {
         etMin = findViewById(R.id.etMinPrice);
         etMax = findViewById(R.id.etMaxPrice);
         etCity = findViewById(R.id.etCity);
+        btnFilter = findViewById(R.id.btnFilter);
         btnFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if (TextUtils.isEmpty(etMin.getText().toString())) {
+                    minPrice = 0;
+                } else {
+                    minPrice = Integer.parseInt(etMin.getText().toString());
+                }
+
+
+                if (TextUtils.isEmpty(etMax.getText().toString())) {
+                    maxPrice = 0;
+                } else {
+                    maxPrice = Integer.parseInt(etMax.getText().toString());
+                }
+
                 int selectedId = radioGenderGroup.getCheckedRadioButtonId();
                 radioGenderButton = (RadioButton) findViewById(selectedId);
                 Intent i = new Intent(FilterActivity.this, RetreivedataActivity.class);
                 i.putExtra("category", category);
-                i.putExtra("min", etMin.getText().toString());
-                i.putExtra("max", etMax.getText().toString());
+                i.putExtra("min", minPrice);
+                i.putExtra("max", maxPrice);
                 i.putExtra("city", etCity.getText().toString());
                 i.putExtra("gender", radioGenderButton.getText());
                 startActivity(i);
