@@ -9,6 +9,7 @@ import android.location.Geocoder;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
@@ -57,6 +58,8 @@ public class RetreivedataActivity extends AppCompatActivity {
     AppCompatImageView ivLocation;
     private static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     private double latitude, longitude;
+    String city, gender;
+    int minPrice, maxPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +98,8 @@ public class RetreivedataActivity extends AppCompatActivity {
                 }
                 if (item.getItemId() == R.id.report) {
                     Toast.makeText(RetreivedataActivity.this, "Report this app:", Toast.LENGTH_SHORT).show();
-                    showOptionDialog();}
+                    showOptionDialog();
+                }
                 if (item.getItemId() == R.id.About) {
                     Toast.makeText(RetreivedataActivity.this, "About Us:", Toast.LENGTH_SHORT).show();
                     k5();
@@ -116,6 +120,10 @@ public class RetreivedataActivity extends AppCompatActivity {
         FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
         Intent in = getIntent();
         String abc = in.getStringExtra("category");
+        city = in.getStringExtra("city");
+        gender = in.getStringExtra("gender");
+        minPrice = in.getIntExtra("min", 0);
+        maxPrice = in.getIntExtra("max", 0);
 
         if (abc.equals("childernparttime")) {
 
@@ -127,7 +135,28 @@ public class RetreivedataActivity extends AppCompatActivity {
                         ArrayList<Upload> CTList = new ArrayList<>();
                         for (DocumentSnapshot document : task.getResult()) {
                             Upload Caretaker = document.toObject(Upload.class);
-                            CTList.add(Caretaker);
+                            if (TextUtils.equals(Caretaker.getGender(), gender) || TextUtils.equals(gender, "Any")) {
+                                if (city.length() == 0) {
+                                    if (minPrice == 0 && maxPrice == 0) {
+                                        CTList.add(Caretaker);
+                                    } else {
+                                        if ((Integer.parseInt(Caretaker.getPrice()) >= minPrice) &&  (Integer.parseInt(Caretaker.getPrice())<=maxPrice)) {
+                                            CTList.add(Caretaker);
+                                        }
+                                    }
+
+                                } else if (TextUtils.equals(Caretaker.getCity(), city)) {
+
+                                    if (minPrice == 0 && maxPrice == 0) {
+                                        CTList.add(Caretaker);
+                                    } else {
+                                        if ((Integer.parseInt(Caretaker.getPrice()) >= minPrice) &&   (Integer.parseInt(Caretaker.getPrice())<=maxPrice)) {
+                                            CTList.add(Caretaker);
+                                        }
+                                    }
+                                }
+                            }
+
                         }
 
                         listnanies = new ListofnanniesAdapter(getApplicationContext(), CTList);
@@ -158,8 +187,27 @@ public class RetreivedataActivity extends AppCompatActivity {
                         ArrayList<Upload> CTList = new ArrayList<>();
                         for (DocumentSnapshot document : task.getResult()) {
                             Upload caretaker = document.toObject(Upload.class);
-                            CTList.add(caretaker);
+                            if (TextUtils.equals(caretaker.getGender(), gender) || TextUtils.equals(gender, "Any")) {
+                                if (city.length() == 0) {
+                                    if (minPrice == 0 && maxPrice == 0) {
+                                        CTList.add(caretaker);
+                                    } else {
+                                        if ((Integer.parseInt(caretaker.getPrice()) >= minPrice) &&  (Integer.parseInt(caretaker.getPrice())<=maxPrice)) {
+                                            CTList.add(caretaker);
+                                        }
+                                    }
 
+                                } else if (TextUtils.equals(caretaker.getCity(), city)) {
+
+                                    if (minPrice == 0 && maxPrice == 0) {
+                                        CTList.add(caretaker);
+                                    } else {
+                                        if ((Integer.parseInt(caretaker.getPrice()) >= minPrice) &&   (Integer.parseInt(caretaker.getPrice())<=maxPrice)) {
+                                            CTList.add(caretaker);
+                                        }
+                                    }
+                                }
+                            }
                             listnanies = new ListofnanniesAdapter(getApplicationContext(), CTList);
 
                             recyclerview.setAdapter(listnanies);
@@ -190,7 +238,28 @@ public class RetreivedataActivity extends AppCompatActivity {
                         ArrayList<Upload> CTList = new ArrayList<>();
                         for (DocumentSnapshot document : task.getResult()) {
                             Upload Caretaker = document.toObject(Upload.class);
-                            CTList.add(Caretaker);
+
+                            if (TextUtils.equals(Caretaker.getGender(), gender) || TextUtils.equals(gender, "Any")) {
+                                if (city.length() == 0) {
+                                    if (minPrice == 0 && maxPrice == 0) {
+                                        CTList.add(Caretaker);
+                                    } else {
+                                        if ((Integer.parseInt(Caretaker.getPrice()) >= minPrice) &&  (Integer.parseInt(Caretaker.getPrice())<=maxPrice)) {
+                                            CTList.add(Caretaker);
+                                        }
+                                    }
+
+                                } else if (TextUtils.equals(Caretaker.getCity(), city)) {
+
+                                    if (minPrice == 0 && maxPrice == 0) {
+                                        CTList.add(Caretaker);
+                                    } else {
+                                        if ((Integer.parseInt(Caretaker.getPrice()) >= minPrice) &&  (Integer.parseInt(Caretaker.getPrice())<=maxPrice)) {
+                                            CTList.add(Caretaker);
+                                        }
+                                    }
+                                }
+                            }
 
                             listnanies = new ListofnanniesAdapter(getApplicationContext(), CTList);
 
@@ -222,8 +291,28 @@ public class RetreivedataActivity extends AppCompatActivity {
                         ArrayList<Upload> CTList = new ArrayList<>();
                         for (DocumentSnapshot document : task.getResult()) {
 
-                            Upload caretaker = document.toObject(Upload.class);
-                            CTList.add(caretaker);
+                            Upload Caretaker = document.toObject(Upload.class);
+                            if (TextUtils.equals(Caretaker.getGender(), gender) || TextUtils.equals(gender, "Any")) {
+                                if (city.length() == 0) {
+                                    if (minPrice == 0 && maxPrice == 0) {
+                                        CTList.add(Caretaker);
+                                    } else {
+                                        if ((Integer.parseInt(Caretaker.getPrice()) >= minPrice) &&   (Integer.parseInt(Caretaker.getPrice())<=maxPrice)) {
+                                            CTList.add(Caretaker);
+                                        }
+                                    }
+
+                                } else if (TextUtils.equals(Caretaker.getCity(), city)) {
+
+                                    if (minPrice == 0 && maxPrice == 0) {
+                                        CTList.add(Caretaker);
+                                    } else {
+                                        if ((Integer.parseInt(Caretaker.getPrice()) >= minPrice) &&   (Integer.parseInt(Caretaker.getPrice())<=maxPrice)) {
+                                            CTList.add(Caretaker);
+                                        }
+                                    }
+                                }
+                            }
 
                             listnanies = new ListofnanniesAdapter(getApplicationContext(), CTList);
 
@@ -278,7 +367,7 @@ public class RetreivedataActivity extends AppCompatActivity {
                             Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, MY_PERMISSIONS_REQUEST_LOCATION);
 
 
-                }else{
+                } else {
                     Intent i = new Intent(RetreivedataActivity.this, MapsActivity.class);
                     startActivityForResult(i, 2);
                 }
@@ -296,22 +385,19 @@ public class RetreivedataActivity extends AppCompatActivity {
                     || grantResults[0] !=
                     PackageManager.PERMISSION_GRANTED) {
 
-                //   Toast.makeText(PGImageActivity.this, "You have to grant CAMERA and SD card Write permission for image upload", Toast.LENGTH_SHORT).show();
-
-            } else {
+                            } else {
                 Intent i = new Intent(RetreivedataActivity.this, MapsActivity.class);
                 startActivityForResult(i, 2);
             }
 
-            // other 'case' lines to check for other permissions this app might request.
-            //You can add here other case statements according to your requirement.
+
         }
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        // check if the request code is same as what is passed  here it is 2
+
         if (requestCode == 2) {
             String message = data.getStringExtra("address");
             etSearch.setText(message);
@@ -328,7 +414,7 @@ public class RetreivedataActivity extends AppCompatActivity {
         geocoder = new Geocoder(RetreivedataActivity.this, Locale.getDefault());
 
         try {
-            // Log.e("lat", latitude + "");
+
             addresses = geocoder.getFromLocation(latitude, longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
         } catch (IOException e) {
             e.printStackTrace();
@@ -371,6 +457,7 @@ public class RetreivedataActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     public void jj() {
         Intent intent = new Intent(RetreivedataActivity.this, Adminactivity.class);
         startActivity(intent);
@@ -410,8 +497,9 @@ public class RetreivedataActivity extends AppCompatActivity {
         Intent intent = new Intent(RetreivedataActivity.this, About_us.class);
         startActivity(intent);
     }
+
     public void showOptionDialog() {
-        final String[] genders = {"Sexual Content", "Violent or repulsive Content", "Hateful or abusive Content","Harmful or dangerous Content","Spam or misleading"};
+        final String[] genders = {"Sexual Content", "Violent or repulsive Content", "Hateful or abusive Content", "Harmful or dangerous Content", "Spam or misleading"};
         AlertDialog.Builder builder = new AlertDialog.Builder(RetreivedataActivity.this);
         builder.setTitle("Choose");
         builder.setSingleChoiceItems(genders, 0, new DialogInterface.OnClickListener() {
@@ -437,8 +525,8 @@ public class RetreivedataActivity extends AppCompatActivity {
         });
         builder.show();
     }
-    public void go()
-    {
+
+    public void go() {
 
         Toast.makeText(RetreivedataActivity.this, "You Report: " + selectedGender, Toast.LENGTH_LONG).show();
 
