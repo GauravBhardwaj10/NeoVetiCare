@@ -28,7 +28,6 @@ public class Adminactivity extends AppCompatActivity {
     private ActionBarDrawerToggle mtoggle;
     String selectedGender = "Sexual Content";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

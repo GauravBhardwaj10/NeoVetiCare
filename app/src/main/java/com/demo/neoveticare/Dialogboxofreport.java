@@ -4,21 +4,30 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 public class Dialogboxofreport extends AppCompatActivity {
-    public Button bt4;
-    String selectedGender="one";
+    public Button btnContacts;
+    String selectedGender = "one";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dialogboxofreport);
-        bt4=findViewById(R.id.button41);
-        bt4.setOnClickListener(new View.OnClickListener() {
+        btnContacts = findViewById(R.id.btnContacts);
+        btnContacts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Dialogboxofreport.this, AdminContactActivity.class);
+                startActivity(i);
+
+            }
+        });
+      /*  bt4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
               showOptionsDialog();
@@ -51,10 +60,10 @@ public class Dialogboxofreport extends AppCompatActivity {
                 builder.show();
             }
 
-        });
+        });*/
     }
-    public void go()
-    {
-        Toast.makeText(Dialogboxofreport.this,"Reporting Done" ,Toast.LENGTH_LONG).show();
+
+    public void go() {
+        Toast.makeText(Dialogboxofreport.this, "Reporting Done", Toast.LENGTH_LONG).show();
     }
 }
