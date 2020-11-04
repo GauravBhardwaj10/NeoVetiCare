@@ -41,7 +41,7 @@ public class CareTakerDescription extends AppCompatActivity {
     TextView ctgender, ctname, ctcity, ctprovince, currency, ctimings, ctexperience, ctrate, ctdesc, ctavaialbility, ctage;
     ImageView ctimg;
     ArrayList<String> list;
-    Button btnMessage, btnChat;
+    Button btnMessage, btnChat, btnHire;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class CareTakerDescription extends AppCompatActivity {
 
         Intent in = getIntent();
         final String email = in.getStringExtra("email");
-        String name = in.getStringExtra("name");
+        final String name = in.getStringExtra("name");
         String price = in.getStringExtra("price");
         String city = in.getStringExtra("city");
         String gender = in.getStringExtra("gender");
@@ -60,7 +60,7 @@ public class CareTakerDescription extends AppCompatActivity {
         String age = in.getStringExtra("age");
         String province = in.getStringExtra("province");
         String writaboutyourself = in.getStringExtra("description");
-        String rate = in.getStringExtra("price");
+        final String rate = in.getStringExtra("price");
         String experience = in.getStringExtra("experience");
         String availability = in.getStringExtra("availablity");
         final String image = in.getStringExtra("image");
@@ -172,6 +172,20 @@ public class CareTakerDescription extends AppCompatActivity {
 
                 Intent i = new Intent(CareTakerDescription.this, ChatActivity.class);
                 i.putExtra("email", email);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
+
+            }
+        });
+        btnHire = findViewById(R.id.btnHire);
+        btnHire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(CareTakerDescription.this, HireActivity.class);
+                i.putExtra("email", email);
+                i.putExtra("rate", rate);
+                i.putExtra("name", name);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
 
