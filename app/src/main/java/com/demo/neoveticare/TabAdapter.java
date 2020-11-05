@@ -26,6 +26,9 @@ public class TabAdapter extends FragmentPagerAdapter {
                 ChatFragment messageFragment = new ChatFragment();
                 return messageFragment;
             case 1:
+                HireFragment hireFragment = new HireFragment();
+                return hireFragment;
+            case 2:
                 ProfileFragment profileFragment = new ProfileFragment();
                 return profileFragment;
 
