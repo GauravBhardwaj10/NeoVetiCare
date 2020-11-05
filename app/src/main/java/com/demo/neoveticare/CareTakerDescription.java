@@ -41,7 +41,7 @@ public class CareTakerDescription extends AppCompatActivity {
     TextView ctgender, ctname, ctcity, ctprovince, currency, ctimings, ctexperience, ctrate, ctdesc, ctavaialbility, ctage;
     ImageView ctimg;
     ArrayList<String> list;
-    Button btnMessage, btnChat, btnHire;
+    Button btnMessage, btnChat, btnHire, btnRatings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,7 @@ public class CareTakerDescription extends AppCompatActivity {
         setContentView(R.layout.nav_activity_listofnanny);
         btnMessage = findViewById(R.id.btnMessage);
         btnChat = findViewById(R.id.btnChat);
+        btnRatings = findViewById(R.id.btnRatings);
 
         Intent in = getIntent();
         final String email = in.getStringExtra("email");
@@ -172,6 +173,18 @@ public class CareTakerDescription extends AppCompatActivity {
 
                 Intent i = new Intent(CareTakerDescription.this, ChatActivity.class);
                 i.putExtra("email", email);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
+
+            }
+        });
+        btnRatings = findViewById(R.id.btnRatings);
+        btnRatings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(CareTakerDescription.this, RatingActivity.class);
+
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
 
