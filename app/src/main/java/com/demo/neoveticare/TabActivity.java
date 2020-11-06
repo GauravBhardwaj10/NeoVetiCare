@@ -218,4 +218,12 @@ public class TabActivity extends AppCompatActivity {
         Toast.makeText(TabActivity.this, "You Report: " + selectedGender, Toast.LENGTH_LONG).show();
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(tabLayout!=null){
+            tabLayout.getTabAt(0).select();
+        }
+    }
 }
