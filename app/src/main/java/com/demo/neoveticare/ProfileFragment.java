@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -32,6 +33,7 @@ public class ProfileFragment extends Fragment {
     AppCompatTextView tvName, tvGender, tvAddress, tvCity, tvEmail, tvPhone, tvPrice, tvExperience, tvType;
     TextView tvProfileType;
     CircleImageView ivProfile;
+    Button btnEdit;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -56,11 +58,20 @@ public class ProfileFragment extends Fragment {
         tvExperience = root.findViewById(R.id.tvExperience);
         tvType = root.findViewById(R.id.tvType);
         tvProfileType = root.findViewById(R.id.tvProfileType);
-        if(TabActivity.table.contains("child")){
+        if (TabActivity.table.contains("child")) {
             tvProfileType.setText("Babysitter");
-        }else{
+        } else {
             tvProfileType.setText("Caretaker");
         }
+        btnEdit = root.findViewById(R.id.btnEdit);
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), EditProfileActivity.class);
+                i.putExtra("table", TabActivity.table);
+                startActivity(i);
+            }
+        });
 
         getProfile();
         return root;
