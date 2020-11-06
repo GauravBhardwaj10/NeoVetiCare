@@ -184,7 +184,7 @@ public class CareTakerDescription extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent i = new Intent(CareTakerDescription.this, RatingActivity.class);
-
+                i.putExtra("email", email);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
 
