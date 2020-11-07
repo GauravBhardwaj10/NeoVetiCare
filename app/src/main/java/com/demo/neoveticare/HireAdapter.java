@@ -58,8 +58,7 @@ public class HireAdapter extends RecyclerView.Adapter<HireAdapter.ViewHolder> {
 
         holder.tvDate.setText(hire.getDatetime());
         holder.tvEmail.setText(hire.getParentEmail());
-        holder.tvTotalHours.setText(hire.getTotal());
-        holder.tvTotalPrice.setText(hire.getRate());
+        holder.tvTotalPrice.setText("Total Weekly Pay : " + hire.getRate());
 
     }
 

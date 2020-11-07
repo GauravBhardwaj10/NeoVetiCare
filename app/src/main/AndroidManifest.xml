@@ -65,6 +65,7 @@
         <activity android:name=".HireActivity" />
         <activity android:name=".RatingActivity" />
         <activity android:name=".EditProfileActivity" />
+        <activity android:name=".PaymentActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
