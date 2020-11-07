@@ -3,7 +3,7 @@ package com.demo.neoveticare;
 
 class Hire {
 
-    String id, name, email, rate, mon, tue, wed, thu, fri, sat, sun, total, datetime,parentEmail;
+    String id, name, email, rate, mon, tue, wed, thu, fri, sat, sun, total, datetime, parentEmail;
 
     public Hire() {
     }

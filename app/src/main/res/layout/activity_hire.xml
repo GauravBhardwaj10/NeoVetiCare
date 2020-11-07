@@ -249,7 +249,7 @@
             android:layout_marginTop="10dp"
             android:background="#FA71CD"
             android:padding="5dp"
-            android:text="Send Offer"
+            android:text="Pay Bill"
             android:textColor="@android:color/white" />
     </LinearLayout>
 

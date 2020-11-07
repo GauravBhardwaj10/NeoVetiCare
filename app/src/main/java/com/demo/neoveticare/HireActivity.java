@@ -1,6 +1,7 @@
 package com.demo.neoveticare;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -105,6 +106,8 @@ public class HireActivity extends AppCompatActivity {
                     sun = Integer.parseInt(etSunday.getText().toString());
                 }
 
+
+
                 int TotalHours = mon + tue + wed + thu + fri + sat + sun;
 
                 Log.e("TotalHours", "" + TotalHours);
@@ -126,17 +129,16 @@ public class HireActivity extends AppCompatActivity {
                 Map<String, Object> order = new HashMap<>();
                 order.put("id", id);
                 order.put("name", name);
-                order.put("emailto", email);
                 order.put("email", email);
                 order.put("rate", rate);
-                order.put("mon", mon);
-                order.put("tue", tue);
-                order.put("wed", wed);
-                order.put("thu", thu);
-                order.put("fri", fri);
-                order.put("sat", sat);
-                order.put("sun", sun);
-                order.put("total", totalPrice);
+                order.put("mon", String.valueOf(mon));
+                order.put("tue", String.valueOf(tue));
+                order.put("wed", String.valueOf(wed));
+                order.put("thu", String.valueOf(thu));
+                order.put("fri", String.valueOf(fri));
+                order.put("sat", String.valueOf(sat));
+                order.put("sun", String.valueOf(sun));
+                order.put("total", String.valueOf(totalPrice));
                 order.put("datetime", formatter.format(date));
                 order.put("parentEmail", mAuth.getCurrentUser().getEmail());
 
@@ -147,7 +149,9 @@ public class HireActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void aVoid) {
 
-                                Toast.makeText(HireActivity.this, "Offer sent Successfully", Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(HireActivity.this, PaymentActivity.class);
+                                startActivity(i);
+                                // Toast.makeText(HireActivity.this, "Offer sent Successfully", Toast.LENGTH_SHORT).show();
 
                             }
                         })
