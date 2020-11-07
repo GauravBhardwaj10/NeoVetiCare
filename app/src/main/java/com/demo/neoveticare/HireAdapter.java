@@ -2,12 +2,14 @@ package com.demo.neoveticare;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -16,19 +18,32 @@ public class HireAdapter extends RecyclerView.Adapter<HireAdapter.ViewHolder> {
 
     private Context context;
     private List<Hire> hireList;
+    Hire hire;
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView tvEmail, tvTotalHours, tvTotalPrice, tvDate;
+        ConstraintLayout constraintLayout;
 
         ViewHolder(View view) {
             super(view);
-
 
             tvEmail = view.findViewById(R.id.tvEmail);
             tvTotalHours = view.findViewById(R.id.tvTotalHours);
             tvTotalPrice = view.findViewById(R.id.tvTotalPrice);
             tvDate = view.findViewById(R.id.tvDate);
+            constraintLayout = view.findViewById(R.id.constraintlayout);
+            constraintLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    hire = hireList.get(getAdapterPosition());
+                    Intent i = new Intent(context, HireDetailsActivity.class);
+                    i.putExtra("documentId", hire.getId());
+                    context.startActivity(i);
+
+
+                }
+            });
 
         }
 
@@ -54,7 +69,7 @@ public class HireAdapter extends RecyclerView.Adapter<HireAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull final HireAdapter.ViewHolder holder, final int position) {
 
-        Hire hire = hireList.get(position);
+        hire = hireList.get(position);
 
         holder.tvDate.setText(hire.getDatetime());
         holder.tvEmail.setText(hire.getParentEmail());
