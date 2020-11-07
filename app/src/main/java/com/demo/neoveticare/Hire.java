@@ -3,7 +3,7 @@ package com.demo.neoveticare;
 
 class Hire {
 
-    String id, name, email, rate, mon, tue, wed, thu, fri, sat, sun, total, datetime, parentEmail;
+    String id, name, email, rate, mon, tue, wed, thu, fri, sat, sun, total, datetime, parentEmail, fromDate, toDate;
 
     public Hire() {
     }
@@ -135,5 +135,21 @@ class Hire {
 
     public void setParentEmail(String parentEmail) {
         this.parentEmail = parentEmail;
+    }
+
+    public String getFromDate() {
+        return fromDate;
+    }
+
+    public void setFromDate(String fromDate) {
+        this.fromDate = fromDate;
+    }
+
+    public String getToDate() {
+        return toDate;
+    }
+
+    public void setToDate(String toDate) {
+        this.toDate = toDate;
     }
 }

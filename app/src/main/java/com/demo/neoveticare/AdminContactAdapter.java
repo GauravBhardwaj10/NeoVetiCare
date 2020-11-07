@@ -59,7 +59,7 @@ public class AdminContactAdapter extends RecyclerView.Adapter<AdminContactAdapte
 
         holder.tvName.setText(adminContact.getName());
         holder.tvEmail.setText(adminContact.getEmail());
-        holder.tvPhone.setText(adminContact.getMessage());
+        holder.tvPhone.setText(adminContact.getPhone());
         holder.tvMessage.setText(adminContact.getMessage());
         holder.tvService.setText(String.format("Service Required : %s", adminContact.getService()));
 
