@@ -1,12 +1,14 @@
 package com.demo.neoveticare;
 
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,19 +23,23 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class HireActivity extends AppCompatActivity {
 
-    EditText etMonday, etTuesday, etWednesday, etThursday, etFriday, etSaturday, etSunday;
+    EditText etMonday, etTuesday, etWednesday, etThursday, etFriday, etSaturday, etSunday, etFrom, etTo;
     TextView tvName, tvEmail, tvRate, tvTotalPrice;
     Button btnCalculate, btnOffer;
     String name, email, rate;
     int mon, tue, wed, thu, fri, sat, sun, totalPrice;
     FirebaseFirestore firebaseFirestore;
     FirebaseAuth mAuth;
+    final Calendar myCalendar = Calendar.getInstance();
+    final Calendar myCalendarTo = Calendar.getInstance();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,6 +55,9 @@ public class HireActivity extends AppCompatActivity {
         etFriday = findViewById(R.id.etFriday);
         etSaturday = findViewById(R.id.etSaturday);
         etSunday = findViewById(R.id.etSunday);
+
+        etFrom = findViewById(R.id.etFrom);
+        etTo = findViewById(R.id.etTo);
 
         tvName = findViewById(R.id.tvName);
         tvEmail = findViewById(R.id.tvEmail);
@@ -106,7 +115,15 @@ public class HireActivity extends AppCompatActivity {
                     sun = Integer.parseInt(etSunday.getText().toString());
                 }
 
+                if (TextUtils.isEmpty(etFrom.getText().toString())) {
+                    etFrom.setError("Invalid");
+                    return;
+                }
 
+                if (TextUtils.isEmpty(etTo.getText().toString())) {
+                    etTo.setError("Invalid");
+                    return;
+                }
                 int TotalHours = mon + tue + wed + thu + fri + sat + sun;
 
                 Log.e("TotalHours", "" + TotalHours);
@@ -138,6 +155,8 @@ public class HireActivity extends AppCompatActivity {
                 order.put("sat", String.valueOf(sat));
                 order.put("sun", String.valueOf(sun));
                 order.put("total", String.valueOf(totalPrice));
+                order.put("fromDate", etFrom.getText().toString());
+                order.put("toDate", etTo.getText().toString());
                 order.put("datetime", formatter.format(date));
                 order.put("parentEmail", mAuth.getCurrentUser().getEmail());
 
@@ -167,5 +186,71 @@ public class HireActivity extends AppCompatActivity {
         });
 
 
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel();
+            }
+
+        };
+
+        etFrom.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                new DatePickerDialog(HireActivity.this, date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+
+        final DatePickerDialog.OnDateSetListener dateTo = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                myCalendarTo.set(Calendar.YEAR, year);
+                myCalendarTo.set(Calendar.MONTH, monthOfYear);
+                myCalendarTo.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateToLabel();
+            }
+
+        };
+
+        etTo.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                new DatePickerDialog(HireActivity.this, dateTo, myCalendarTo
+                        .get(Calendar.YEAR), myCalendarTo.get(Calendar.MONTH),
+                        myCalendarTo.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+
+    }
+
+    private void updateLabel() {
+        String myFormat = "MM-dd-yyyy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
+        etFrom.setText(sdf.format(myCalendar.getTime()));
+    }
+
+    private void updateToLabel() {
+        String myFormat = "MM-dd-yyyy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
+        etTo.setText(sdf.format(myCalendarTo.getTime()));
     }
 }
