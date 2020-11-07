@@ -124,6 +124,9 @@ public class RetreivedataActivity extends AppCompatActivity {
         gender = in.getStringExtra("gender");
         minPrice = in.getIntExtra("min", 0);
         maxPrice = in.getIntExtra("max", 0);
+        if (maxPrice == 0) {
+            maxPrice = 100;
+        }
 
         if (abc.equals("childernparttime")) {
 
@@ -140,7 +143,7 @@ public class RetreivedataActivity extends AppCompatActivity {
                                     if (minPrice == 0 && maxPrice == 0) {
                                         CTList.add(Caretaker);
                                     } else {
-                                        if ((Integer.parseInt(Caretaker.getPrice()) >= minPrice) &&  (Integer.parseInt(Caretaker.getPrice())<=maxPrice)) {
+                                        if ((Integer.parseInt(Caretaker.getPrice()) >= minPrice) && (Integer.parseInt(Caretaker.getPrice()) <= maxPrice)) {
                                             CTList.add(Caretaker);
                                         }
                                     }
@@ -150,7 +153,7 @@ public class RetreivedataActivity extends AppCompatActivity {
                                     if (minPrice == 0 && maxPrice == 0) {
                                         CTList.add(Caretaker);
                                     } else {
-                                        if ((Integer.parseInt(Caretaker.getPrice()) >= minPrice) &&   (Integer.parseInt(Caretaker.getPrice())<=maxPrice)) {
+                                        if ((Integer.parseInt(Caretaker.getPrice()) >= minPrice) && (Integer.parseInt(Caretaker.getPrice()) <= maxPrice)) {
                                             CTList.add(Caretaker);
                                         }
                                     }
@@ -192,7 +195,7 @@ public class RetreivedataActivity extends AppCompatActivity {
                                     if (minPrice == 0 && maxPrice == 0) {
                                         CTList.add(caretaker);
                                     } else {
-                                        if ((Integer.parseInt(caretaker.getPrice()) >= minPrice) &&  (Integer.parseInt(caretaker.getPrice())<=maxPrice)) {
+                                        if ((Integer.parseInt(caretaker.getPrice()) >= minPrice) && (Integer.parseInt(caretaker.getPrice()) <= maxPrice)) {
                                             CTList.add(caretaker);
                                         }
                                     }
@@ -202,7 +205,7 @@ public class RetreivedataActivity extends AppCompatActivity {
                                     if (minPrice == 0 && maxPrice == 0) {
                                         CTList.add(caretaker);
                                     } else {
-                                        if ((Integer.parseInt(caretaker.getPrice()) >= minPrice) &&   (Integer.parseInt(caretaker.getPrice())<=maxPrice)) {
+                                        if ((Integer.parseInt(caretaker.getPrice()) >= minPrice) && (Integer.parseInt(caretaker.getPrice()) <= maxPrice)) {
                                             CTList.add(caretaker);
                                         }
                                     }
@@ -244,7 +247,7 @@ public class RetreivedataActivity extends AppCompatActivity {
                                     if (minPrice == 0 && maxPrice == 0) {
                                         CTList.add(Caretaker);
                                     } else {
-                                        if ((Integer.parseInt(Caretaker.getPrice()) >= minPrice) &&  (Integer.parseInt(Caretaker.getPrice())<=maxPrice)) {
+                                        if ((Integer.parseInt(Caretaker.getPrice()) >= minPrice) && (Integer.parseInt(Caretaker.getPrice()) <= maxPrice)) {
                                             CTList.add(Caretaker);
                                         }
                                     }
@@ -254,7 +257,7 @@ public class RetreivedataActivity extends AppCompatActivity {
                                     if (minPrice == 0 && maxPrice == 0) {
                                         CTList.add(Caretaker);
                                     } else {
-                                        if ((Integer.parseInt(Caretaker.getPrice()) >= minPrice) &&  (Integer.parseInt(Caretaker.getPrice())<=maxPrice)) {
+                                        if ((Integer.parseInt(Caretaker.getPrice()) >= minPrice) && (Integer.parseInt(Caretaker.getPrice()) <= maxPrice)) {
                                             CTList.add(Caretaker);
                                         }
                                     }
@@ -297,7 +300,7 @@ public class RetreivedataActivity extends AppCompatActivity {
                                     if (minPrice == 0 && maxPrice == 0) {
                                         CTList.add(Caretaker);
                                     } else {
-                                        if ((Integer.parseInt(Caretaker.getPrice()) >= minPrice) &&   (Integer.parseInt(Caretaker.getPrice())<=maxPrice)) {
+                                        if ((Integer.parseInt(Caretaker.getPrice()) >= minPrice) && (Integer.parseInt(Caretaker.getPrice()) <= maxPrice)) {
                                             CTList.add(Caretaker);
                                         }
                                     }
@@ -307,7 +310,7 @@ public class RetreivedataActivity extends AppCompatActivity {
                                     if (minPrice == 0 && maxPrice == 0) {
                                         CTList.add(Caretaker);
                                     } else {
-                                        if ((Integer.parseInt(Caretaker.getPrice()) >= minPrice) &&   (Integer.parseInt(Caretaker.getPrice())<=maxPrice)) {
+                                        if ((Integer.parseInt(Caretaker.getPrice()) >= minPrice) && (Integer.parseInt(Caretaker.getPrice()) <= maxPrice)) {
                                             CTList.add(Caretaker);
                                         }
                                     }
@@ -385,7 +388,7 @@ public class RetreivedataActivity extends AppCompatActivity {
                     || grantResults[0] !=
                     PackageManager.PERMISSION_GRANTED) {
 
-                            } else {
+            } else {
                 Intent i = new Intent(RetreivedataActivity.this, MapsActivity.class);
                 startActivityForResult(i, 2);
             }

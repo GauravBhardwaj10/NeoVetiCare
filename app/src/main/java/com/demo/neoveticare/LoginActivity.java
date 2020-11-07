@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
 
         emailAddEd = (EditText) findViewById(R.id.txtemail);
         passEd = (EditText) findViewById(R.id.txtpass);
-       // emailAddEd.setText("test@test.com");
+      // emailAddEd.setText("test@test.com");
       //  passEd.setText("123321");
         joinBtn = (Button) findViewById(R.id.btnlogin);
         registrationTextVIEW = (TextView) findViewById(R.id.txtsignup);

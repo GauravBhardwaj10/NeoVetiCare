@@ -107,7 +107,6 @@ public class HireActivity extends AppCompatActivity {
                 }
 
 
-
                 int TotalHours = mon + tue + wed + thu + fri + sat + sun;
 
                 Log.e("TotalHours", "" + TotalHours);
@@ -123,7 +122,7 @@ public class HireActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String id = firebaseFirestore.collection("hires").document().getId();
+                final String id = firebaseFirestore.collection("hires").document().getId();
                 SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
                 Date date = new Date();
                 Map<String, Object> order = new HashMap<>();
@@ -150,6 +149,7 @@ public class HireActivity extends AppCompatActivity {
                             public void onSuccess(Void aVoid) {
 
                                 Intent i = new Intent(HireActivity.this, PaymentActivity.class);
+                                i.putExtra("documentId", id);
                                 startActivity(i);
                                 // Toast.makeText(HireActivity.this, "Offer sent Successfully", Toast.LENGTH_SHORT).show();
 
