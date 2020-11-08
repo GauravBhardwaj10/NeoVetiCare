@@ -261,10 +261,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:background="#FA71CD"
+            android:background="@drawable/custom_button"
             android:padding="5dp"
             android:text="Calculate Price"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tvTotalPrice"
