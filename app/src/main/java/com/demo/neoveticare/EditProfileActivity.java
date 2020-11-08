@@ -56,7 +56,7 @@ public class EditProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile);
+        setContentView(R.layout.nav_editprofile_activity);
 
         table = getIntent().getStringExtra("table");
         storageReference = FirebaseStorage.getInstance().getReference(table);
