@@ -67,6 +67,7 @@
         <activity android:name=".EditProfileActivity" />
         <activity android:name=".PaymentActivity" />
         <activity android:name=".HireDetailsActivity" />
+        <activity android:name=".AdminProfileActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

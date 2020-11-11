@@ -22,13 +22,24 @@
         android:id="@+id/btnContacts"
         android:layout_width="308dp"
         android:layout_height="60dp"
-
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:background="@drawable/custom_button"
         android:fontFamily="@font/coustard"
         android:text="Contacts"
+        android:textColor="#FA71CD" />
+
+    <Button
+        android:id="@+id/btnProfile"
+        android:layout_width="308dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/btnContacts"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/custom_button"
+        android:fontFamily="@font/coustard"
+        android:text="Delete/ Block Profile"
         android:textColor="#FA71CD" />
 
 

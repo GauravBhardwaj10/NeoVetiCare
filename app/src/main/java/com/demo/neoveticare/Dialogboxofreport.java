@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class Dialogboxofreport extends AppCompatActivity {
-    public Button btnContacts;
+    public Button btnContacts, btnProfile;
     String selectedGender = "one";
 
     @Override
@@ -23,6 +23,15 @@ public class Dialogboxofreport extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Dialogboxofreport.this, AdminContactActivity.class);
+                startActivity(i);
+
+            }
+        });
+        btnProfile = findViewById(R.id.btnProfile);
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Dialogboxofreport.this, AdminProfileActivity.class);
                 startActivity(i);
 
             }

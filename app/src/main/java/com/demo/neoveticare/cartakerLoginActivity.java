@@ -23,6 +23,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
@@ -188,7 +189,7 @@ public class cartakerLoginActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     // if (firebaseAuth.getCurrentUser().isEmailVerified()) {
 
-                                    getProfile();
+                                    checkBlock();
                                     // } else {
                                     //     Toast.makeText(cartakerLoginActivity.this, "please verified your email address", Toast.LENGTH_SHORT).show();
 
@@ -210,6 +211,49 @@ public class cartakerLoginActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void checkBlock() {
+
+
+        firebaseFirestore.collection("blocks").get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot documentSnapshots) {
+                        if (documentSnapshots.isEmpty()) {
+                            getProfile();
+
+                        } else {
+
+                            List<Block> blocks = documentSnapshots.toObjects(Block.class);
+                            for (int i = 0; i < blocks.size(); i++) {
+
+                                Block block = blocks.get(i);
+                                if (TextUtils.equals(block.getEmail(), emailAddEd.getText().toString())) {
+                                    Toast.makeText(cartakerLoginActivity.this, "Your account blocked", Toast.LENGTH_LONG).show();
+                                    return;
+                                }
+                                if (i == (blocks.size() - 1)) {
+                                    getProfile();
+                                }
+
+                            }
+
+
+                        }
+
+                    }
+
+
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        getProfile();
+                    }
+                });
+
+
     }
 
     private void getProfile() {
