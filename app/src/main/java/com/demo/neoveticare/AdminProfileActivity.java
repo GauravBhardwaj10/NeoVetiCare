@@ -30,7 +30,7 @@ public class AdminProfileActivity extends AppCompatActivity {
     Button btnProfile, btnBlock, btnDelete;
     EditText etEmail;
     FirebaseFirestore firebaseFirestore;
-    String table,documentId;
+    String table, documentId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,7 +55,27 @@ public class AdminProfileActivity extends AppCompatActivity {
         });
 
         btnBlock = findViewById(R.id.btnBlock);
+        btnDelete = findViewById(R.id.btnDelete);
 
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (TextUtils.isEmpty(documentId)) {
+
+                    Toast.makeText(AdminProfileActivity.this, "Firstly get profile", Toast.LENGTH_LONG).show();
+
+                } else {
+                    firebaseFirestore.collection(table).document(documentId)
+                            .delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(AdminProfileActivity.this, "User Profile deleted Successfully", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+
+            }
+        });
 
         btnBlock.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +130,7 @@ public class AdminProfileActivity extends AppCompatActivity {
                                 Upload upload = uploads.get(i);
 
                                 if (TextUtils.equals(upload.getEmailaddress(), etEmail.getText().toString())) {
-                                    documentId=documentSnapshots.getDocuments().get(i).getId();
+                                    documentId = documentSnapshots.getDocuments().get(i).getId();
                                     table = "uploadchildernfulltime";
                                     tvName.setText(upload.getName());
                                     tvAddress.setText(upload.getPhone());
@@ -148,7 +168,7 @@ public class AdminProfileActivity extends AppCompatActivity {
 
                                 Upload upload = uploads.get(i);
                                 if (TextUtils.equals(upload.getEmailaddress(), etEmail.getText().toString())) {
-                                    documentId=documentSnapshots.getDocuments().get(i).getId();
+                                    documentId = documentSnapshots.getDocuments().get(i).getId();
                                     table = "seniorfulltime";
                                     tvName.setText(upload.getName());
                                     tvAddress.setText(upload.getPhone());
@@ -183,7 +203,7 @@ public class AdminProfileActivity extends AppCompatActivity {
 
                                 Upload upload = uploads.get(i);
                                 if (TextUtils.equals(upload.getEmailaddress(), etEmail.getText().toString())) {
-                                    documentId=documentSnapshots.getDocuments().get(i).getId();
+                                    documentId = documentSnapshots.getDocuments().get(i).getId();
                                     table = "seniorparttime";
                                     tvName.setText(upload.getName());
                                     tvAddress.setText(upload.getPhone());
@@ -219,7 +239,7 @@ public class AdminProfileActivity extends AppCompatActivity {
                                 Upload upload = uploads.get(i);
 
                                 if (TextUtils.equals(upload.getEmailaddress(), etEmail.getText().toString())) {
-                                    documentId=documentSnapshots.getDocuments().get(i).getId();
+                                    documentId = documentSnapshots.getDocuments().get(i).getId();
                                     table = "childernparttime";
                                     tvName.setText(upload.getName());
                                     tvAddress.setText(upload.getPhone());
