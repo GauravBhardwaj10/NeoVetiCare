@@ -22,7 +22,6 @@ public class privaceandsecurity extends AppCompatActivity {
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle mtoggle;
-    PDFView pdfView;
     String selectedGender = "Sexual Content";
 
     @Override
@@ -32,8 +31,6 @@ public class privaceandsecurity extends AppCompatActivity {
         drawerLayout=findViewById(R.id.drawer_layout);
         mtoggle=new ActionBarDrawerToggle(this,drawerLayout, R.string.Open,R.string.Close);
         drawerLayout.addDrawerListener(mtoggle);
-        pdfView=findViewById(R.id.pdfview);
-        pdfView.fromAsset("terms.pdf").load();
         mtoggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         navigationView=findViewById(R.id.nav_view);

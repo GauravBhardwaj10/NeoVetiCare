@@ -77,6 +77,9 @@ public class Adminactivity extends AppCompatActivity {
                     startActivity(contact);
 
                 }
+                if (item.getItemId() == R.id.contact) {
+                    Intent contact = new Intent(Adminactivity.this, ContactActivity.class);
+                    startActivity(contact);}
                 DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
@@ -90,7 +93,7 @@ public class Adminactivity extends AppCompatActivity {
                     AlertDialog.Builder builder = new AlertDialog.Builder(Adminactivity.this);
                     builder.setIcon(R.drawable.ic_baseline_security_24);
                     builder.setTitle(" Admin Login sucessfully");
-                    builder.setMessage("Now, Do you want to open a page to see the List of nannies  and CareTakers as well as Manage Users:");
+                    builder.setMessage("Now, Do you want to see contacts by people and want to block or delete profile");
                     builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {

@@ -27,8 +27,7 @@ PDFView pdf3;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_activity_layout3);
         drawerLayout = findViewById(R.id.drawer_layout);
-        pdf3=findViewById(R.id.pdfviewlayou3);
-        pdf3.fromAsset("lay3.pdf").load();
+
         mtoggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.Open, R.string.Close);
         drawerLayout.addDrawerListener(mtoggle);
         mtoggle.syncState();

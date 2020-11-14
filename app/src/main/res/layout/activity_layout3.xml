@@ -48,14 +48,23 @@
 
 
 
-        <com.github.barteksc.pdfviewer.PDFView
-            android:id="@+id/pdfviewlayou3"
-            android:layout_width="426dp"
-            android:layout_height="500dp"
-            android:layout_marginRight="60dp"
-            android:layout_marginBottom="0dp"
+        <TextView
+            android:layout_width="365dp"
+            android:layout_height="142dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:width="80dp"
             android:height="80dp"
-            android:background="@drawable/custom_button" />
+            android:fontFamily="@font/abeezee"
+
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:text="• Download the mobile app from the App Store.
+• Tap on the “Babysitter/caretaker”.
+• First of all, login into the app.
+• Now, you can update and delete any details from your profile.
+• For that click on the profile option , where you can fill any detail and click on the update
+option.
+• Now all your new info is filled into the profile."/>
     </LinearLayout>
 </ScrollView>
