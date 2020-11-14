@@ -23,13 +23,12 @@ public class About_us extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle mtoggle;
     String selectedGender = "Sexual Content";
-PDFView pdfView1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_activity_about);
-        pdfView1=findViewById(R.id.pdfview1);
-        pdfView1.fromAsset("us.pdf").load();
+
         drawerLayout = findViewById(R.id.drawer_layout);
         mtoggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.Open, R.string.Close);
         drawerLayout.addDrawerListener(mtoggle);
@@ -66,6 +65,9 @@ PDFView pdfView1;
                     Toast.makeText(About_us.this, "About Us:", Toast.LENGTH_SHORT).show();
                     k5();
                 }
+                if (item.getItemId() == R.id.contact) {
+                    Intent contact = new Intent(About_us.this, ContactActivity.class);
+                    startActivity(contact);}
                 DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
@@ -127,7 +129,7 @@ PDFView pdfView1;
     }
 
     public void h1() {
-        Intent intent = new Intent(About_us.this, MainActivity.class);
+        Intent intent = new Intent(About_us.this, Help.class);
         startActivity(intent);
     }
 

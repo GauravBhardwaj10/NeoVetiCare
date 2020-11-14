@@ -1,19 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-    <com.github.barteksc.pdfviewer.PDFView
-        android:id="@+id/pdfview1"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="0dp" />
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
 
-</RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="About Our Team Members:"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bhalwinder Singh Dhillon"
+                android:textStyle="normal"
+                android:textAlignment="center"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="385dp"
+                android:src="@drawable/me" />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Harpreet Kaur"
+                android:textStyle="normal"
+                android:textAlignment="center"
+                />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="477dp"
+                android:src="@drawable/happyy"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sahila Karra"
+                android:textStyle="normal"
+                android:textAlignment="center"
+                />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="477dp"
+                android:src="@drawable/sahila"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ranjit Singh"
+                android:textStyle="normal"
+                android:textAlignment="center"
+                />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="477dp"
+                android:src="@drawable/ranjit"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Harpreet Singh"
+                android:textStyle="normal"
+                android:textAlignment="center"
+                />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="477dp"
+                android:src="@drawable/harry"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Arshdeep Kaur"
+                android:textStyle="normal"
+                android:textAlignment="center"
+                />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="477dp"
+                android:src="@drawable/arshdeep"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gaurov"
+                android:textStyle="normal"
+                android:textAlignment="center"
+                />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="477dp"
+                android:src="@drawable/grov"/>
+
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+</ScrollView>

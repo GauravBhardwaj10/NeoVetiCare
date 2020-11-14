@@ -45,14 +45,25 @@
             android:textStyle="italic"/>
 
 
-        <com.github.barteksc.pdfviewer.PDFView
-            android:id="@+id/pdfviewlayou5"
-            android:layout_width="426dp"
-            android:layout_height="500dp"
-            android:layout_marginRight="60dp"
-            android:layout_marginBottom="0dp"
+        <TextView
+            android:layout_width="368dp"
+            android:layout_height="201dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:width="80dp"
             android:height="80dp"
-            android:background="@drawable/custom_button" />
+            android:fontFamily="@font/abeezee"
+
+            android:text="• Download the mobile app from the App Store.
+• Tap on the “Parents/senior citizens”.
+• First of all, login into the app.
+• Whenever you login into the app, you can view the list of nannies in your home page.
+• You can view list of nannies and can choose any of it from the list.
+• Whenever you open the profile of someone, there is a chat option on the right corner of
+the home page of the profile of nanny.
+• By clicking on it you can start with nanny for getting more option and for clearing your
+doubts."
+            android:textColor="@color/black"
+            android:textStyle="normal" />
     </LinearLayout>
 </ScrollView>

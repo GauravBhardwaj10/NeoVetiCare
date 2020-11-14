@@ -28,8 +28,7 @@ public class layout5 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_activity_layout5);
         drawerLayout = findViewById(R.id.drawer_layout);
-        pdf5=findViewById(R.id.pdfviewlayou5);
-        pdf5.fromAsset("lay5.pdf").load();
+
         mtoggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.Open, R.string.Close);
         drawerLayout.addDrawerListener(mtoggle);
         mtoggle.syncState();
